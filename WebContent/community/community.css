@@ -1,0 +1,31 @@
+a{
+	font-size: 17px;
+	margin: 7px;
+}
+a:hover{
+	color:gray;
+	text-decoration:none;
+}
+.bg_black{
+	background: black;
+}
+.font_white{
+	color: white;
+}
+.font_title{
+	font-family: 华文细黑; 
+	color: black;
+}
+.margin{
+	margin: 10px;
+}
+.margin_top{
+	margin-top: 10px;
+}
+.video_size{
+	height:270px;
+	width: 480px;
+}
+.text_area_transparency{
+	background:rgba(255,255,255,0.7);
+}
