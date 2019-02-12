@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-I/mybatis.orgl/DTD Config 3.01IEN"
+" http://mybatis.org/dtd/mybat~s-3-config.dtd">
+<configuration>
+	<!-- < !一配置别名一〉 -->
+	<typeAliases>
+		<package name="com.itheima.po">
+	</typeAliases>
+	<!-- < !--配置Mapper 的位置一〉 -->
+	<mappers>
+
+	</mappers>
+</configuration>
