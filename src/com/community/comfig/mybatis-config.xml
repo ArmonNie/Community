@@ -18,9 +18,9 @@
 		</environment>
 	</environments>
 	<!-- < !一配置别名一〉 -->
-	<!-- <typeAliases>
-		<package name="com.itheima.po">
-	</typeAliases> -->
+	<typeAliases>
+		<typeAliases alias="User" type="com.community.bean.User"/>
+	</typeAliases>
 	<!-- < !--配置Mapper 的位置一〉 -->
 	<mappers>
 		<mapper resource="com/community/mapper/UserMapper.xml"/>

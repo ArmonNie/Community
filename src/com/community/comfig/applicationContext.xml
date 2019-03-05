@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:context="http: //www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.3.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	<!--读取db.properties，注意此处的路径-->
+	<context:property-placehoder location="classpath:db.properties"/>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<!-- <!一数据库驱动一〉 -->
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<!-- <!一连接数据库的url 一〉 -->
+		<property name="url" value="${jdbc.url}"/>
+		<!-- <! 一连接数据库的用户名一〉 -->
+		<property name="username" value="${jdbc.username}"/>
+		<!-- <! 一连接数据库的密码一〉 -->
+		<property name="password" value="${jdbc.password}"/>
+		<!-- <!一最大连接数一〉 -->
+		<property name="maxTotal" value="${jdbc.maxTotal}"/>
+		<!-- <!一最大空闲连接一〉 -->
+		<property name="maxIdle" value="${jdbc.maxIdle}"/>
+		<!-- <! 一初始化连接数一〉 -->
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+	</bean>
+	<!-- <!一事务管理器，依赖于数据源一〉 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- < !一开启事务注解一〉 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- < !一配置MyBatis 工厂一〉 -->
+	<bean id=" sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- <! 一注入数据源一> -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- <! 一指定核心配置文件位置一> -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+	</bean>
+</beans>
