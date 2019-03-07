@@ -1,18 +1,18 @@
-<%@page import="com.community.bean.UserBean"%>
+<%@page import="bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="jquery.js"></script>
-<script src="community/community.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="airplane/three.min.js"></script>
-<script src="airplane/airplane.js"></script>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="community/community.css">
-<link rel="stylesheet" href="airplane/airplane.css">
+<script src="${pageContext.request.contextPath}/basejs/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/community/community.js"></script>
+<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/airplane/three.min.js"></script>
+<script src="${pageContext.request.contextPath}/airplane/airplane.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/community/community.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/airplane/airplane.css">
 <title>社区</title>
 </head>
 <body class="bg-warning">

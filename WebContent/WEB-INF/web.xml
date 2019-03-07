@@ -1,60 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns="http://java.sun.com/xml/ns/javaee" 
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-id="WebApp_ID" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>OnlineTest</display-name>
+  <!-- 配置首页 -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>firstpage.jsp</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>Forge.jsp</welcome-file>
   </welcome-file-list>
-<context-param>
-<param-name>contextConfigLocation</param-name>
-<param-value>classpath:applicationContaxt.xml</param-value>
-</context-param>
-<listener>
-<listener-class>orq.springframawork.wab.contaxt.ContextLoadarListanar
-</listener-class>
-</listener>
-
-<filter>
-<filter-name>encoding</fi1ter-name>
-<filter-class>
-orq.springframawork.wab.filter. CharactarBncodinqFilt缸
-</filter-class>
-<init-param>
-<param-name>encoding</param-name>
-<param-value>UTF-8</param-value>
-</init-param>
-</filter>
-<filter-mapping>
-<filter-name>encoding</filter-name>
-<url-pattern>*.action</url-pattern>
-</filter-mapping>
-
-<servlet>
-<servlet-name>springmvc</servlet-name>
-<servlet-class>
-orq.sprinqframawork.wab.servlet.DispatcherSarvlat
-</servlet-class>
-<init-param>
-<param-name>contextConfigLocation</param也name>
-<param-value>classpa出:springmvc-∞nfiq.xml</param-value>
-</init-param>
-
-
-<load-on-startup>1</load-on-startup>
-</servlet>
-<servlet-mapping>
-<servlet-name>springmvc</servlet-name>
-
-
-<url-pattarn>/</url-pattern>
-</servlet-mapping>
+  
+  <!-- 配置Spring监听器 -->
+  <context-param>
+　　	<param-name>contextConfigLocation</param-name>
+　　	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+ <!--  配置MVC框架的filetr -->
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
