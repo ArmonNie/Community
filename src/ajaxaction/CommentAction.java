@@ -1,4 +1,4 @@
-package action;
+package ajaxaction;
 
 public class CommentAction {
 

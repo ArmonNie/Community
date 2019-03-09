@@ -21,7 +21,7 @@
 				<div class="col-md-12 column">
 					<div class="page-header">
 						<h1 class="text-left">
-							<small class="font_title">前 路</small>
+							<small class="font_title">回忆</small>
 						</h1>
 						<div class="text-right">
 							<a><img class="img_login" alt="登录" title="登录" src="img/login_gray.svg" onmouseover="return img_login_over()" onmouseout="return img_login_out()" onclick="return img_login_click()"></a>
@@ -32,6 +32,7 @@
 				<div class="col-md-3 column"></div>
 				<div class="col-md-5 column">
 				<div id="forge">
+					<!-- 填充页面 -->
 				</div>
 			</div>
 			<div class="col-md-4 column"></div>

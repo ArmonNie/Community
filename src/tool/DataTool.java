@@ -1,6 +1,8 @@
 package tool;
 
-
+/*
+ * 链接数据库的普通步骤，可用于看密码用户名是否正确
+ */
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,22 +22,22 @@ public class DataTool {
 		} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("δ�ҵ����࣬��Ϣ��jdbc");
+			System.out.println("加载驱动失败");
 		}
 	
-		//���ݿ��url
-		String url = "jdbc:mysql://localhost:3306/MyWebSystem?user=root&password=root";
+		String url = "jdbc:mysql://localhost:3306/community?user=armon&password=1510120036";
+		//String url = "jdbc:mysql://localhost:3306/MyWebSystem?user=root&password=root";
 		//String url = "jdbc:mysql://120.79.21.64:3306/myusersystem?user=Armon&password=Ilovelm417520";
 		//String url = "jdbc:mysql://localhost:3306/myusersystem?user=Armon&password=Ilovelm417520";
 		try {
 			con = DriverManager.getConnection(url);
 			statement = con.createStatement();
 			DataTool.ConnectionMessage = "Success";
-			System.out.println("�����������ݿ⣡");
+			System.out.println("链接成功");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("δ���������ݿ⣡");
+			System.out.println("链接失败");
 			DataTool.ConnectionMessage = "Fail";
 		}
 	}
@@ -65,7 +67,7 @@ public class DataTool {
 	}
 
 	
-	//�ر����ݿ�����
+	
 	public static void Close()
 	{
 		if(statement != null)
