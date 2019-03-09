@@ -7,7 +7,8 @@
 <title>用户登录</title>
 </head>
 <body>
-	<form class="form-horizontal" action="LoginAction" method="post" namespace="/">
+	<!-- 注意表单的提交路径,Community是默认的根，/action则对应xml文件中的namespace-->
+	<form class="form-horizontal" action="/Community/action/LoginAction" method="post">
 		<div class="form-group">
 			<label  class="col-sm-2 control-label">昵称：</label>
 			<div class="col-sm-8">

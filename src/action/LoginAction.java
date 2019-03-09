@@ -2,6 +2,8 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import tool.AppTool;
+
 public class LoginAction extends ActionSupport{
 	
 	private String username;
@@ -22,7 +24,7 @@ public class LoginAction extends ActionSupport{
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
-
+	
 
 	/*
 	 * 控制逻辑
@@ -30,7 +32,8 @@ public class LoginAction extends ActionSupport{
 	public String execute()
 	{
 		String result = "LoginError";
-		if(this.username == "Armon")
+		AppTool.ConsoleOut(this.username);
+		if(this.username.equals("Armon"))
 		{
 			result = "LoginSuccess";
 		}
