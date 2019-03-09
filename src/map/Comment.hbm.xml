@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="bean">
+	<class name="Comment" table="comment">
+		<id name="commentid" column="commentid" type="integer">
+			<generator class="native"/>
+		</id>
+		<property name="usernumber" column="usernumber" type="string"></property>
+		<property name="filenumber" column="filenumber" type="string"></property>
+		<property name="comment" column="comment" type="String"></property>
+	</class>
+</hibernate-mapping>

@@ -23,6 +23,9 @@
    		</property>
 
    		<!-- List of XML mapping files -->
-   		<mapping resource="map/Teacher.hbm.xml"/>
+   		<mapping resource="map/User.hbm.xml"/>
+   		<mapping resource="map/File.hbm.xml"/>
+   		<mapping resource="map/Collection.hbm.xml"/>
+   		<mapping resource="map/Comment.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 
