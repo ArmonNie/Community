@@ -3,12 +3,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户注册</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>用户注册</title>
 </head>
 <body>
-<form class="form-horizontal" action="RegistServlet" method="post">
-                <div class="form-group">
+	<script type="text/javascript">
+	/* 中的成员变量名称都和ajax中的data：｛...｝名称相一致 */
+	function register_click(){
+		$.get("/Community/ajaxaction/RegisterAction", 
+				{},
+				function (data, textStatus){
+						
+					$(".img_login").attr("src","img/login_white.svg");
+					$("#forge").load("Login.jsp");
+
+			});
+	}
+	</script>
+	<form class="form-horizontal">
+      	<div class="form-group">
 					 <label  class="col-sm-2 control-label">昵称：</label>
 					<div class="col-sm-8">
 						<input class="form-control text_area_transparency" name="name" type="text" />
@@ -44,7 +57,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-5">
-						 <button type="submit" class="btn btn-success btn-block">注册</button>
+						 <button id="btn_register" onclick="return register_click()" class="btn btn-success btn-block">注册</button>
 					</div>
 				</div>
 			</form>

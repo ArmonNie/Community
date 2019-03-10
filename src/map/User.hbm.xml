@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="bean">
-	<class name="User" table="exam">
+	<class name="User" table="user">
 		<id name="userid" column="userid" type="integer">
 			<generator class="native"/>
 		</id>

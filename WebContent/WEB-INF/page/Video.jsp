@@ -12,7 +12,7 @@
 <body>
 <%   
 	List<File> fileList = new ArrayList<File>(); 
-	File file = new File("D:\\DocumentsProjects\\Java Projects\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Community\\resource");
+	File file = new File("D:\\ServerVideo");
 	String[] filepath = file.list();
 	StringBuffer sb = new StringBuffer();
 %>
@@ -30,7 +30,7 @@ for(String x : filepath)
 	}
 	for(File file_item : fileList)
 	{
-		File tmpfile = new File("D:\\DocumentsProjects\\Java Projects\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\Community\\resource\\" + file_item.getName());
+		File tmpfile = new File("D:\\ServerVideo" + file_item.getName());
 %>
 <div class="col-md-12 margin_top">
 <div class="col-md-6"><a name="<%= file_item.getName()%>" data-toggle="modal" data-target="#myModal" onclick="video_play(this)"><%= file_item.getName()%></a></div>

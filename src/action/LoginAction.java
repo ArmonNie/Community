@@ -3,6 +3,7 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 
 import tool.AppTool;
+import tool.ORMTool;
 
 public class LoginAction extends ActionSupport{
 	
@@ -32,15 +33,15 @@ public class LoginAction extends ActionSupport{
 	public String execute()
 	{
 		String result = "LoginError";
-		AppTool.ConsoleOut(this.username);
-		if(this.username.equals("Armon"))
-		{
-			result = "LoginSuccess";
-		}
-		else
-		{
-			
-		}
+		AppTool.ConsoleOut("前台传入用户名：" + this.username 
+				+ "前台传入密码" + this.userpassword);
+		
+		
+		ORMTool tool = new ORMTool("user");
+		String hql = "select u from User u where username like :username";
+		tool.getQuery(hql,this.username);
+		tool.miterateresultList();
+		
 		return result;
 	}
 

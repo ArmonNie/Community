@@ -12,7 +12,7 @@
     <package name="action" namespace="/action" extends="struts-default"> 
     	<action name="LoginAction" class="action.LoginAction">
     		<result name="LoginSuccess">/WEB-INF/page/Content.jsp</result>
-    		<result name="LoginError">/WEB-INF/page/error/LoginError.jsp</result>
+    		<result name="LoginError">/WEB-INF/page/error/Error.jsp</result>
     	</action>  
     	
     	<!-- 此action转为超链接设置-->
@@ -47,14 +47,11 @@
     <!--基于ajax的action，实现局部刷新 -->
     <package name="ajaxaction" namespace="/ajaxaction" extends="json-default">
      
-    	<action name="AddTeacherAction" class="ajaxaction.AddTeacherAction">
-		</action>
-		
-		<action name="DeleteStudentAction" class="ajaxaction.DeleteStudentAction">
-			<result type="json">
-    			<param name="root">test</param>
+    	<action name="RegisterAction" class="ajaxaction.RegisterAction">
+    		<result type="json">
     		</result>
-		</action>
+    	</action>
+		
     </package> 
       
 </struts> 
