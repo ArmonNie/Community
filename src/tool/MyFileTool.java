@@ -21,16 +21,31 @@ public class MyFileTool {
 
 	public MyFileTool()
 	{
+		this.setDirPath(AppTool.getBasePath());
+	}
+	
+	public MyFileTool(String path)
+	{
 		this.setDirPath(AppTool.getBasePath() + "/");
 	}
 	
 	/*
 	 * 获取目的目录的所有文件
 	 */
-	public List<String> getFileList()
+	public List<File> getFileList()
 	{
-		List<String> fl = new ArrayList<String>();
 		
+		List<File> fl = new ArrayList<File>();
+		
+		File f = new File(this.dirPath);
+		File[] fArray = f.listFiles();
+		for(int i = 0;i < fArray.length;i++)
+		{
+			if(fArray[i].isFile())
+			{
+				fl.add(fArray[i]);
+			}
+		}
 		
 		return fl;
 	}
@@ -40,6 +55,8 @@ public class MyFileTool {
 	 */
 	public void getFileMsg(File file)
 	{
-		
+		System.out.println("文件名：" + file.getName());
+		System.out.println("文件路径：" + file.getAbsolutePath());
+		System.out.println("文件父路径" + file.getParent());
 	}
 }

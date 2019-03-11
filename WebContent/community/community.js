@@ -21,9 +21,7 @@ function img_regist_click() {
 	$(".img_regist").attr("src","img/regist_white.svg");
 	$("#forge").load("Regist.jsp");
 }
-function a_video_click() {
-	$("#content").load("Video.jsp");
-}
+
 function a_audio_click() {
 	$("#content").load("Audio.jsp");
 }

@@ -6,6 +6,9 @@ import javax.websocket.Session;
 
 import com.opensymphony.xwork2.ActionContext;
 
+/*
+ * 操作session
+ */
 
 public class SessionTool{
 	
@@ -36,21 +39,6 @@ public class SessionTool{
 		session.put("username", username);
 		session.put("userpassword", userpassword);
 		session.put("usernumber", usernumber);
-	}
-	public void setSession(String username,String userpassword,String usernumber,String enusername)
-	{
-		session.put("username", username);
-		session.put("userpassword", userpassword);
-		session.put("usernumber", usernumber);
-		session.put("enusername", enusername);
-	}
-	public void setSession(String username,String userpassword,String usernumber,String enusername,String examnumber)
-	{
-		session.put("username", username);
-		session.put("userpassword", userpassword);
-		session.put("usernumber", usernumber);
-		session.put("enusername", enusername);
-		session.put("examnumber", examnumber);
 	}
 	
 }

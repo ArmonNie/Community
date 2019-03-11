@@ -36,12 +36,15 @@ public class LoginAction extends ActionSupport{
 		AppTool.ConsoleOut("前台传入用户名：" + this.username 
 				+ "前台传入密码" + this.userpassword);
 		
-		
-		ORMTool tool = new ORMTool("user");
+		//数据库查询
+		/*ORMTool tool = new ORMTool("user");
 		String hql = "select u from User u where username like :username";
 		tool.getQuery(hql,this.username);
-		tool.miterateresultList();
+		tool.miterateresultList();*/
 		
+		
+		//测试
+		result = "LoginSuccess";
 		return result;
 	}
 
