@@ -54,7 +54,7 @@
     	</action>
 		
 		<action name="LoadAction" class="ajaxaction.LoadAction">
-    		<result type="json">
+    		<result name="LoadSuccess" type="stream">
     			<param name="contentType">text/html</param>
     			<!-- 与getResult对应 -->
 				<param name="inputName">result</param>

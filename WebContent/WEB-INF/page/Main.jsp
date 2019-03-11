@@ -21,7 +21,10 @@
 					{tag:"all"},
 					function (data, textStatus){
 						console.log("OK");
-						$("#content").append(data);
+						//$("#content").append(data);
+						//$("#content").load(data);
+						$("#content").html(data);
+						console.log(data);
 						/* $("#content").load("Video.jsp"); */
 				});
 		}
