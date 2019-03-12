@@ -26,7 +26,7 @@ public class MyFileTool {
 	
 	public MyFileTool(String path)
 	{
-		this.setDirPath(AppTool.getBasePath() + "/");
+		this.setDirPath(AppTool.getBasePath() + "\\1\\");
 	}
 	
 	/*
@@ -37,26 +37,34 @@ public class MyFileTool {
 		
 		List<File> fl = new ArrayList<File>();
 		
-		File f = new File(this.dirPath);
-		File[] fArray = f.listFiles();
-		for(int i = 0;i < fArray.length;i++)
+		//File f = new File(this.dirPath);
+		File f = new File("D:\\ServerVideo\\1\\");
+		if(f.isDirectory())
 		{
-			if(fArray[i].isFile())
+			File[] fArray = f.listFiles();
+			for(int i = 0;i < fArray.length;i++)
 			{
-				fl.add(fArray[i]);
+				if(fArray[i].isFile())
+				{
+					fl.add(fArray[i]);
+				}
 			}
 		}
-		
+		else
+		{
+			AppTool.ConsoleOut("非目录");
+		}
 		return fl;
 	}
 	
 	/*
 	 * 获取文件具体信息
 	 */
-	public void getFileMsg(File file)
+	public static void getFileMsg(File file)
 	{
 		System.out.println("文件名：" + file.getName());
 		System.out.println("文件路径：" + file.getAbsolutePath());
 		System.out.println("文件父路径" + file.getParent());
+		System.out.println("文件大小" + file.length()/(1024*1024) + "MB");
 	}
 }

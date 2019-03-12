@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="bean">
+	<class name="User" table="user">
+		<id name="userid" column="userid" type="integer">
+			<generator class="native"/>
+		</id>
+		<property name="usernumber" column="usernumber" type="string"></property>
+		<property name="username" column="username" type="string"></property>
+		<property name="useremail" column="useremail" type="string"></property>
+		<property name="userpassword" column="userpassword" type="string"></property>
+		<property name="isvip" column="isvip" type="integer"></property>
+	</class>
+</hibernate-mapping>

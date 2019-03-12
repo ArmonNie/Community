@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /*
@@ -60,4 +64,17 @@ public class AppTool {
 			return dataStream; 
 		}
 	}
+	
+	public static JSONArray FileList2Json(List<File> list){
+        JSONArray json = new JSONArray();
+        for(File f : list){
+        	AppTool.ConsoleOut("Json" + f.getName());
+            JSONObject jo = new JSONObject();
+            jo.put("name", f.getName());
+            jo.put("size", f.length()/1024);
+             
+            json.put(jo);
+        }
+        return json;
+   }
 }
