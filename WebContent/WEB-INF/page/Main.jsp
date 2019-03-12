@@ -4,6 +4,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- 和jquery冲突 -->
+		<%-- <script src="${pageContext.request.contextPath}/basejs/json.js"></script> --%>
 		<script src="${pageContext.request.contextPath}/basejs/jquery.js"></script>
 		<script src="${pageContext.request.contextPath}/community/community.js"></script>
 		<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
@@ -20,35 +22,142 @@
 			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{tag:"all"},
 					function (data, textStatus){
+						$("#content").html("");
 						console.log("OK");
 						/* 处理json数据并执行 */
 						//$("#content").append(data);
 						//$("#content").load(data);
 						//$("#content").html(data);
 						//$("#content").load("filePart.html");
-						console.log(data);
+						var obj = JSON.parse(data);
+						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						$("#content").append("<div class='container-fluid'><div class='row-fluid'><div class='span12'>");
+						$("#content").append("<h2>电影</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("<h2>CG动漫</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("<h2>电视</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("</div></div></div>");
 						/* $("#content").load("Video.jsp"); */
 				});
 		}
+		window.onload = all_video_click;
 		function tv_video_click() {
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{},
+					{tag:"all"},
 					function (data, textStatus){
-						$("#content").load("Video_TV.jsp");
+						$("#content").html("");
+						console.log("OK");
+						/* 处理json数据并执行 */
+						var obj = JSON.parse(data);
+						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						$("#content").append("<div class='container-fluid'><div class='row-fluid'><div class='span12'>");
+						$("#content").append("<h2>电视</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("</div></div></div>");
 				});
 		}
 		function movie_video_click() {
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{},
+					{tag:"all"},
 					function (data, textStatus){
-						$("#content").load("Video_movie.jsp");
+						$("#content").html("");
+						console.log("OK");
+						/* 处理json数据并执行 */
+						var obj = JSON.parse(data);
+						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						$("#content").append("<div class='container-fluid'><div class='row-fluid'><div class='span12'>");
+						$("#content").append("<h2>电影</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("</div></div></div>");
 				});
 		}
 		function cg_video_click() {
+			$("#content").html("");
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{},
+					{tag:"all"},
 					function (data, textStatus){
-						$("#content").load("Video_CG.jsp");
+						console.log("OK");
+						/* 处理json数据并执行 */
+						var obj = JSON.parse(data);
+						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						$("#content").append("<div class='container-fluid'><div class='row-fluid'><div class='span12'>");
+						$("#content").append("<h2>CG动漫</h2><hr>");
+						$("#content").append("<table class='table'>");
+						$("#content").append("<thead>");
+						$("#content").append("<tr><th>编号</th><th>文件名</th><th>文件大小</th></tr>");
+						$("#content").append("</thead>");
+						$("#content").append("<tbody>");
+						for(var i = 0;i<obj.jsonresult.length;i++)
+						{
+						$("#content").append("<tr>");
+						$("#content").append("<td>"+ (i+1) + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filename + "</td>");
+						$("#content").append("<td>"+ obj.jsonresult[i].filesize + "</td></tr>");
+						}
+						$("#content").append("</tbody></table>");
+						$("#content").append("</div></div></div>");
 				});
 		}
 		</script>
