@@ -17,33 +17,35 @@
 	<body class="bg-warning">
 		<script type="text/javascript">
 		function all_video_click() {
-			$.get("/Community/ajaxaction/LoadAction", 
+			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{tag:"all"},
 					function (data, textStatus){
 						console.log("OK");
+						/* 处理json数据并执行 */
 						//$("#content").append(data);
 						//$("#content").load(data);
-						$("#content").html(data);
+						//$("#content").html(data);
+						//$("#content").load("filePart.html");
 						console.log(data);
 						/* $("#content").load("Video.jsp"); */
 				});
 		}
 		function tv_video_click() {
-			$.get("/Community/ajaxaction/LoadAction", 
+			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{},
 					function (data, textStatus){
 						$("#content").load("Video_TV.jsp");
 				});
 		}
 		function movie_video_click() {
-			$.get("/Community/ajaxaction/LoadAction", 
+			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{},
 					function (data, textStatus){
 						$("#content").load("Video_movie.jsp");
 				});
 		}
 		function cg_video_click() {
-			$.get("/Community/ajaxaction/LoadAction", 
+			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{},
 					function (data, textStatus){
 						$("#content").load("Video_CG.jsp");

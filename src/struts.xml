@@ -17,30 +17,10 @@
     	</action>  
     	
     	<!-- 此action转为超链接设置-->
-    	<action name="LinkAction" class="comman.LinkAction">
+    	<action name="LinkAction" class="action.LinkAction">
+    	
     		<result name="null_page">/WEB-INF/page/nullpage.jsp</result>
     		
-    		<result name="0000">/index.jsp</result>
-    		
-    		<result name="0001">/index.jsp</result>
-    		<result name="0002">/WEB-INF/page/Admin/admin_add_teacher.jsp</result>
-    		<result name="0003">/WEB-INF/page/Admin/admin_list_exam.jsp</result>
-    		<result name="0004">/WEB-INF/page/Admin/admin_set_system.jsp</result>
-    		
-    		<result name="1000">/index.jsp</result>
-    		<result name="1001">/WEB-INF/page/Teacher/teacher_add_student.jsp</result>
-    		<result name="1002">/WEB-INF/page/Teacher/teacher_create_exam.jsp</result>
-    		<result name="1003">/WEB-INF/page/Teacher/teacher_edit_exam.jsp</result>
-    		<result name="1004">/WEB-INF/page/Teacher/teacher_exam_after.jsp</result>
-    		<result name="1005">/WEB-INF/page/Teacher/teacher_exam_before.jsp</result>
-    		<result name="1006">/WEB-INF/page/Teacher/teacher_list_exam.jsp</result>
-    		<result name="1007">/WEB-INF/page/Teacher/teacher_manage_notify.jsp</result>
-    		<result name="1008">/WEB-INF/page/Teacher/teacher_add_student.jsp</result>
-    		<result name="1009">/WEB-INF/page/Teacher/teacher_manage_summary.jsp</result>
-    		<result name="1010">/WEB-INF/page/Teacher/teacher_manage_unlock.jsp</result>
-    		
-    		<result name="2000">/index.jsp</result>
-    		<result name="2001">/WEB-INF/page/Student/student_update_paper.jsp</result>
     	</action>
     	
     </package>  
@@ -53,7 +33,7 @@
     		</result>
     	</action>
 		
-		<action name="LoadAction" class="ajaxaction.LoadAction">
+		<action name="LoadJsonAction" class="ajaxaction.LoadJsonAction">
     		<result name="LoadSuccess" type="stream">
     			<param name="contentType">text/html</param>
     			<!-- 与getResult对应 -->
