@@ -1,6 +1,7 @@
 package tool;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -34,7 +35,7 @@ public class ORMTool {
 	private Transaction trasaction;
 	
 	//用于存储查询返回的结果集
-	private List resultList;
+	//private List resultList;
 	
 	//以便不时之需
 	private String tag;
@@ -102,32 +103,41 @@ public class ORMTool {
 	/*
 	 * 查询,params代表条件查询的参数
 	 */
-	public List getQuery(String hql)
+	/*public List getQuery(String hql)
 	{
 		resultList = session.createQuery(hql).list();
+		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
 		this.closeSession();
 		return resultList;
-	}
-	public List getQuery(String hql,String params1)
+	}*/
+	public void getQuery(String hql,String params1)
 	{
 		AppTool.ConsoleOut("查询语句为" + hql);
 		AppTool.ConsoleOut("查询条件限制之用户名为" + params1);
-		resultList = session.createQuery(hql).setString("username", params1).list();
+		//resultList = session.createQuery(hql).setString("username", params1).list();
+		//resultList是一个未初始化的值
+		List resultList = session.createQuery(hql).list();
+		for(Iterator pit = resultList.iterator();pit.hasNext();)
+		{
+			User user = (User)pit.next();
+			AppTool.ConsoleOut(user.toString());
+		}
+		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
 		this.closeSession();
-		return resultList;
+		//return resultList;
 	}
-	public List getQuery(String hql,String params1,String params2)
+	/*public List getQuery(String hql,String params1,String params2)
 	{
 		resultList = session.createQuery(hql).list();
 		this.closeSession();
 		return resultList;
-	}
+	}*/
 	
 	/*
 	 * 关于查询所返回的list里面的对象类型是否确定?
 	 * 待改进
 	 */
-	public void miterateresultList()
+	/*public void miterateresultList()
 	{
 		switch(this.TableName)
 		{
@@ -144,7 +154,7 @@ public class ORMTool {
 				}
 				break;
 		}
-	}
+	}*/
 	
 	/*
 	 * 单个插入,向目的表插入一条数据

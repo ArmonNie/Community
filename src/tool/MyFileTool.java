@@ -38,7 +38,7 @@ public class MyFileTool {
 		List<File> fl = new ArrayList<File>();
 		
 		//File f = new File(this.dirPath);
-		File f = new File("D:\\ServerVideo\\1\\");
+		File f = new File("D:\\ServerVideo\\video\\");
 		if(f.isDirectory())
 		{
 			File[] fArray = f.listFiles();

@@ -1,7 +1,18 @@
 package action;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
 import com.opensymphony.xwork2.ActionSupport;
 
+import bean.User;
 import tool.AppTool;
 import tool.ORMTool;
 
@@ -40,11 +51,30 @@ public class LoginAction extends ActionSupport{
 		/*
 		 * 数据库查询,控制登陆
 		 */
-		ORMTool tool = new ORMTool("user");
-		String hql = "select u from User u where username like :username";
-		tool.getQuery(hql,this.username);
-		tool.miterateresultList();
+		//ORMTool tool = new ORMTool("user");
+		//String hql = "select u.userpassword from User as u where username like :username";
+		//String hql = "select u from User as u";
+		//tool.getQuery(hql,this.username);
+		/*tool.miterateresultList();*/
+		Configuration cfg = new Configuration().configure();
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.applySettings(cfg.getProperties()).build();
+		SessionFactory sessionFactory = cfg.buildSessionFactory(serviceRegistry);
+		Session session = sessionFactory.openSession();
+		Transaction trasaction = session.beginTransaction();
 		
+	
+		String hql = "select u.userpassword from User as u where username = :username";
+		List resultList = session.createQuery(hql)
+				.setString("username", this.username)
+				.list();
+		for(Iterator pit = resultList.iterator();pit.hasNext();)
+		{
+			String str = (String)pit.next();
+			AppTool.ConsoleOut(str);
+		}
+		trasaction.commit();
+		session.close();
 		/*
 		 * 密码验证
 		 */
