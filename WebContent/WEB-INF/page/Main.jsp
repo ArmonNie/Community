@@ -11,8 +11,6 @@
 		<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
 		<script src="${pageContext.request.contextPath}/airplane/three.min.js"></script>
 		<script src="${pageContext.request.contextPath}/airplane/airplane.js"></script>
-		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/community/community.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/airplane/airplane.css">
@@ -35,56 +33,56 @@
 						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
 						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
 						//$("#content").append('<h2>电影</h2><hr>');
-						$("#content").append('<table class="table">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr>');
+						$("#content").append('<table class="table table-hover table-bordered">\n');
+						$("#content").append('<thead>\n');
+						$("#content").append('<tr class="">\n');
 						$("#content").append('<th>文件名</th>');
 						$("#content").append('<th>文件大小</th>');
 						$("#content").append('<th>热度</th>');
 						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+						$("#content").append('<tr>\n');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>\n');
+						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td>\n</tr>\n');
 						}
-						$("#content").append('</tbody></table>');
+						$("#content").append('</tbody>\n</table>\n');
 						$("#content").append('<h2>电视</h2><hr>');
-						$("#content").append('<table class="table">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr>');
+						$("#content").append('<table class="table table-hover table-bordered">\n');
+						$("#content").append('<thead>\n');
+						$("#content").append('<tr>\n');
 						$("#content").append('<th>文件名</th>');
 						$("#content").append('<th>文件大小</th>');
 						$("#content").append('<th>热度</th>');
 						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
 						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
 						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
 						}
 						$("#content").append('</tbody></table>');
 						$("#content").append('<h2>CG动漫</h2><hr>');
-						$("#content").append('<table class="table">');
+						$("#content").append('<table class="table table-hover table-bordered">');
 						$("#content").append('<thead>');
-						$("#content").append('<tr>');
+						$("#content").append('<tr>\n');
 						$("#content").append('<th>文件名</th>');
 						$("#content").append('<th>文件大小</th>');
 						$("#content").append('<th>热度</th>');
 						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
 						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
 						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
 						}
 						$("#content").append('</tbody></table>');
@@ -104,20 +102,20 @@
 						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
 						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
 						$("#content").append('<h2>电视</h2><hr>');
-						$("#content").append('<table class="table">');
+						$("#content").append('<table class="table table-hover table-bordered">');
 						$("#content").append('<thead>');
-						$("#content").append('<tr>');
+						$("#content").append('<tr>\n');
 						$("#content").append('<th>文件名</th>');
 						$("#content").append('<th>文件大小</th>');
 						$("#content").append('<th>热度</th>');
 						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
 						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
 						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
 						}
 						$("#content").append('</tbody></table>');
@@ -135,20 +133,20 @@
 						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
 						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
 						$("#content").append('<h2>电影</h2><hr>');
-						$("#content").append('<table class="table">');
+						$("#content").append('<table class="table table-hover table-bordered">');
 						$("#content").append('<thead>');
-						$("#content").append('<tr>');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('<tr class="col-md-12 column">');
+						$("#content").append('<th class="col-md-3 column>文件名</th>');
+						$("#content").append('<th class="col-md-3>文件大小</th>');
+						$("#content").append('<th class="col-md-3>热度</th>');
+						$("#content").append('<th class="col-md-3>操作</th>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
 						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
 						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
 						}
 						$("#content").append('</tbody></table>');
@@ -166,20 +164,20 @@
 						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
 						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
 						$("#content").append('<h2>CG动漫</h2><hr>');
-						$("#content").append('<table class="table">');
+						$("#content").append('<table class="table table-hover table-bordered">');
 						$("#content").append('<thead>');
-						$("#content").append('<tr>');
+						$("#content").append('<tr>\n');
 						$("#content").append('<th>文件名</th>');
 						$("#content").append('<th>文件大小</th>');
 						$("#content").append('<th>热度</th>');
 						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>');
+						$("#content").append('</tr>\n');
 						$("#content").append('</thead>');
 						$("#content").append('<tbody>');
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
 						$("#content").append('<tr>');
-						$("#content").append('<td><a>'+ obj.jsonresult[i].filename + '</a></td>');
+						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
 						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
 						}
 						$("#content").append('</tbody></table>');
@@ -189,6 +187,23 @@
 		</script>
 		<div id="world">
 		<!-- 加载背景动画 -->
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+       			 <div class="modal-content">
+            		<div class="modal-header">       
+               			 <h4 class="modal-title" id="myModalLabel">…</h4>
+            		</div>
+            		<div class="modal-body text-center">
+            			<video class="video_size" id="video" controls="controls">
+            				<source src="" type="audio/mp4"></source>
+            			</video>      
+            		</div>
+            		<div class="modal-footer">
+                
+            		</div>
+        		</div>
+    		</div>
 		</div>
 		<div class="container">
 			<div class="row clearfix">
