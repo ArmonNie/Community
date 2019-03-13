@@ -26,42 +26,26 @@ public class ORMTool {
 	private String TableName;
 	private Object object;
 	
-	
-	private List<Object> objectList;//用于多条数据操作
+	//用于多条数据操作
+	private List<Object> objectList;
 	
 	//操作数据库必须对象
 	private Session session;
 	private Transaction trasaction;
 	
+	//用于存储查询返回的结果集
+	private List resultList;
 	
-	private List resultList;//用于存储查询返回的结果集
-	
-
-	private String tag;//以便不时之需
+	//以便不时之需
+	private String tag;
 	
 	/*
 	 * ORMtool的构造函数
 	 */
-	public ORMTool()
-	{
-		
-	}
-	
+	//一般用于查询，删除
 	public ORMTool(String TableName)
 	{
 		this.TableName = TableName;
-	}
-	
-	public ORMTool(String TableName,Object object)
-	{
-		this.TableName = TableName;
-		this.object = object;
-	}
-	//用于对多条数据进行操作
-	public ORMTool(String TableName,List<Object> objectList)
-	{
-		this.TableName = TableName;
-		this.objectList = objectList;
 	}
 	
 	/*
@@ -101,6 +85,7 @@ public class ORMTool {
 	
 	
 	/*
+	*必须操作
 	*初始化对话，开启事务（hibernate框架公共操作）
 	*/
 	public void  initSession()
@@ -164,9 +149,10 @@ public class ORMTool {
 	/*
 	 * 单个插入,向目的表插入一条数据
 	 */
-	public void insert()
+	public void insert(Object object)
 	{
 		this.initSession();
+		this.setObject(object);
 		switch(this.TableName)
 		{
 			case "user":

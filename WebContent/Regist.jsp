@@ -11,12 +11,13 @@
 	/* 中的成员变量名称都和ajax中的data：｛...｝名称相一致 */
 	function register_click(){
 		$.get("/Community/ajaxaction/RegisterAction", 
-				{},
+				{username:$("#username").val(),
+				 useremail:$("#useremail").val(),
+				 userpassword:$("#userpassword").val()},
 				function (data, textStatus){
-						
+					console.log(data);
 					$(".img_login").attr("src","img/login_white.svg");
 					$("#forge").load("Login.jsp");
-
 			});
 	}
 	</script>
@@ -24,25 +25,25 @@
       	<div class="form-group">
 					 <label  class="col-sm-2 control-label">昵称：</label>
 					<div class="col-sm-8">
-						<input class="form-control text_area_transparency" name="name" type="text" />
+						<input class="form-control text_area_transparency" id="username" name="username" type="text" />
 					</div>
 					</div>
 				<div class="form-group">
 					 <label  class="col-sm-2 control-label">邮箱：</label>
 					<div class="col-sm-8">
-						<input class="form-control text_area_transparency" name="email" type="email" />
+						<input class="form-control text_area_transparency" id="useremail" name="useremail" type="email" />
 					</div>
 				</div>
 				<div class="form-group">
 					 <label class="col-sm-2 control-label">密码：</label>
 					<div class="col-sm-8">
-						<input class="form-control text_area_transparency" type="password" />
+						<input class="form-control text_area_transparency" id="userpassword" name="userpassword" type="password" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">确认：</label>
 					<div class="col-sm-8">
-						<input class="form-control text_area_transparency" name="pwd" type="password" />
+						<input class="form-control text_area_transparency" id="confirmpassword" name="confirmpassword" type="password" />
 					</div>
 				</div>
 				<div class="form-group">

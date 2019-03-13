@@ -5,10 +5,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import bean.Collection;
+import bean.Comment;
+import bean.User;
 
 
 /*
@@ -18,11 +24,58 @@ public class AppTool {
 	
 	private static String basePath = "d:/ServerVideo";//系统操作的文件夹
 	
+	/*
+	 * 常规系统输出
+	 */
 	public static void ConsoleOut(String msg)
 	{
 		System.out.println(msg);
 	}
+	
+	/*
+	 * Debug输出
+	 */
+	public static void DebugOut(Object object,String objectType,String other)
+	{
+		AppTool.ConsoleOut("Other Debug Message" + other);
+		switch(objectType)
+		{
+			case "User":
+				User user = (User)object;
+				AppTool.ConsoleOut(user.toString());
+				break;
+			case "File":
+				bean.File file = (bean.File)object;
+				AppTool.ConsoleOut(file.toString());
+				break;
+			case "Collection":
+				Collection collection = (Collection)object;
+				AppTool.ConsoleOut(collection.toString());
+				break;
+			case "Comment":
+				Comment comment = (Comment)object;
+				AppTool.ConsoleOut(comment.toString());
+				break;
+			default:
+				AppTool.ConsoleOut("无测试信息/无此类对象");
+				break;
+		}
+	}
 
+	/*
+	 * 获取当前年月日字符串
+	 * 用于生成usernumber
+	 */
+	public static String getDateStr()
+	{
+		 Date d = new Date(); 
+	     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
+	     String dateNowStr = sdf.format(d); 
+	     AppTool.ConsoleOut("格式化后的日期：" + dateNowStr);
+	     return dateNowStr;
+	}
+	
+	
 	public static String getBasePath()
 	{
 		return basePath;

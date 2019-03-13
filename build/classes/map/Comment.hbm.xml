@@ -9,6 +9,6 @@
 		</id>
 		<property name="usernumber" column="usernumber" type="string"></property>
 		<property name="filenumber" column="filenumber" type="string"></property>
-		<property name="comment" column="comment" type="String"></property>
+		<property name="comment" column="comment" type="string"></property>
 	</class>
 </hibernate-mapping>

@@ -2,7 +2,7 @@ package bean;
 
 public class Comment {
 	
-	private int conmmentid;//Conmment表主键
+	private int commentid;//Conmment表主键
 	private String usernumber;//Conmment表User编号
 	private String filenumber;//Conmment表File编号
 	private String comment;//Conmment表commment内容
@@ -12,11 +12,11 @@ public class Comment {
 	/*
 	 * Getter and Setter
 	 */
-	public int getConmmentid() {
-		return conmmentid;
+	public int getCommentid() {
+		return commentid;
 	}
-	public void setConmmentid(int conmmentid) {
-		this.conmmentid = conmmentid;
+	public void setCommentid(int commentid) {
+		this.commentid = commentid;
 	}
 	public String getUsernumber() {
 		return usernumber;
