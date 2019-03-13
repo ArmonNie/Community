@@ -157,7 +157,8 @@ public class ORMTool {
 		{
 			case "user":
 				User user = new User();
-				user = (User)this.object;			
+				user = (User)this.object;	
+				AppTool.DebugOut(user, "User", "null");
 				session.save(user);
 				session.getTransaction().commit();
 				this.closeSession();

@@ -103,8 +103,10 @@ public class RegisterAction {
 			/*
 			 * 数据库操作
 			 */
-			ORMTool ormtool = new ORMTool("User");
+			AppTool.ConsoleOut("插入数据库前");
+			ORMTool ormtool = new ORMTool("user");
 			ormtool.insert(user);
+			AppTool.ConsoleOut("插入数据库后");
 			/*
 			 * 注意插入是否成功
 			 */
