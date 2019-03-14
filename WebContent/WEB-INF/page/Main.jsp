@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" import="org.apache.struts2.ServletActionContext"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -258,17 +258,23 @@
 							<small class="font_title">回忆</small>
 						</h1>
 						<div class="text-right">
-							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-								<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
-								用户
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">信息</a></li>
-								<li><a onclick="get_collection()">收藏</a></li>
-								<li><a onclick="a_share_click()">分享</a></li>
-								<li class="divider"></li>
-								<li><a href="Quit.jsp">退出</a></li>
-							</ul>
+							<li class="dropdown pull-right">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+									<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
+									<%
+									HttpSession mSession = ServletActionContext
+									.getRequest().getSession();
+									%>
+									<%= mSession.getAttribute("username")%>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>"">个人中心</a></li>
+									<li><a onclick="get_collection()">信息中心</a></li>
+									<li><a onclick="a_share_click()">上传视频</a></li>
+									<li class="divider"></li>
+									<li><a href="Quit.jsp">退出</a></li>
+								</ul>
+							</li>
 						</div>
 					</div>
 				</div>
@@ -301,7 +307,7 @@
 							<div class="input-group">
 								<input type="text" class="form-control text_area_transparency">
 								<span class="input-group-btn">
-									<button class="btn btn-success text_area_transparency" type="button">搜索</button>
+									<button class="btn btn-success" type="button">搜索</button>
 								</span>
 							</div>          
 						</form>

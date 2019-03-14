@@ -28,10 +28,10 @@ public class SessionTool{
 		session.put("username", username);
 	}
 	
-	public void setSession(String username,String userpassword)
+	public void setSession(String username,String usernumber)
 	{
 		session.put("username", username);
-		session.put("usernumber", userpassword);
+		session.put("usernumber", usernumber);
 	}
 	
 	public void setSession(String username,String userpassword,String usernumber)

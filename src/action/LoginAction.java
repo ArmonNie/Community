@@ -2,7 +2,10 @@ package action;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+
+import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,10 +19,15 @@ import bean.User;
 import tool.AppTool;
 import tool.ORMTool;
 
-public class LoginAction extends ActionSupport{
+public class LoginAction extends ActionSupport implements SessionAware{
 	
 	private String username;
 	private String userpassword;
+	
+	/*
+	 * setSession由Struts完成？？
+	 */
+	private Map mSession;
 	
 	/*
 	 * Getter and Setter
@@ -37,6 +45,16 @@ public class LoginAction extends ActionSupport{
 		this.userpassword = userpassword;
 	}
 	
+	/*
+	 * 操作Session
+	 * (non-Javadoc)
+	 * @see org.apache.struts2.interceptor.SessionAware#setSession(java.util.Map)
+	 */
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+		// TODO Auto-generated method stub
+		this.mSession = arg0;
+	}
 
 	/*
 	 * 控制逻辑
@@ -65,6 +83,8 @@ public class LoginAction extends ActionSupport{
 				User user = (User)o;
 				if(user.getUsername().equals(this.username)&&user.getUserpassword().equals(this.userpassword))
 				{
+					mSession.put("username", user.getUsername());
+					mSession.put("usernumber", user.getUsernumber());
 					result = "LoginSuccess";
 				}
 				else
