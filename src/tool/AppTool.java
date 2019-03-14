@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -75,6 +77,33 @@ public class AppTool {
 	     return dateNowStr;
 	}
 	
+	/*
+	 * 字符串编码Base64
+	 * 用于filenumber生成
+	 */
+	public static String getBase64FromStr(String desStr) throws UnsupportedEncodingException
+	{
+		final Base64.Encoder encoder = Base64.getEncoder();
+		final String text = desStr;
+		final byte[] textByte = text.getBytes("UTF-8");
+		//编码
+		final String encodedText = encoder.encodeToString(textByte);
+		System.out.println(encodedText);
+		return encodedText;
+	}
+	
+	/*
+	 * 解码Base64
+	 */
+	public static String getStrFromBase64(String desStr) throws UnsupportedEncodingException
+	{
+		final Base64.Decoder decoder = Base64.getDecoder();
+		final String text = desStr;
+		final byte[] textByte = text.getBytes("UTF-8");
+		//解码
+		System.out.println(new String(decoder.decode(text), "UTF-8"));
+		return new String(decoder.decode(text), "UTF-8");
+	}
 	
 	public static String getBasePath()
 	{

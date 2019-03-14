@@ -1,6 +1,8 @@
 package tool;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -300,6 +302,100 @@ public class ORMTool {
 	public void closeSession()
 	{
 		session.close();
+	}
+	
+	/*
+	 * 本方法用于第一次初始化File表，慎重调用
+	 */
+	public static void initFileTable() throws UnsupportedEncodingException
+	{
+		List<java.io.File> fl = new ArrayList<java.io.File>();
+		List<File> mFile = new ArrayList<File>();
+		
+		//File f = new File(this.dirPath);
+		java.io.File fvideo = new java.io.File("D:\\ServerVideo\\video\\");
+		java.io.File fcg = new java.io.File("D:\\ServerVideo\\CG\\");
+		java.io.File ftv = new java.io.File("D:\\ServerVideo\\TV\\");
+		if(fvideo.isDirectory())
+		{
+			java.io.File[] fArray = fvideo.listFiles();
+			for(int i = 0;i < fArray.length;i++)
+			{
+				if(fArray[i].isFile())
+				{
+					fl.add(fArray[i]);
+				}
+			}
+		}
+		else
+		{
+			AppTool.ConsoleOut("非目录");
+		}
+		if(fcg.isDirectory())
+		{
+			java.io.File[] fArray = fcg.listFiles();
+			for(int i = 0;i < fArray.length;i++)
+			{
+				if(fArray[i].isFile())
+				{
+					fl.add(fArray[i]);
+				}
+			}
+		}
+		else
+		{
+			AppTool.ConsoleOut("非目录");
+		}
+		if(ftv.isDirectory())
+		{
+			java.io.File[] fArray = ftv.listFiles();
+			for(int i = 0;i < fArray.length;i++)
+			{
+				if(fArray[i].isFile())
+				{
+					fl.add(fArray[i]);
+				}
+			}
+		}
+		else
+		{
+			AppTool.ConsoleOut("非目录");
+		}
+		for(java.io.File f : fl)
+		{
+			File mf = new File();
+			/*
+			 * 用Base64处理filenumber
+			 */
+			mf.setFilenumber(AppTool.getBase64FromStr(f.getAbsolutePath()));
+			mf.setFilename(f.getName());
+			mf.setFilepath(f.getAbsolutePath());
+			mf.setFilesize((int)f.length()/(1024*1024));
+			mf.setGoodnumber(0);
+			mf.setFiledescription("暂时未上传介绍，更多精彩敬请期待！！");
+			
+			mFile.add(mf);
+		}
+		
+		/*
+		 * 执行批量插入
+		 */
+		ORMTool ormtool = new ORMTool("file");
+		ormtool.initSession();
+		int counter=0;
+		for(File f : mFile)
+		{
+			AppTool.ConsoleOut(f.toString());
+			ormtool.session.save(f);
+			if(counter%10 == 0)
+			{
+				ormtool.session.flush();
+				ormtool.session.clear();
+			}
+			counter++;
+		}
+		ormtool.session.getTransaction().commit();
+		ormtool.closeSession();
 	}
 	
 }

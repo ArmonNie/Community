@@ -8,6 +8,7 @@ public class File {
 	private String filepath;//File表file路径
 	private int filesize;//File表file大小
 	private int goodnumber;//File表file点赞数
+	private String filedescription;
 	
 	
 	/*
@@ -49,7 +50,12 @@ public class File {
 	public void setGoodnumber(int goodnumber) {
 		this.goodnumber = goodnumber;
 	}
-	
+	public String getFiledescription() {
+		return filedescription;
+	}
+	public void setFiledescription(String filedescription) {
+		this.filedescription = filedescription;
+	}
 	
 	/*
 	 * (non-Javadoc)
@@ -61,7 +67,7 @@ public class File {
 		// TODO Auto-generated method stub
 		return "filenumber" + this.filenumber + "\nfilename" + this.filename 
 				+ "\nfilepath" + this.filepath + "\nfilesize" + this.filesize
-				+ "\ngoodnumber" + this.goodnumber;
+				+ "\ngoodnumber" + this.goodnumber + "\nfiledescription" + this.filedescription;
 	}
 
 }

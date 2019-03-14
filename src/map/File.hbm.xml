@@ -12,5 +12,6 @@
 		<property name="filepath" column="filepath" type="string"></property>
 		<property name="filesize" column="filesize" type="integer"></property>
 		<property name="goodnumber" column="goodnumber" type="integer"></property>
+		<property name="filedescription" column="filedescription" type="string"></property>
 	</class>
 </hibernate-mapping>
