@@ -8,7 +8,8 @@ public class File {
 	private String filepath;//File表file路径
 	private int filesize;//File表file大小
 	private int goodnumber;//File表file点赞数
-	private String filedescription;
+	private String filedescription;//文件描述
+	private String filetype;//文件类型（movie，cg，tv）
 	
 	
 	/*
@@ -56,6 +57,13 @@ public class File {
 	public void setFiledescription(String filedescription) {
 		this.filedescription = filedescription;
 	}
+	public String getFiletype() {
+		return filetype;
+	}
+	public void setFiletype(String filetype) {
+		this.filetype = filetype;
+	}
+	
 	
 	/*
 	 * (non-Javadoc)
@@ -67,7 +75,8 @@ public class File {
 		// TODO Auto-generated method stub
 		return "filenumber" + this.filenumber + "\nfilename" + this.filename 
 				+ "\nfilepath" + this.filepath + "\nfilesize" + this.filesize
-				+ "\ngoodnumber" + this.goodnumber + "\nfiledescription" + this.filedescription;
+				+ "\ngoodnumber" + this.goodnumber + "\nfiledescription" + this.filedescription
+				+ "\nfiletype" + this.filetype;
 	}
 
 }

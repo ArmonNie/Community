@@ -22,166 +22,211 @@
 			$.get("/Community/ajaxaction/LoadJsonAction", 
 					{tag:"all"},
 					function (data, textStatus){
+						//调试代码
+						//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						//避免重复加载，每次加载数据前先清空
 						$("#content").html("");
-						console.log("OK");
 						/* 处理json数据并执行 */
-						//$("#content").append(data);
-						//$("#content").load(data);
-						//$("#content").html(data);
-						//$("#content").load("filePart.html");
 						var obj = JSON.parse(data);
-						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
-						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
-						//$("#content").append('<h2>电影</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">\n');
-						$("#content").append('<thead>\n');
-						$("#content").append('<tr class="">\n');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						//append注意：https://blog.csdn.net/qq_22771739/article/details/80554675
+						//全部-电影块
+						var str1 = '<div class="container-fluid">\n<div class="row-fluid">\n<div class="span12">\n';
+						str1 += '<h2>电影</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+						'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>\n');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>\n');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td>\n</tr>\n');
+							if(obj.jsonresult[i].filetype == "0")
+							{
+							str1 += '<tr>\n' + 
+							'<td><a data-toggle="modal" data-target="#myModal">'
+							+ obj.jsonresult[i].filename + '</a></td>' +
+							'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+							'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+							'<td><div class="btn-group">' +
+							'<button name="' +obj.jsonresult[i].filenumber + 
+							'"' + ' class="btn btn-primary btn_manager" type="button">' 
+							+ "下载" + '</button>' + 
+							'<button name="' +obj.jsonresult[i].filenumber + 
+							'"' + ' class="btn btn-primary btn_manager" type="button">' +
+							"详情" + '</button>' +
+							'<button name="' +obj.jsonresult[i].filenumber + 
+							'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+							"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody>\n</table>\n');
-						$("#content").append('<h2>电视</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">\n');
-						$("#content").append('<thead>\n');
-						$("#content").append('<tr>\n');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						str1 += '</tbody></table></div></div></div>';
+						//全部-电视块
+						str1 += '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+								'<h2>电视</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+								'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+							if(obj.jsonresult[i].filetype == "2")
+							{
+							str1 += '<tr>\n' + 
+									'<td><a data-toggle="modal" data-target="#myModal">'
+									+ obj.jsonresult[i].filename + '</a></td>' +
+									'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+									'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+									'<td><div class="btn-group">' +
+									'<button name="' +obj.jsonresult[i].filenumber + 
+									'"' + ' class="btn btn-primary btn_manager" type="button">' 
+									+ "下载" + '</button>' + 
+									'<button name="' +obj.jsonresult[i].filenumber + 
+									'"' + ' class="btn btn-primary btn_manager" type="button">' +
+									"详情" + '</button>' +
+									'<button name="' +obj.jsonresult[i].filenumber + 
+									'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+									"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody></table>');
-						$("#content").append('<h2>CG动漫</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr>\n');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						str1 += '</tbody></table></div></div></div>';
+						//全部-CG块
+						str1 += '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+								'<h2>CG动漫</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+								'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+							if(obj.jsonresult[i].filetype == "1")
+							{
+								str1 += '<tr>\n' + 
+										'<td><a data-toggle="modal" data-target="#myModal">'
+										+ obj.jsonresult[i].filename + '</a></td>' +
+										'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+										'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+										'<td><div class="btn-group">' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' 
+										+ "下载" + '</button>' + 
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' +
+										"详情" + '</button>' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+										"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody></table>');
-						$("#content").append("</div></div></div>");
-						/* $("#content").load("Video.jsp"); */
+						str1 += '</tbody></table></div></div></div>';
+						$("#content").append(str1);
 				});
 		}
 		window.onload = all_video_click;
 		function tv_video_click() {
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{tag:"all"},
+					{tag:"2"},
 					function (data, textStatus){
+						//调试代码
+						//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						//加载前必须先清除
 						$("#content").html("");
-						console.log("OK");
 						/* 处理json数据并执行 */
 						var obj = JSON.parse(data);
-						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
-						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
-						$("#content").append('<h2>电视</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr>\n');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						//TV块
+						var str1 = '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+								'<h2>CG动漫</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+								'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+							if(obj.jsonresult[i].filetype == "2")
+							{
+								str1 += '<tr>\n' + 
+										'<td><a data-toggle="modal" data-target="#myModal">'
+										+ obj.jsonresult[i].filename + '</a></td>' +
+										'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+										'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+										'<td><div class="btn-group">' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' 
+										+ "下载" + '</button>' + 
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' +
+										"详情" + '</button>' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+										"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody></table>');
-						$("#content").append('</div></div></div>');
+						str1 += '</tbody></table></div></div></div>';
+						$("#content").append(str1);
 				});
 		}
 		function movie_video_click() {
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{tag:"all"},
+					{tag:"0"},
 					function (data, textStatus){
+						//调试代码
+						//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						//加载前必须先清除
 						$("#content").html("");
-						console.log("OK");
 						/* 处理json数据并执行 */
 						var obj = JSON.parse(data);
-						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
-						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
-						$("#content").append('<h2>电影</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr class="col-md-12 column">');
-						$("#content").append('<th class="col-md-3 column>文件名</th>');
-						$("#content").append('<th class="col-md-3>文件大小</th>');
-						$("#content").append('<th class="col-md-3>热度</th>');
-						$("#content").append('<th class="col-md-3>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						//电影块
+						var str1 = '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+								'<h2>电影</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+								'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+							if(obj.jsonresult[i].filetype == "0")
+							{
+								str1 += '<tr>\n' + 
+										'<td><a data-toggle="modal" data-target="#myModal">'
+										+ obj.jsonresult[i].filename + '</a></td>' +
+										'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+										'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+										'<td><div class="btn-group">' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' 
+										+ "下载" + '</button>' + 
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' +
+										"详情" + '</button>' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+										"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody></table>');
-						$("#content").append('</div></div></div>');
+						str1 += '</tbody></table></div></div></div>';
+						$("#content").append(str1);
 				});
 		}
 		function cg_video_click() {
 			$("#content").html("");
 			$.get("/Community/ajaxaction/LoadJsonAction", 
-					{tag:"all"},
+					{tag:"1"},
 					function (data, textStatus){
-						console.log("OK");
+						//调试代码
+						//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+						//加载前必须先清除
+						$("#content").html("");
 						/* 处理json数据并执行 */
 						var obj = JSON.parse(data);
-						console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
-						$("#content").append('<div class="container-fluid"><div class="row-fluid"><div class="span12">');
-						$("#content").append('<h2>CG动漫</h2><hr>');
-						$("#content").append('<table class="table table-hover table-bordered">');
-						$("#content").append('<thead>');
-						$("#content").append('<tr>\n');
-						$("#content").append('<th>文件名</th>');
-						$("#content").append('<th>文件大小</th>');
-						$("#content").append('<th>热度</th>');
-						$("#content").append('<th>操作</th>');
-						$("#content").append('</tr>\n');
-						$("#content").append('</thead>');
-						$("#content").append('<tbody>');
+						//TV块
+						var str1 = '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+								'<h2>CG动漫</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+								'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 						for(var i = 0;i<obj.jsonresult.length;i++)
 						{
-						$("#content").append('<tr>');
-						$("#content").append('<td><a data-toggle="modal" data-target="#myModal">'+ obj.jsonresult[i].filename + '</a></td>');
-						$("#content").append('<td>'+ obj.jsonresult[i].filesize + '</td></tr>');
+							if(obj.jsonresult[i].filetype == "1")
+							{
+								str1 += '<tr>\n' + 
+										'<td><a data-toggle="modal" data-target="#myModal">'
+										+ obj.jsonresult[i].filename + '</a></td>' +
+										'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+										'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+										'<td><div class="btn-group">' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' 
+										+ "下载" + '</button>' + 
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' +
+										"详情" + '</button>' +
+										'<button name="' +obj.jsonresult[i].filenumber + 
+										'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+										"播放" + '</button>' +  '</div></td>\n</tr>\n';
+							}
 						}
-						$("#content").append('</tbody></table>');
-						$("#content").append('</div></div></div>');
+						str1 += '</tbody></table></div></div></div>';
+						$("#content").append(str1);
 				});
 		}
 		</script>

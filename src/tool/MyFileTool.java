@@ -64,7 +64,12 @@ public class MyFileTool {
 	{
 		System.out.println("文件名：" + file.getName());
 		System.out.println("文件路径：" + file.getAbsolutePath());
-		System.out.println("文件父路径" + file.getParent());
 		System.out.println("文件大小" + file.length()/(1024*1024) + "MB");
+	}
+	public static void getFileMsg(bean.File file)
+	{
+		System.out.println("文件名：" + file.getFilename());
+		System.out.println("文件路径：" + file.getFilepath());
+		System.out.println("文件大小" + file.getFilesize());
 	}
 }

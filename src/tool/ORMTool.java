@@ -19,36 +19,33 @@ import bean.File;
 import bean.User;
 
 
-/*
- * 操作数据库的类
+/**
+ * @author Armon
+ * @category 操作数据库的工具类
+ * 功能描述：构造函数传入操作的表格（若要
+ * 进行插入/批量插入，还需要传入插入
+ * 的对象），并进行初始化之后通过实例
+ * 调用具体的方法完成数据库操作
  */
 public class ORMTool {
 	
 	
 	//无论如何，需要知道操作的是哪个表，以便对于object进行正确的转换
 	private String TableName;
-	private Object object;
-	
-	//用于多条数据操作
-	private List<Object> objectList;
 	
 	//操作数据库必须对象
 	private Session session;
 	private Transaction trasaction;
 	
-	//用于存储查询返回的结果集
-	//private List resultList;
-	
-	//以便不时之需
-	private String tag;
 	
 	/*
 	 * ORMtool的构造函数
 	 */
-	//一般用于查询，删除
+	//一般用于查询，删除（进行具体操作再传入具体的对象）
 	public ORMTool(String TableName)
 	{
 		this.TableName = TableName;
+		this.Init();
 	}
 	
 	/*
@@ -60,26 +57,11 @@ public class ORMTool {
 	public void setTableName(String tableName) {
 		TableName = tableName;
 	}
-	public Object getObject() {
-		return object;
-	}
-	public void setObject(Object object) {
-		this.object = object;
-	}
-	public String getTag() {
-		return tag;
-	}
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
+	/*
+	 * Session与Transication不提供Setter
+	 */
 	public Transaction getTrasaction() {
 		return trasaction;
-	}
-	public void setTrasaction(Transaction trasaction) {
-		this.trasaction = trasaction;
-	}
-	public void setSession(Session session) {
-		this.session = session;
 	}
 	public Session getSession()
 	{
@@ -88,117 +70,68 @@ public class ORMTool {
 	
 	
 	/*
-	*必须操作
+	*必须操作（默认在构造器中执行）
 	*初始化对话，开启事务（hibernate框架公共操作）
 	*/
-	public void  initSession()
+	public void  Init()
 	{
 		Configuration cfg = new Configuration().configure();
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				.applySettings(cfg.getProperties()).build();
 		SessionFactory sessionFactory = cfg.buildSessionFactory(serviceRegistry);
 		this.session = sessionFactory.openSession();
-		trasaction = session.beginTransaction();
+		this.trasaction = session.beginTransaction();
+	}
+	
+	/*
+	 * 需要显式关闭会话
+	 */
+	public void closeSession()
+	{
+		session.close();
 	}
 
 	
-	/*
-	 * 查询,params代表条件查询的参数
-	 */
-	/*public List getQuery(String hql)
-	{
-		resultList = session.createQuery(hql).list();
-		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
-		this.closeSession();
-		return resultList;
-	}*/
-	public void getQuery(String hql,String params1)
-	{
-		AppTool.ConsoleOut("查询语句为" + hql);
-		AppTool.ConsoleOut("查询条件限制之用户名为" + params1);
-		//resultList = session.createQuery(hql).setString("username", params1).list();
-		//resultList是一个未初始化的值
-		List resultList = session.createQuery(hql).list();
-		for(Iterator pit = resultList.iterator();pit.hasNext();)
-		{
-			User user = (User)pit.next();
-			AppTool.ConsoleOut(user.toString());
-		}
-		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
-		this.closeSession();
-		//return resultList;
-	}
-	/*public List getQuery(String hql,String params1,String params2)
-	{
-		resultList = session.createQuery(hql).list();
-		this.closeSession();
-		return resultList;
-	}*/
 	
 	/*
-	 * 关于查询所返回的list里面的对象类型是否确定?
-	 * 待改进
+	 * 以下为数据库操作（增删改查）
 	 */
-	/*public void miterateresultList()
-	{
-		switch(this.TableName)
-		{
-			case "user":
-				for(Object o : resultList)
-				{
-					System.out.println(o.toString());
-				}
-				break;
-			case "file":
-				for(Object o : resultList)
-				{
-					System.out.println(o.toString());
-				}
-				break;
-		}
-	}*/
-	
-	/*
-	 * 单个插入,向目的表插入一条数据
-	 */
+	// 单个插入,向目的表插入一条数据
 	public void insert(Object object)
 	{
-		this.initSession();
-		this.setObject(object);
 		switch(this.TableName)
 		{
 			case "user":
 				User user = new User();
-				user = (User)this.object;	
+				user = (User)object;	
 				AppTool.DebugOut(user, "User", "null");
 				session.save(user);
 				session.getTransaction().commit();
-				this.closeSession();
+				this.closeSession();//注意关闭
 				break;
 			case "file":
 				File file = new File();
-				file = (File)this.object;
+				file = (File)object;
+				AppTool.DebugOut(file, "User", "null");
 				session.save(file);
 				session.getTransaction().commit();
-				this.closeSession();
+				this.closeSession();//注意关闭
 				break;
 		}
 	}
-	
 	/*
 	 * 批量插入，同时插入多条数据
 	 * insertAmount代表插入的数量
 	 */
-	public void inserts(int insertAmount)
+	public void inserts(List<Object> objectList)
 	{
-		this.initSession();
 		switch(this.TableName)
 		{
 			case "user":
-				for(int i=0;i<insertAmount;i++)
+				for(int i=0;i<objectList.size();i++)
 				{
 					User user = new User();
-					user = (User)this.objectList.get(i);
+					user = (User)objectList.get(i);
 					session.save(user);
 					if(i%10 == 0)
 					{
@@ -210,10 +143,10 @@ public class ORMTool {
 				this.closeSession();
 				break;
 			case "file":
-				for(int i=0;i<insertAmount;i++)
+				for(int i=0;i<objectList.size();i++)
 				{
 					File file = new File();
-					file = (File)this.objectList.get(i);
+					file = (File)objectList.get(i);
 					session.save(file);
 					if(i%10 == 0)
 					{
@@ -228,11 +161,41 @@ public class ORMTool {
 	}
 	
 	/*
+	 * 单个删除
+	 */
+	/*public void delete()
+	{
+		switch(this.TableName)
+		{
+			case "user":
+				User user = new User();
+				user = (User)this.object;
+				session.delete(user);
+				session.getTransaction().commit();
+				break;
+			case "file":
+				File file = new File();
+				file = (File)this.object;
+				session.delete(file);
+				session.getTransaction().commit();
+				break;
+		}
+	}*/
+	
+	/*
+	 * 批量删除
+	 */
+	/*public void deletes()
+	{
+		
+	}*/
+	
+	
+	/*
 	 * 更新,待改进
 	 */
 	public void update()
 	{
-		this.initSession();
 		switch(this.TableName)
 		{
 			/*case "student":
@@ -266,43 +229,61 @@ public class ORMTool {
 	
 	
 	/*
-	 * 单个删除
+	 * 查询,params代表条件查询的参数
 	 */
-	public void delete()
+	//无条件查询
+	public List getQuery(String hql)
 	{
-		this.initSession();
+		List resultList = session.createQuery(hql).list();
+		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
+		for(int i = 0;i<resultList.size();i++)
+		{
+			AppTool.ConsoleOut(resultList.get(i).toString());
+		}
+		this.closeSession();
+		return resultList;
+	}
+	//条件查询
+	public List getQuery(String hql,String params1)
+	{
+		AppTool.ConsoleOut("查询语句为" + hql);
+		AppTool.ConsoleOut("查询条件限制之用户名为" + params1);
+		List resultList = session.createQuery(hql)
+				.setString(0, params1)
+				.list();
+		AppTool.ConsoleOut("查询得来的列表长度：" + resultList.size());
+		for(int i = 0;i<resultList.size();i++)
+		{
+			AppTool.ConsoleOut(resultList.get(i).toString());
+		}
+		this.closeSession();
+		return resultList;
+	}
+	
+	/*
+	 * 关于查询所返回的list里面的对象类型是否确定?
+	 * 待改进
+	 */
+	/*public void miterateresultList()
+	{
 		switch(this.TableName)
 		{
 			case "user":
-				User user = new User();
-				user = (User)this.object;
-				session.delete(user);
-				session.getTransaction().commit();
+				for(Object o : resultList)
+				{
+					System.out.println(o.toString());
+				}
 				break;
 			case "file":
-				File file = new File();
-				file = (File)this.object;
-				session.delete(file);
-				session.getTransaction().commit();
+				for(Object o : resultList)
+				{
+					System.out.println(o.toString());
+				}
 				break;
 		}
-	}
+	}*/
 	
-	/*
-	 * 批量删除
-	 */
-	public void deletes()
-	{
-		
-	}
 	
-	/*
-	 * 关闭会话
-	 */
-	public void closeSession()
-	{
-		session.close();
-	}
 	
 	/*
 	 * 本方法用于第一次初始化File表，慎重调用
@@ -310,7 +291,7 @@ public class ORMTool {
 	public static void initFileTable() throws UnsupportedEncodingException
 	{
 		List<java.io.File> fl = new ArrayList<java.io.File>();
-		List<File> mFile = new ArrayList<File>();
+		List<Object> mFile = new ArrayList<Object>();
 		
 		//File f = new File(this.dirPath);
 		java.io.File fvideo = new java.io.File("D:\\ServerVideo\\video\\");
@@ -363,16 +344,30 @@ public class ORMTool {
 		}
 		for(java.io.File f : fl)
 		{
+			int i = 0;
+			if(f.getAbsolutePath().contains("video"))
+			{
+				i=0;
+			}
+			if(f.getAbsolutePath().contains("CG"))
+			{
+				i=1;
+			}
+			if(f.getAbsolutePath().contains("TV"))
+			{
+				i=2;
+			}
 			File mf = new File();
 			/*
 			 * 用Base64处理filenumber
 			 */
-			mf.setFilenumber(AppTool.getBase64FromStr(f.getAbsolutePath()));
+			mf.setFilenumber(AppTool.getBase64FromStr(f.getAbsolutePath() + "" + i));
 			mf.setFilename(f.getName());
 			mf.setFilepath(f.getAbsolutePath());
 			mf.setFilesize((int)f.length()/(1024*1024));
 			mf.setGoodnumber(0);
 			mf.setFiledescription("暂时未上传介绍，更多精彩敬请期待！！");
+			mf.setFiletype("" + i);
 			
 			mFile.add(mf);
 		}
@@ -381,20 +376,7 @@ public class ORMTool {
 		 * 执行批量插入
 		 */
 		ORMTool ormtool = new ORMTool("file");
-		ormtool.initSession();
-		int counter=0;
-		for(File f : mFile)
-		{
-			AppTool.ConsoleOut(f.toString());
-			ormtool.session.save(f);
-			if(counter%10 == 0)
-			{
-				ormtool.session.flush();
-				ormtool.session.clear();
-			}
-			counter++;
-		}
-		ormtool.session.getTransaction().commit();
+		ormtool.inserts(mFile);
 		ormtool.closeSession();
 	}
 	

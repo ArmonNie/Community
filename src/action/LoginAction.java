@@ -51,37 +51,36 @@ public class LoginAction extends ActionSupport{
 		/*
 		 * 数据库查询,控制登陆
 		 */
-		//ORMTool tool = new ORMTool("user");
-		//String hql = "select u.userpassword from User as u where username like :username";
-		//String hql = "select u from User as u";
-		//tool.getQuery(hql,this.username);
-		/*tool.miterateresultList();*/
-		Configuration cfg = new Configuration().configure();
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-				.applySettings(cfg.getProperties()).build();
-		SessionFactory sessionFactory = cfg.buildSessionFactory(serviceRegistry);
-		Session session = sessionFactory.openSession();
-		Transaction trasaction = session.beginTransaction();
-		
-	
-		String hql = "select u.userpassword from User as u where username = :username";
-		List resultList = session.createQuery(hql)
-				.setString("username", this.username)
-				.list();
-		for(Iterator pit = resultList.iterator();pit.hasNext();)
+		ORMTool ormtool = new ORMTool("user");
+		String hql = "select u from User as u where username = ?";
+		List resultList = ormtool.getQuery(hql,this.username);
+		if(resultList.size() == 0)
 		{
-			String str = (String)pit.next();
-			AppTool.ConsoleOut(str);
+			result = "LoginError";
 		}
-		trasaction.commit();
-		session.close();
+		else 
+		{
+			for(Object o : resultList)
+			{
+				User user = (User)o;
+				if(user.getUsername().equals(this.username)&&user.getUserpassword().equals(this.userpassword))
+				{
+					result = "LoginSuccess";
+				}
+				else
+				{
+					result = "LoginError";
+				}
+			}
+		}
+
 		/*
 		 * 密码验证
 		 */
 		
 		
 		//测试
-		result = "LoginSuccess";
+		//result = "LoginSuccess";
 		
 		return result;
 	}

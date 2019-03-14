@@ -109,14 +109,7 @@ public class AppTool {
 	{
 		return basePath;
 	}
-	
-	/*
-	 * 初始化File表格，应用仅允许调用一次
-	 */
-	public static void InitFileTable()
-	{
-		
-	}
+
 	
 	/*
 	 * 获取项目在服务器绝对路径
