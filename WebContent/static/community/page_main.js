@@ -5,13 +5,6 @@
 window.onload = all_video_click;
 
 
-function download(data) {
-	$.post("DownloadServlet",{"msg" : data.name},
-	function(data,status){
-	window.location.href = "DownloadServlet";
-	});	
-}
-
 /*点击列表里的视频名称，进行预览播放*/
 function video_preview(data){
 	//console.log("play" + data.innerHTML);
@@ -23,12 +16,31 @@ function video_preview(data){
 	v.load();
 	v.play();
 }
-function set_collection(a){
-	
+
+/*下载按钮点击事件*/
+function video_download(data)
+{
+	console.log("下载");
 }
-function get_collection(){
-	console.log("col");
+
+/*详情按钮点击事件*/
+function video_detail(data)
+{
+	console.log("详情");
+	//$.post("/Community/action/LinkAction",
+		//	{index:"videodetail"});
+	window.open("/Community/action/LinkAction?index=videodetail");
 }
+
+/*播放按钮点击事件*/
+function video_play(data)
+{
+	console.log("播放");
+	//$.post("/Community/action/LinkAction",
+		//	{index:"videodetail"});
+	window.open("/Community/action/LinkAction?index=videoplay");
+}
+
 
 
 //ajax请求，请求所有视频列表
@@ -58,13 +70,13 @@ function all_video_click() {
 					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 					'<td><div class="btn-group">' +
 					'<button name="' +obj.jsonresult[i].filenumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button">' 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
 					+ "下载" + '</button>' + 
 					'<button name="' +obj.jsonresult[i].filenumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button">' +
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
 					"详情" + '</button>' +
 					'<button name="' +obj.jsonresult[i].filenumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button">' + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 					"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}

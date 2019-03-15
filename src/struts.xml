@@ -23,6 +23,10 @@
     	<action name="LinkAction" class="action.LinkAction">
     	
     		<result name="usercenter">/WEB-INF/page/UserCenter.jsp</result>
+    		<result name="uploadvideo">/WEB-INF/page/VideoUpload.jsp</result>
+    		<result name="videodetail">/WEB-INF/page/VideoDetail.jsp</result>
+    		<result name="videoplay">/WEB-INF/page/VideoPlay.jsp</result>
+    		
     		<result name="null_page">/WEB-INF/page/nullpage.jsp</result>
     		
     	</action>

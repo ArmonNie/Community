@@ -58,9 +58,9 @@
 									<%= mSession.getAttribute("username")%>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>"">个人中心</a></li>
+									<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
 									<li><a onclick="get_collection()">信息中心</a></li>
-									<li><a onclick="a_share_click()">上传视频</a></li>
+									<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 									<li class="divider"></li>
 									<li><a href="Quit.jsp">退出</a></li>
 								</ul>
