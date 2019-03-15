@@ -11,6 +11,9 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -105,6 +108,8 @@ public class AppTool {
 		return new String(decoder.decode(text), "UTF-8");
 	}
 	
+	
+	
 	public static String getBasePath()
 	{
 		return basePath;
@@ -118,6 +123,8 @@ public class AppTool {
 	{
 		return "";
 	}
+	
+	
 	/*
 	 * 处理项目内文件，处理为流对象返回
 	 */

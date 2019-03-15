@@ -31,6 +31,25 @@
     		
     	</action>
     	
+    	<action name="DownLoadAction" class="action.DownLoadAction">
+    		<result name="DownloadSuccess" type="stream">
+    		 	<!-- 允许下载的文件类型：此处指定为所有的二进制文件类型 
+            	在tomacat的conf/web.xml中找exe对应的<mime-type>
+        		-->
+            	<param name="contentType">application/octet-stream</param>
+    			<!-- 下载的文件数据存放的方法，该方法返回一个InputStream   
+				例如取值为inputStream的属性需要编写getInputStream()方法-->  
+				<param name="inputName">filestream</param>  
+				<!-- 下载头，包括：浏览器显示的文件名 
+                filename=${downFileName}这不是el表达式，
+                el表达式仅能用于jsp，这是struts在配置文件中的取值符号
+            	-->
+            	<param name="contentDisposition">attachment;filename=${downFileName}</param>
+				<!-- 数据的缓冲大小 -->  
+				<param name="bufferSize">1024</param> 
+    		</result>
+    	</action>
+    	
     </package>  
     
     <!--基于ajax的action，实现局部刷新 -->
@@ -61,6 +80,7 @@
 				<param name="noCache">true</param>
     		</result>
     	</action>
+    	
     </package> 
       
 </struts> 

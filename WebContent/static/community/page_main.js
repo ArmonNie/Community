@@ -21,6 +21,11 @@ function video_preview(data){
 function video_download(data)
 {
 	console.log("下载");
+	$.get("/Community/action/DownLoadAction", 
+			{filenumber:data.name},
+			function (mstream, textStatus){
+				console.log("下载中..." + mstream);
+			});
 }
 
 /*详情按钮点击事件*/
@@ -89,21 +94,21 @@ function all_video_click() {
 				{
 					if(obj.jsonresult[i].filetype == "2")
 					{
-					str1 += '<tr>\n' + 
-							'<td><a data-toggle="modal" data-target="#myModal">'
-							+ obj.jsonresult[i].filename + '</a></td>' +
-							'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-							'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-							'<td><div class="btn-group">' +
-							'<button name="' +obj.jsonresult[i].filenumber + 
-							'"' + ' class="btn btn-primary btn_manager" type="button">' 
-							+ "下载" + '</button>' + 
-							'<button name="' +obj.jsonresult[i].filenumber + 
-							'"' + ' class="btn btn-primary btn_manager" type="button">' +
-							"详情" + '</button>' +
-							'<button name="' +obj.jsonresult[i].filenumber + 
-							'"' + ' class="btn btn-primary btn_manager" type="button">' + 
-							"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						str1 += '<tr>\n' + 
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -116,20 +121,20 @@ function all_video_click() {
 					if(obj.jsonresult[i].filetype == "1")
 					{
 						str1 += '<tr>\n' + 
-								'<td><a data-toggle="modal" data-target="#myModal">'
-								+ obj.jsonresult[i].filename + '</a></td>' +
-								'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-								'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-								'<td><div class="btn-group">' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' 
-								+ "下载" + '</button>' + 
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' +
-								"详情" + '</button>' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' + 
-								"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -156,20 +161,20 @@ function tv_video_click() {
 					if(obj.jsonresult[i].filetype == "2")
 					{
 						str1 += '<tr>\n' + 
-								'<td><a data-toggle="modal" data-target="#myModal">'
-								+ obj.jsonresult[i].filename + '</a></td>' +
-								'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-								'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-								'<td><div class="btn-group">' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' 
-								+ "下载" + '</button>' + 
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' +
-								"详情" + '</button>' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' + 
-								"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -196,20 +201,20 @@ function movie_video_click() {
 					if(obj.jsonresult[i].filetype == "0")
 					{
 						str1 += '<tr>\n' + 
-								'<td><a data-toggle="modal" data-target="#myModal">'
-								+ obj.jsonresult[i].filename + '</a></td>' +
-								'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-								'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-								'<td><div class="btn-group">' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' 
-								+ "下载" + '</button>' + 
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' +
-								"详情" + '</button>' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' + 
-								"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -237,20 +242,20 @@ function cg_video_click() {
 					if(obj.jsonresult[i].filetype == "1")
 					{
 						str1 += '<tr>\n' + 
-								'<td><a data-toggle="modal" data-target="#myModal">'
-								+ obj.jsonresult[i].filename + '</a></td>' +
-								'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-								'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-								'<td><div class="btn-group">' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' 
-								+ "下载" + '</button>' + 
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' +
-								"详情" + '</button>' +
-								'<button name="' +obj.jsonresult[i].filenumber + 
-								'"' + ' class="btn btn-primary btn_manager" type="button">' + 
-								"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
