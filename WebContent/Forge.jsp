@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
- <!--   用户管理页，在id为forge的div里面改变为登陆或者注册     -->
+ <!--用户管理页，在id为forge的div里面改变为登陆或者注册-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!-- 基本js（jquery）与css（bootstrap） -->
-		<script src="basejs/jquery.js"></script>
-		<script src="bootstrap/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<script src="${pageContext.request.contextPath}/static/basejs/jquery.js"></script>
+		<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
+		<!-- 本页行为js -->
+		<script src="${pageContext.request.contextPath}/static/community/page_forge.js"></script>
 		<!-- 网站主题样式 -->
-		<script src="community/community.js"></script>
-		<link rel="stylesheet" href="community/community.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/community.css">
 		<!-- 网站背景动画 -->
-		<script src="airplane/three.min.js"></script>
-		<script src="airplane/airplane.js"></script>
-		<link rel="stylesheet" href="airplane/airplane.css">
+		<script src="${pageContext.request.contextPath}/static/airplane/three.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/airplane/airplane.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/airplane/airplane.css">
 		<title>社区</title>
 	</head>
 	<body class="bg-warning">

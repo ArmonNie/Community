@@ -14,6 +14,9 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/community/community.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/airplane/airplane.css">
+		<link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+    	<script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+    	<script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
 		<title>社区</title>
 	</head>
 	<body class="bg-warning">
@@ -43,57 +46,17 @@
 					</div>
 				</div>
 				<div class="col-md-12 column">
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return all_video_click()">全部</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return movie_video_click()">电影</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return tv_video_click()">电视</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return cg_video_click()">CG动漫</a></li>
-						</ul>
-					</div>
-					<div class="col-md-1 column">
-				
-					</div>
-					<div class="col-md-3 column margin_top">
-						<form class="bs-example bs-example-form" role="form">
-							<div class="input-group">
-								<input type="text" class="form-control text_area_transparency">
-								<span class="input-group-btn">
-									<button class="btn btn-success text_area_transparency" type="button">搜索</button>
-								</span>
-							</div>          
-						</form>
-					</div>
-				</div>
-				<div class="col-md-12 column">
-					<div class="col-md-1 column">
-					</div>
-					<div class="col-md-10 column">
-						<div id="content" class="margin col-md-12 column">
-							<div class="col-md-12 column">
-								<img></img>
-								<br>
-								<p>视频介绍：</p>
-							</div>
-							<div class="col-md-12 column">
-								下载地址：<a></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-1 column"></div>
-				</div>
+				 <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+    <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
+    <!-- Tracks need an ending tag thanks to IE9 -->
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+</div>
 			</div>
 		</div>		
 	</body>

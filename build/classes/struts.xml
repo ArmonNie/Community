@@ -7,6 +7,9 @@
 
 	<!-- 常量配置 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- /static 为存放静态资源的路径，意为不拦截对此文件夹下文件的请求 -->
+	<constant name="struts.action.excludePattern" value="/static/.*?" />
+
 	 
 	<!-- 普通action，实现直接跳转-->
     <package name="action" namespace="/action" extends="struts-default"> 

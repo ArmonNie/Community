@@ -43,57 +43,26 @@
 					</div>
 				</div>
 				<div class="col-md-12 column">
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return all_video_click()">全部</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return movie_video_click()">电影</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return tv_video_click()">电视</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return cg_video_click()">CG动漫</a></li>
-						</ul>
-					</div>
-					<div class="col-md-1 column">
-				
-					</div>
-					<div class="col-md-3 column margin_top">
-						<form class="bs-example bs-example-form" role="form">
-							<div class="input-group">
-								<input type="text" class="form-control text_area_transparency">
-								<span class="input-group-btn">
-									<button class="btn btn-success text_area_transparency" type="button">搜索</button>
-								</span>
-							</div>          
-						</form>
-					</div>
-				</div>
-				<div class="col-md-12 column">
-					<div class="col-md-1 column">
-					</div>
-					<div class="col-md-10 column">
-						<div id="content" class="margin col-md-12 column">
-							<div class="col-md-12 column">
-								<img></img>
-								<br>
-								<p>视频介绍：</p>
-							</div>
-							<div class="col-md-12 column">
-								下载地址：<a></a>
-							</div>
+			<div class="media">
+				 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						Nested media heading
+					</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+					<div class="media">
+						 <a href="#" class="pull-left"><img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' /></a>
+						<div class="media-body">
+							<h4 class="media-heading">
+								Nested media heading
+							</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
 						</div>
 					</div>
-					<div class="col-md-1 column"></div>
 				</div>
+			</div>
+			<div class="btn-group">
+				 <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> 左</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> 中</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> 右</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> 全</button>
+			</div>
+		</div>
 			</div>
 		</div>		
 	</body>
