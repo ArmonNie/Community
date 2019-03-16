@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<!-- 基本js（jquery）与css（bootstrap） -->
 		<script src="${pageContext.request.contextPath}/static/basejs/jquery.js"></script>
@@ -16,9 +16,9 @@
 		<script src="${pageContext.request.contextPath}/static/airplane/three.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/airplane/airplane.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/airplane/airplane.css">
-<title>Insert title here</title>
-</head>
-<bodyclass="bg-warning">
+		<title>视频上传</title>
+	</head>
+	<bodyclass="bg-warning">
 		<div id="world">
 		<!-- 加载背景动画 -->
 		</div>
@@ -51,33 +51,46 @@
 					</div>
 				</div>
 				</div>
-			<div class="row clearfix">
-			<div class="col-md-2 column">
+		<div class="row clearfix">
+			<div class="col-md-1 column">
+			
 			</div>
 			<div class="col-md-8 column">
-					<form role="form">
-				<div class="form-group">
-					 <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
-				</div>
-				<div class="form-group">
-					 <label for="exampleInputFile">File input</label><input type="file" id="exampleInputFile" />
-					<p class="help-block">
-						Example block-level help text here.
-					</p>
-				</div>
-				<div class="checkbox">
-					 <label><input type="checkbox" />Check me out</label>
-				</div> <button type="submit" class="btn btn-default">Submit</button>
-			</form>
-		</div>
-		<div class="col-md-2 column">
-			
-			
+				<form role="form">
+					<div class="form-group">
+					 	<label for="inputfile">文件</label>
+					 	<input type="file" id="inputfile" onchange="return filemsg_console()"/>
+						<p class="help-block">
+							请选择需要上传的视频文件
+						</p>
+					</div>
+					<div class="form-group">
+						<label for="filename">文件名</label>
+					 	<input  class="form-control" id="filename" />
+					</div>
+					<div class="form-group">
+						 <label for="filesize">文件大小</label>
+						 <input  class="form-control" id="filesize" />
+					</div>
+					<div class="form-group">
+						 <label for="filepath">文件路径</label>
+						 <input class="form-control" id="filepath" />
+					</div>
+					<div class="form-group">
+						 <label for="filepath">文件类别</label>
+						 <input class="form-control" id="filetype" />
+					</div>
+					<div class="form-group">
+						 <label for="filedescription">文件描述</label>
+						 <input class="form-control" id="filedescription" />
+					</div>
+					<button onclick="return btn_upload()" class="btn btn-default">提交</button>
+				</form>
+			</div>
+			<div class="col-md-3 column">
+				<!-- 提示信息 -->
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>
