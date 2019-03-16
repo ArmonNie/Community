@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!-- 视频详情页 -->
+<!-- 视频播放页 -->
 <% %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<script src="${pageContext.request.contextPath}/basejs/jquery.js"></script>
-		<script src="${pageContext.request.contextPath}/community/community.js"></script>
-		<script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js"></script>
-		<script src="${pageContext.request.contextPath}/airplane/three.min.js"></script>
-		<script src="${pageContext.request.contextPath}/airplane/airplane.js"></script>
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/community/community.css">
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/airplane/airplane.css">
-		<link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
-    	<script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
-    	<script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
-		<title>社区</title>
+		<!-- 基本js（jquery）与css（bootstrap） -->
+		<script src="${pageContext.request.contextPath}/static/basejs/jquery.js"></script>
+		<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
+		<!-- 本页行为js -->
+		<script src="${pageContext.request.contextPath}/static/community/page_videoplay.js"></script>
+		<!-- 网站主题样式 -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/community.css">
+		<!-- 网站背景动画 -->
+		<script src="${pageContext.request.contextPath}/static/airplane/three.min.js"></script>
+		<script src="${pageContext.request.contextPath}/static/airplane/airplane.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/airplane/airplane.css">
+		<title>播放视频</title>
 	</head>
 	<body class="bg-warning">
 		<div id="world">
@@ -27,9 +28,9 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<div class="page-header">
-						<h1>
+						<span><h1>
 							<small class="font_title">回忆</small>
-						</h1>
+						</h1></span>
 						<div class="text-right">
 							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
 								<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
@@ -46,18 +47,69 @@
 					</div>
 				</div>
 				<div class="col-md-12 column">
-				 <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
-    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
-    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
-    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
-    <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
-    <!-- Tracks need an ending tag thanks to IE9 -->
-    <track kind="subtitles" src="../shared/example-captions.vtt" srclang="en" label="English"></track>
-    <!-- Tracks need an ending tag thanks to IE9 -->
-    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-  </video>
-</div>
-			</div>
-		</div>		
+				 	<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								视频名称
+							</h3>
+						</div>
+						<div class="panel-body">
+							<video style="height:300px;width:100%"  id="video" controls="controls">
+            					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/傲世九重天.mp4" type="audio/mp4"></source>
+            				</video>
+						</div>
+						<div class="panel-footer">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<div class="col-sm-10">
+										<input type="email" class="form-control" id="inputEmail3" />
+									</div>
+									<div class="col-sm-2">
+										<button class="btn btn_success">发送</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 column">
+					<div class="col-md-8 column">
+						<div class="media">
+				 			<a href="#" class="pull-left">
+				 				<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' />
+				 			</a>
+							<div class="media-body">
+								<h4 class="media-heading">
+								视频名称
+								</h4> 
+								视频描述
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 column">
+						<div class="list-group">
+				 			<a href="#" class="list-group-item active">内容待定</a>
+							<div class="list-group-item">
+							List header
+							</div>
+							<div class="list-group-item">
+								<h4 class="list-group-item-heading">
+									List group item heading
+								</h4>
+								<p class="list-group-item-text">
+									...
+								</p>
+							</div>
+							<div class="list-group-item">
+								 <span class="badge">14</span> Help
+							</div> 
+							<a class="list-group-item active"> 
+								<span class="badge">14</span> Help
+							</a>
+						</div>
+					</div>
+				</div>>
+			</div>	
+		</div>	
 	</body>
 </html>

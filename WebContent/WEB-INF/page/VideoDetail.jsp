@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/community/community.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/airplane/airplane.css">
-		<title>社区</title>
+		<title>视频详情</title>
 	</head>
 	<body class="bg-warning">
 		<div id="world">
