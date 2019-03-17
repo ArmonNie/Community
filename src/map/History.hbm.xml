@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="bean">
+	<class name="History" table="history">
+		<id name="historyid" column="historyid" type="integer">
+			<generator class="native"/>
+		</id>
+		<property name="historynumber" column="historynumber" type="string"></property>
+		<property name="historytime" column="historytime" type="string"></property>
+		<property name="historyfilenumber" column="historyfilenumber" type="string"></property>
+		<property name="historyusernumber" column="historyusernumber" type="string"></property>
+	</class>
+</hibernate-mapping>

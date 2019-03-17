@@ -1,6 +1,6 @@
 package bean;
 
-public class history {
+public class History {
 	
 	private int historyid;
 	private String historynumber;

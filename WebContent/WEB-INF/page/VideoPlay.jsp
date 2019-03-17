@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" 
-    import="com.opensymphony.xwork2.util.ValueStack,
-    com.opensymphony.xwork2.ActionContext"%>
+    import="java.util.List,bean.File,tool.AppTool,tool.ORMTool"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 视频播放页 -->
 <%
-ActionContext context=ActionContext.getContext();
-ValueStack stack=context.getValueStack();
-System.out.println("播放页面获取的视频信息" + stack.findValue("file"));
+	System.out.println("播放页面获取的视频信息" + request.getParameter("filenumber"));
+	List fList;
+	ORMTool ormtool = new ORMTool("file");
+	String hql = "select f from File as f where f.filenumber = ?";
+	fList = ormtool.getQuery(hql, request.getParameter("filenumber"));
+	File f = (File)fList.get(0);
+	AppTool.DebugOut(f, "file", "即将播放视频信息：");
 %>
 <html>
 	<head>
@@ -30,7 +33,6 @@ System.out.println("播放页面获取的视频信息" + stack.findValue("file")
 		<div id="world">
 		<!-- 加载背景动画 -->
 		</div>
-		<p>${File}</p>
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
@@ -57,12 +59,12 @@ System.out.println("播放页面获取的视频信息" + stack.findValue("file")
 				 	<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								视频名称
+								<%= f.getFilename() %>播放中
 							</h3>
 						</div>
 						<div class="panel-body">
 							<video style="height:300px;width:100%"  id="video" controls="controls">
-            					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/傲世九重天.mp4" type="audio/mp4"></source>
+            					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
             				</video>
 						</div>
 						<div class="panel-footer">
@@ -79,7 +81,7 @@ System.out.println("播放页面获取的视频信息" + stack.findValue("file")
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12 column">
+				<div class="row clearfix">
 					<div class="col-md-8 column">
 						<div class="media">
 				 			<a href="#" class="pull-left">
@@ -87,9 +89,9 @@ System.out.println("播放页面获取的视频信息" + stack.findValue("file")
 				 			</a>
 							<div class="media-body">
 								<h4 class="media-heading">
-								视频名称
+								<%= f.getFilename() %>>
 								</h4> 
-								视频描述
+								<%= f.getFiledescription() %>
 							</div>
 						</div>
 					</div>
@@ -115,6 +117,9 @@ System.out.println("播放页面获取的视频信息" + stack.findValue("file")
 							</a>
 						</div>
 					</div>
+				</div>
+				<div class="row clearfix">
+				他人评论区
 				</div>
 			</div>	
 		</div>	

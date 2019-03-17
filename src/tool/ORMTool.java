@@ -15,7 +15,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.function.VarArgsSQLFunction;
 import org.hibernate.service.ServiceRegistry;
 
+import bean.Collection;
 import bean.File;
+import bean.History;
 import bean.User;
 
 
@@ -104,7 +106,7 @@ public class ORMTool {
 			case "user":
 				User user = new User();
 				user = (User)object;	
-				AppTool.DebugOut(user, "User", "null");
+				AppTool.DebugOut(user, "user", "null");
 				session.save(user);
 				session.getTransaction().commit();
 				this.closeSession();//注意关闭
@@ -112,8 +114,24 @@ public class ORMTool {
 			case "file":
 				File file = new File();
 				file = (File)object;
-				AppTool.DebugOut(file, "User", "null");
+				AppTool.DebugOut(file, "file", "null");
 				session.save(file);
+				session.getTransaction().commit();
+				this.closeSession();//注意关闭
+				break;
+			case "history":
+				History history = new History();
+				history = (History)object;
+				AppTool.DebugOut(history, "history", "null");
+				session.save(history);
+				session.getTransaction().commit();
+				this.closeSession();//注意关闭
+				break;
+			case "collection":
+				Collection collection = new Collection();
+				collection = (Collection)object;
+				AppTool.DebugOut(collection, "collection", "null");
+				session.save(collection);
 				session.getTransaction().commit();
 				this.closeSession();//注意关闭
 				break;

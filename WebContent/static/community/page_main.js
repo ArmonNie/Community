@@ -28,13 +28,13 @@ function video_download(data)
 			});
 }
 
-/*详情按钮点击事件*/
+/*收藏按钮点击事件*/
 function video_detail(data)
 {
-	console.log("详情");
+	console.log("收藏");
 	//$.post("/Community/action/LinkAction",
 		//	{index:"videodetail"});
-	window.open("/Community/action/LinkAction?index=videodetail");
+	window.open("/Community/ajaxaction/CollectAction?filenumber=" + data.name);
 }
 
 /*播放按钮点击事件*/
@@ -79,7 +79,7 @@ function all_video_click() {
 					+ "下载" + '</button>' + 
 					'<button name="' +obj.jsonresult[i].filenumber + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-					"详情" + '</button>' +
+					"收藏" + '</button>' +
 					'<button name="' +obj.jsonresult[i].filenumber + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 					"播放" + '</button>' +  '</div></td>\n</tr>\n';
@@ -105,7 +105,7 @@ function all_video_click() {
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"收藏" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 						"播放" + '</button>' +  '</div></td>\n</tr>\n';
@@ -131,7 +131,7 @@ function all_video_click() {
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"收藏" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 						"播放" + '</button>' +  '</div></td>\n</tr>\n';
@@ -171,7 +171,7 @@ function tv_video_click() {
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"收藏" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 						"播放" + '</button>' +  '</div></td>\n</tr>\n';
@@ -211,7 +211,7 @@ function movie_video_click() {
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"收藏" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 						"播放" + '</button>' +  '</div></td>\n</tr>\n';
@@ -252,7 +252,7 @@ function cg_video_click() {
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"收藏" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
 						"播放" + '</button>' +  '</div></td>\n</tr>\n';
