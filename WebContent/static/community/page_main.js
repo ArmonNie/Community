@@ -235,30 +235,7 @@ function cg_video_click() {
 				var obj = JSON.parse(data);
 				//TV块
 				var str1 = '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
-						'<h2>CG动漫</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
-						'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
-				for(var i = 0;i<obj.jsonresult.length;i++)
-				{
-					if(obj.jsonresult[i].filetype == "1")
-					{
-						str1 += '<tr>\n' + 
-						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
-						+ obj.jsonresult[i].filename + '</a></td>' +
-						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
-						'<td><div class="btn-group">' +
-						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
-						+ "下载" + '</button>' + 
-						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"收藏" + '</button>' +
-						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
-						"播放" + '</button>' +  '</div></td>\n</tr>\n';
-					}
-				}
-				str1 += '</tbody></table></div></div></div>';
-				$("#content").append(str1);
+						'<h2>CG动漫</h2><hr>';
+				
 		});
 }
