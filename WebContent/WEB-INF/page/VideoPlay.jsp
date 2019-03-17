@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" 
+    import="com.opensymphony.xwork2.util.ValueStack,
+    com.opensymphony.xwork2.ActionContext"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 视频播放页 -->
-<% %>
+<%
+ActionContext context=ActionContext.getContext();
+ValueStack stack=context.getValueStack();
+System.out.println("播放页面获取的视频信息" + stack.findValue("file"));
+%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,6 +30,7 @@
 		<div id="world">
 		<!-- 加载背景动画 -->
 		</div>
+		<p>${File}</p>
 		<div class="container">
 			<div class="row clearfix">
 				<div class="col-md-12 column">
@@ -108,7 +115,7 @@
 							</a>
 						</div>
 					</div>
-				</div>>
+				</div>
 			</div>	
 		</div>	
 	</body>

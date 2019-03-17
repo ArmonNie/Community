@@ -45,19 +45,19 @@ public class AppTool {
 		AppTool.ConsoleOut("Other Debug Message" + other);
 		switch(objectType)
 		{
-			case "User":
+			case "user":
 				User user = (User)object;
 				AppTool.ConsoleOut(user.toString());
 				break;
-			case "File":
+			case "file":
 				bean.File file = (bean.File)object;
 				AppTool.ConsoleOut(file.toString());
 				break;
-			case "Collection":
+			case "collection":
 				Collection collection = (Collection)object;
 				AppTool.ConsoleOut(collection.toString());
 				break;
-			case "Comment":
+			case "comment":
 				Comment comment = (Comment)object;
 				AppTool.ConsoleOut(comment.toString());
 				break;

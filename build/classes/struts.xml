@@ -19,11 +19,18 @@
     		<result name="LoginError">/WEB-INF/page/error/Error.jsp</result>
     	</action>  
     	
+    	
+    	<action name="VideoPlayAction" class="action.VideoPlayAction">
+    		<!-- <result name="LoginSuccess">/WEB-INF/page/Content.jsp</result> -->
+    		<result name="videoplay">/WEB-INF/page/VideoPlay.jsp</result>
+    	</action>  
+    	
     	<!-- 此action转为超链接设置-->
     	<action name="LinkAction" class="action.LinkAction">
     	
     		<result name="usercenter">/WEB-INF/page/UserCenter.jsp</result>
     		<result name="uploadvideo">/WEB-INF/page/VideoUpload.jsp</result>
+    		
     		<result name="videodetail">/WEB-INF/page/VideoDetail.jsp</result>
     		<result name="videoplay">/WEB-INF/page/VideoPlay.jsp</result>
     		

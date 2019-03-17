@@ -43,7 +43,7 @@ function video_play(data)
 	console.log("播放");
 	//$.post("/Community/action/LinkAction",
 		//	{index:"videodetail"});
-	window.open("/Community/action/LinkAction?index=videoplay");
+	window.open("/Community/action/VideoPlayAction?filenumber=" + data.name);
 }
 
 
