@@ -23,6 +23,7 @@
 		<div id="world">
 		<!-- 背景动画 -->
 		</div>
+		<!-- 使用bootstrap网格布局（row+column） -->
 		<div class="container">
 			<div class="row clearfix">
 				<!-- 页眉 -->
@@ -38,7 +39,8 @@
 						</div>
 					</div>
 				</div>
-				
+			</div>
+			<div class="row clearfix">
 				<!-- 填充空白块【12分为3+6+3】 -->
 				<div class="col-md-3 column"></div>
 				<div class="col-md-6 column">
@@ -48,7 +50,7 @@
 					</div>
 				</div>
 				<div class="col-md-3 column"></div>
+			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
