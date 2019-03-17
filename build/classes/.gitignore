@@ -1,6 +1,14 @@
 /action/
 /ajaxaction/
+/applicationContext.xml
 /bean/
-/mywebsocket/
-/tool/
+/db.properties
+/debug/
+/hibernate.cfg.xml
+/itecepter/
 /map/
+/mywebsocket/
+/service/
+/serviceimpl/
+/struts.xml
+/tool/

@@ -58,12 +58,12 @@
 					class="img-circle" />
 					<p>用户名</p>
 					<div class="list-group">
-				 		<a href="#" class="list-group-item">播放历史</a>
-				 		<a href="#" class="list-group-item">收藏记录</a>
+				 		<a onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
+				 		<a onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
 				 		<a href="#" class="list-group-item">上传记录</a>
 					</div>
 				</div>
-				<div class="col-md-6 column">
+				<div id="usercenter_content" class="col-md-6 column">
 				panel列表
 				<!-- 列表以panel形式显示 -->
 				</div>
