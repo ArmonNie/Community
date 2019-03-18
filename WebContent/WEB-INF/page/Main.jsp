@@ -50,7 +50,7 @@
 						<div class="text-right">
 							<li class="dropdown pull-right">
 								<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-									<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
+									<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
 									<%
 									HttpSession mSession = ServletActionContext
 									.getRequest().getSession();
