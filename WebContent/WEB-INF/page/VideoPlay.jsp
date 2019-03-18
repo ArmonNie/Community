@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" 
-    import="java.util.List,bean.File,tool.AppTool,tool.ORMTool"%>
+    import="java.util.List,bean.File,tool.AppTool,tool.ORMTool,
+    org.apache.struts2.ServletActionContext"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- 视频播放页 -->
 <%
@@ -11,6 +12,8 @@
 	fList = ormtool.getQuery(hql, request.getParameter("filenumber"));
 	File f = (File)fList.get(0);
 	AppTool.DebugOut(f, "file", "即将播放视频信息：");
+	
+	HttpSession mSession = ServletActionContext.getRequest().getSession();
 %>
 <html>
 	<head>
@@ -41,7 +44,7 @@
 							<small class="font_title">回忆</small>
 						</h1></span>
 						<div class="text-right">
-							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+							<a id="usertag" name="<%= mSession.getAttribute("usernumber")%>" class="dropdown-toggle" href="#" data-toggle="dropdown">
 								<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
 								用户
 							</a>
@@ -55,6 +58,8 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="row clearfix">
 				<div class="col-md-12 column">
 				 	<div class="panel panel-default">
 						<div class="panel-heading">
@@ -81,47 +86,71 @@
 						</div>
 					</div>
 				</div>
-				<div class="row clearfix">
-					<div class="col-md-8 column">
-						<div class="media">
-				 			<a href="#" class="pull-left">
-				 				<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' />
-				 			</a>
-							<div class="media-body">
-								<h4 class="media-heading">
-								<%= f.getFilename() %>>
-								</h4> 
-								<%= f.getFiledescription() %>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 column">
-						<div class="list-group">
-				 			<a href="#" class="list-group-item active">内容待定</a>
-							<div class="list-group-item">
-							List header
-							</div>
-							<div class="list-group-item">
-								<h4 class="list-group-item-heading">
-									List group item heading
-								</h4>
-								<p class="list-group-item-text">
-									...
-								</p>
-							</div>
-							<div class="list-group-item">
-								 <span class="badge">14</span> Help
-							</div> 
-							<a class="list-group-item active"> 
-								<span class="badge">14</span> Help
-							</a>
+			</div>
+			<hr>
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="media">
+				 		<a href="#" class="pull-left">
+				 			<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' />
+				 		</a>
+						<div class="media-body">
+							<h4 class="media-heading">
+							<%= f.getFilename() %>
+							</h4> 
+							<%= f.getFiledescription() %>
 						</div>
 					</div>
 				</div>
-				<div class="row clearfix">
-				他人评论区
+				<div class="col-md-4 column">
+					
+    				
 				</div>
-			</div>	
-		</div>	
+			</div>
+			<hr>
+			<div class="row clearfix">
+				<div class="col-md-8 column">
+					<div class="row clearfix">
+						<div class="col-md-3 column">
+							<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" 
+							class="media-object" alt='' />
+						</div>
+						<div class="col-md-9 column">
+						<!-- form表单提交会被struts2当作action执行. -->
+							 <form onsubmit="return false;">
+  								<div class="form-group">
+    								<label for="usercomment">写下你的评论吧！</label>
+    								<textarea id="usercomment" name="usercomment" class="form-control" rows="3"></textarea>
+  								</div>
+  								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+						 				<button name="<%= f.getFilenumber()%>" onclick="return btn_comment(this)" class="btn btn-default">评论</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 column">
+					
+    				
+				</div>
+			</div>
+			<div id="videoconment" class="row clearfix">
+				<div class="col-md-12 column">
+					<div class="media">
+				 		<a href="#" class="pull-left">
+				 			<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" class="media-object" alt='' />
+				 		</a>
+						<div class="media-body">
+							<h4 class="media-heading">
+							<%= f.getFilename() %>
+							</h4> 
+							<%= f.getFiledescription() %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
 	</body>
 </html>

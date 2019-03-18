@@ -16,6 +16,7 @@ import org.hibernate.dialect.function.VarArgsSQLFunction;
 import org.hibernate.service.ServiceRegistry;
 
 import bean.Collection;
+import bean.Comment;
 import bean.File;
 import bean.History;
 import bean.User;
@@ -132,6 +133,14 @@ public class ORMTool {
 				collection = (Collection)object;
 				AppTool.DebugOut(collection, "collection", "null");
 				session.save(collection);
+				session.getTransaction().commit();
+				this.closeSession();//注意关闭
+				break;
+			case "comment":
+				Comment comment = new Comment();
+				comment = (Comment)object;
+				AppTool.DebugOut(comment, "comment", "null");
+				session.save(comment);
 				session.getTransaction().commit();
 				this.closeSession();//注意关闭
 				break;
