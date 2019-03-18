@@ -51,6 +51,50 @@ function video_play(data)
 	window.open("/Community/action/VideoPlayAction?filenumber=" + data.name);
 }
 
+//搜索按钮事件
+function video_search()
+{
+	var inputsearch = $("#inputsearch").val();
+	console.log("用户输入了" + inputsearch);
+	$.get("/Community/ajaxaction/SearchAction",
+			{filename:inputsearch},
+			function(data,status)
+			{
+				console.log(status);
+				console.log(data);
+				//调试代码
+				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+				//避免重复加载，每次加载数据前先清空
+				$("#content").html("");
+				/* 处理json数据并执行 */
+				var obj = JSON.parse(data);
+				//append注意：https://blog.csdn.net/qq_22771739/article/details/80554675
+				//全部-电影块
+				var str1 = '<div class="container-fluid">\n<div class="row-fluid">\n<div class="span12">\n';
+				str1 += '<h2>搜索结果</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+				'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
+				for(var i = 0;i<obj.jsonresult.length;i++)
+				{
+					str1 += '<tr>\n' + 
+					'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+					+ obj.jsonresult[i].filename + '</a></td>' +
+					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+					'<td><div class="btn-group">' +
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+					+ "下载" + '</button>' + 
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+					"收藏" + '</button>' +
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+				}
+				str1 += '</tbody></table></div></div></div>';
+				$("#content").append(str1);
+			});
+}
 
 
 //ajax请求，请求所有视频列表

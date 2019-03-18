@@ -95,9 +95,9 @@
 					<div class="col-md-3 column margin_top">
 						<form class="bs-example bs-example-form" role="form">
 							<div class="input-group">
-								<input type="text" class="form-control text_area_transparency">
+								<input id="inputsearch" type="text" placeholder="请输入您想要的视频" class="form-control text_area_transparency">
 								<span class="input-group-btn">
-									<button class="btn btn-success" type="button">搜索</button>
+									<button onclick="return video_search()" class="btn btn-success" type="button">搜索</button>
 								</span>
 							</div>          
 						</form>
