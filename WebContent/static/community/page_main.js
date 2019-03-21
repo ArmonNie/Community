@@ -269,7 +269,7 @@ function movie_video_click() {
 						/*
 						 * 问题记录：往thumnnail中放入按钮就乱是因为换行吗？？
 						 */
-						str_movie += '<div class="row">';
+						str_movie += '<div class="row clearfix">';
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
@@ -360,7 +360,6 @@ function cg_video_click() {
 						counter_cg++;
 						str_cg += '</div>';
 					}
-					
 					
 				}
 				$("#content").html(str_cg);

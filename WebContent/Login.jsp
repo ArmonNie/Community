@@ -57,7 +57,7 @@
 				return false;
 			}
 			else {
-				alert("验证码通过！");
+				//alert("验证码通过！");
 				$("#loginForm").submit();
 				return true;
 			}

@@ -41,77 +41,83 @@
     		</div>
 		</div>
 		<div class="container">
+			<!-- 页眉 -->
+			<div class="row clearfix page-header">
+				<div class="col-md-2 column">
+					<!-- 页面标题 -->
+					<div class="text-left">
+						<small class="font_title h1">回忆</small>
+					</div>
+				</div>
+				<div class="col-md-8 column">
+				<!-- 页面空白 -->
+				</div>
+				<div class="col-md-2 column">
+				<!-- 页面用户管理 -->
+					<div class="text-right">
+						<li style="list-style:none" class="dropdown pull-right">
+							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+								<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
+								<%
+								HttpSession mSession = ServletActionContext
+								.getRequest().getSession();
+								%>
+								<%= mSession.getAttribute("username")%>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
+								<li><a onclick="get_collection()">信息中心</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
+								<li class="divider"></li>
+								<li><a href="Quit.jsp">退出</a></li>
+							</ul>
+						</li>
+					</div>
+				</div>
+			</div>
 			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<div class="page-header">
-						<h1>
-							<small class="font_title">回忆</small>
-						</h1>
-						<div class="text-right">
-							<li class="dropdown pull-right">
-								<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-									<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
-									<%
-									HttpSession mSession = ServletActionContext
-									.getRequest().getSession();
-									%>
-									<%= mSession.getAttribute("username")%>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
-									<li><a onclick="get_collection()">信息中心</a></li>
-									<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
-									<li class="divider"></li>
-									<li><a href="Quit.jsp">退出</a></li>
-								</ul>
-							</li>
-						</div>
-					</div>
+				<div class="col-md-2 column">
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return all_video_click()">全部</a></li>
+					</ul>
 				</div>
-				<div class="col-md-12 column">
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return all_video_click()">全部</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return movie_video_click()">电影</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return tv_video_click()">电视</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 column">
-						<ul class="nav nav-pills nav-justified">	
-							<li><a onclick="return cg_video_click()">CG动漫</a></li>
-						</ul>
-					</div>
-					<div class="col-md-1 column">
+				<div class="col-md-2 column">
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return movie_video_click()">电影</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 column">
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return tv_video_click()">电视</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 column">
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return cg_video_click()">CG动漫</a></li>
+					</ul>
+				</div>
+				<div class="col-md-1 column">
 				
-					</div>
-					<div class="col-md-3 column margin_top">
-						<form class="bs-example bs-example-form" role="form">
-							<div class="input-group">
-								<input id="inputsearch" type="text" placeholder="请输入您想要的视频" class="form-control text_area_transparency">
-								<span class="input-group-btn">
-									<button onclick="return video_search()" class="btn btn-success" type="button">搜索</button>
-								</span>
-							</div>          
-						</form>
+				</div>
+				<div class="col-md-3 column margin_top">
+					<form class="bs-example bs-example-form" role="form">
+						<div class="input-group">
+							<input id="inputsearch" type="text" placeholder="请输入您想要的视频" class="form-control text_area_transparency">
+							<span class="input-group-btn">
+								<button onclick="return video_search()" class="btn btn-success" type="button">搜索</button>
+							</span>
+						</div>          
+					</form>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-1 column"></div>
+				<div class="col-md-10 column">
+					<div id="content" class="margin">
+					<!-- 内容区域 -->
 					</div>
 				</div>
-				<div class="col-md-12 column">
-					<div class="col-md-1 column"></div>
-					<div class="col-md-10 column">
-						<div id="content" class="margin">
-						<!-- 内容区域 -->
-						</div>
-					</div>
-					<div class="col-md-1 column"></div>
-				</div>
+				<div class="col-md-1 column"></div>
 			</div>
 		</div>		
 	</body>

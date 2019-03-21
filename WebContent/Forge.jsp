@@ -25,21 +25,26 @@
 		</div>
 		<!-- 使用bootstrap网格布局（row+column） -->
 		<div class="container">
-			<div class="row clearfix">
-				<!-- 页眉 -->
-				<div class="col-md-12 column">
-					<!-- 页面标题以及链接 -->
-					<div class="page-header">
-						<h1 class="text-left">
-							<small class="font_title">回忆</small>
-						</h1>
-						<div class="text-right">
-							<a><img class="img_login" alt="登录" title="登录" src="img/login_gray.svg" onmouseover="return img_login_over()" onmouseout="return img_login_out()" onclick="return img_login_click()"></a>
-							<a><img class="img_regist" alt="注册" title="注册" src="img/regist_gray.svg"onmouseover="return img_regist_over()" onmouseout="return img_regist_out()" onclick="return img_regist_click()"></a>
-						</div>
+			<!-- 页眉 -->
+			<div class="row clearfix page-header">
+				<div class="col-md-2 column">
+					<!-- 页面标题 -->
+					<div class="text-left">
+						<small class="font_title h1">回忆</small>
+					</div>
+				</div>
+				<div class="col-md-8 column">
+				<!-- 页面导航 -->
+				</div>
+				<div class="col-md-2 column">
+				<!-- 页面用户管理 -->
+					<div class="text-right">
+						<a><img class="img_login" alt="登录" title="登录" src="img/login_gray.svg" onmouseover="return img_login_over()" onmouseout="return img_login_out()" onclick="return img_login_click()"></a>
+						<a><img class="img_regist" alt="注册" title="注册" src="img/regist_gray.svg"onmouseover="return img_regist_over()" onmouseout="return img_regist_out()" onclick="return img_regist_click()"></a>
 					</div>
 				</div>
 			</div>
+			
 			<div class="row clearfix">
 				<!-- 填充空白块【12分为3+6+3】 -->
 				<div class="col-md-3 column"></div>
