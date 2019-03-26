@@ -36,6 +36,7 @@
     		
     	</action>
     	
+    	
     	<action name="DownLoadAction" class="action.DownLoadAction">
     		<result name="DownloadSuccess" type="stream">
     		 	<!-- 允许下载的文件类型：此处指定为所有的二进制文件类型 

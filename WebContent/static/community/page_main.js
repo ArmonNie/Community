@@ -242,9 +242,21 @@ function tv_video_click() {
 						counter_tv++;
 						str_tv += '</div>';
 					}
-					
-					
 				}
+				str_tv +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				str_tv +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
+				str_tv +='<script type="text/javascript">'+
+					'$("#pageindex").pagination({' +
+				    ' pageCount: 50,' +
+				    'jump: true,' +
+				    'coping: true,' +
+				    'homePage: "首页",' +
+				    'endPage: "末页",' +
+				    'prevContent: "上页",' +
+				    'nextContent: "下页",' +
+				    'callback: function (api) { ' + 
+				        'console.log(api.getCurrent())' +
+				    '}});' + '</script>'
 				$("#content").html(str_tv);
 		});
 }
@@ -300,9 +312,21 @@ function movie_video_click() {
 						counter_movie++;
 						str_movie += '</div>';
 					}
-					
-					
 				}
+				str_movie +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				str_movie +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
+				str_movie +='<script type="text/javascript">'+
+					'$("#pageindex").pagination({' +
+				    ' pageCount: 50,' +
+				    'jump: true,' +
+				    'coping: true,' +
+				    'homePage: "首页",' +
+				    'endPage: "末页",' +
+				    'prevContent: "上页",' +
+				    'nextContent: "下页",' +
+				    'callback: function (api) { ' + 
+				        'console.log(api.getCurrent())' +
+				    '}});' + '</script>'
 				$("#content").html(str_movie);
 		});
 }
@@ -362,6 +386,20 @@ function cg_video_click() {
 					}
 					
 				}
+				str_cg +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				str_cg +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
+				str_cg +='<script type="text/javascript">'+
+					'$("#pageindex").pagination({' +
+				    ' pageCount: 50,' +
+				    'jump: true,' +
+				    'coping: true,' +
+				    'homePage: "首页",' +
+				    'endPage: "末页",' +
+				    'prevContent: "上页",' +
+				    'nextContent: "下页",' +
+				    'callback: function (api) { ' + 
+				        'console.log(api.getCurrent())' +
+				    '}});' + '</script>'
 				$("#content").html(str_cg);
 				
 		});

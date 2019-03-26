@@ -41,4 +41,12 @@ public class SessionTool{
 		session.put("usernumber", usernumber);
 	}
 	
+	/*
+	 * 退出时清空Session
+	 */
+	public void removeSession()
+	{
+		session.clear();
+	}
+	
 }

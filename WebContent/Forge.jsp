@@ -30,7 +30,7 @@
 				<div class="col-md-2 column">
 					<!-- 页面标题 -->
 					<div class="text-left">
-						<small class="font_title h1">回忆</small>
+						<small class="font_title h1" onclick="return all_video_click()">回忆</small>
 					</div>
 				</div>
 				<div class="col-md-8 column">
