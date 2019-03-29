@@ -191,9 +191,9 @@ function all_video_click() {
 		});
 }
 //ajax请求，请求所有电视列表
-function tv_video_click() {
+function tv_video_click(param) {
 	$.get("/Community/ajaxaction/LoadJsonAction", 
-			{tag:"2"},
+			{tag:"2",page:param},
 			function (data, textStatus){
 				//调试代码
 				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
@@ -201,6 +201,9 @@ function tv_video_click() {
 				$("#content").html("");
 				/* 处理json数据并执行 */
 				var obj = JSON.parse(data);
+				//获取数据总量用于确定页数
+				var totalNumber = obj.jsonresult.length;
+				var pageNumber = totalNumber/12;
 				//TV块
 				var str_tv ='<h2>电视</h2><hr>';
 				var counter_tv = 0;
@@ -243,11 +246,11 @@ function tv_video_click() {
 						str_tv += '</div>';
 					}
 				}
-				str_tv +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				str_tv +='<div class="row"><div class="col-md-3"></div><div  id="pageindex" class="col-md-6"></div><div class="col-md-3"></div></div>';
 				str_tv +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
 				str_tv +='<script type="text/javascript">'+
 					'$("#pageindex").pagination({' +
-				    ' pageCount: 50,' +
+				    ' pageCount: 60,' +
 				    'jump: true,' +
 				    'coping: true,' +
 				    'homePage: "首页",' +
@@ -255,15 +258,15 @@ function tv_video_click() {
 				    'prevContent: "上页",' +
 				    'nextContent: "下页",' +
 				    'callback: function (api) { ' + 
-				        'console.log(api.getCurrent())' +
+				        'tv_video_click(api.getCurrent());' +
 				    '}});' + '</script>'
 				$("#content").html(str_tv);
 		});
 }
 //ajax请求，请求所有电影列表
-function movie_video_click() {
+function movie_video_click(param) {
 	$.get("/Community/ajaxaction/LoadJsonAction", 
-			{tag:"0"},
+			{tag:"0",page:param},
 			function (data, textStatus){
 				//调试代码
 				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
@@ -271,6 +274,9 @@ function movie_video_click() {
 				$("#content").html("");
 				/* 处理json数据并执行 */
 				var obj = JSON.parse(data);
+				//获取数据总量用于确定页数
+				var totalNumber = obj.jsonresult.length;
+				var pageNumber = totalNumber/12;
 				//电影块
 				var str_movie ='<h2>电影</h2><hr>';
 				var counter_movie = 0;
@@ -313,11 +319,11 @@ function movie_video_click() {
 						str_movie += '</div>';
 					}
 				}
-				str_movie +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				str_movie +='<div class="row"><div class="col-md-3"></div><div  id="pageindex" class="col-md-6"></div><div class="col-md-3"></div></div>';
 				str_movie +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
 				str_movie +='<script type="text/javascript">'+
 					'$("#pageindex").pagination({' +
-				    ' pageCount: 50,' +
+				    ' pageCount: 60,' +
 				    'jump: true,' +
 				    'coping: true,' +
 				    'homePage: "首页",' +
@@ -325,24 +331,29 @@ function movie_video_click() {
 				    'prevContent: "上页",' +
 				    'nextContent: "下页",' +
 				    'callback: function (api) { ' + 
-				        'console.log(api.getCurrent())' +
+				        'movie_video_click(api.getCurrent());' +
 				    '}});' + '</script>'
 				$("#content").html(str_movie);
 		});
 }
 //ajax请求，请求所有CG列表
-function cg_video_click() {
+function cg_video_click(param) {
 	$("#content").html("");
 	$.get("/Community/ajaxaction/LoadJsonAction", 
-			{tag:"1"},
+			{tag:"1",page:param},
 			function (data, textStatus){
 				//调试代码
 				console.log("加载CG...e1");
+				console.log(data);
 				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
 				//加载前必须先清除
 				$("#content").html("");
 				/* 处理json数据并执行 */
 				var obj = JSON.parse(data);
+				//获取数据总量用于确定页数
+				var totalNumber = obj.jsonresult.length;
+				//var pageNumber = obj.totalnumber[0];
+				//console.log("总数量：" + totalNumber + "  页面数量：" + pageNumber);
 				//TV块
 				var str_cg ='<h2>CG动漫</h2><hr>';
 				var counter_cg = 0;
@@ -386,11 +397,12 @@ function cg_video_click() {
 					}
 					
 				}
-				str_cg +='<div class="row"><div  id="pageindex" class="col-md-12"></div></div>';
+				//页面总数问题：暂时型写死
+				str_cg +='<div class="row"><div class="col-md-3"></div><div  id="pageindex" class="col-md-6"></div><div class="col-md-3"></div></div>';
 				str_cg +='<script src="/Community/static/basejs/jquery.pagination.js"></script>'
 				str_cg +='<script type="text/javascript">'+
 					'$("#pageindex").pagination({' +
-				    ' pageCount: 50,' +
+				    ' pageCount: 60,' +
 				    'jump: true,' +
 				    'coping: true,' +
 				    'homePage: "首页",' +
@@ -398,7 +410,7 @@ function cg_video_click() {
 				    'prevContent: "上页",' +
 				    'nextContent: "下页",' +
 				    'callback: function (api) { ' + 
-				        'console.log(api.getCurrent())' +
+				        'cg_video_click(api.getCurrent());' +
 				    '}});' + '</script>'
 				$("#content").html(str_cg);
 				

@@ -18,7 +18,9 @@ import tool.ORMTool;
 public class LoadJsonAction{
 	
 	private String tag;
+	private int page = 1;//默认为1
 	private List<File> filelist;//待返回的列表
+	private int totalNumber;
 	
 	
 	//该getter对应于返回的最终数据
@@ -26,7 +28,12 @@ public class LoadJsonAction{
 	public List<File> getFilejsonarray() {
 		return filelist;
 	}
-
+	@JSON(name="total")
+	public int getTotalnumber()
+	{
+		return this.totalNumber;
+	}
+	
 	
 	/*
 	 * 前台给后台，调用的是setter，后台给前台，调用的是getter
@@ -39,6 +46,13 @@ public class LoadJsonAction{
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
+	/*public int getPage() {
+		return page;
+	}*/
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 
 	/*
 	 * 信息逻辑处理
@@ -50,23 +64,40 @@ public class LoadJsonAction{
 		ORMTool ormtool = new ORMTool("file");
 		String hql = "select f from File as f";
 		
+		List<File> tempfilelist;
+		
 		switch(tag)
 		{
 			case "0":
 				hql = "select f from File as f where f.filetype = ?";
-				filelist = ormtool.getQuery(hql, tag);
+				tempfilelist = ormtool.getQuery(hql, tag);
+				this.totalNumber = tempfilelist.size();
+				/*
+				 * 根据页数返回相应数量的数据,注意边缘判断
+				 */
+				this.filelist = tempfilelist.subList((page-1)*12, page*12);
 				break;
 			case "1":
 				hql = "select f from File as f where f.filetype = ?";
-				filelist = ormtool.getQuery(hql, tag);
+				tempfilelist = ormtool.getQuery(hql, tag);
+				this.totalNumber = tempfilelist.size();
+				/*
+				 * 根据页数返回相应数量的数据,注意边缘判断
+				 */
+				this.filelist = tempfilelist.subList((page-1)*12, page*12);
 				break;
 			case "2":
 				hql = "select f from File as f where f.filetype = ?";
-				filelist = ormtool.getQuery(hql, tag);
+				tempfilelist = ormtool.getQuery(hql, tag);
+				this.totalNumber = tempfilelist.size();
+				/*
+				 * 根据页数返回相应数量的数据,注意边缘判断
+				 */
+				this.filelist = tempfilelist.subList((page-1)*12, page*12);
 				break;
 			default:
 				hql = "select f from File as f";
-				filelist = ormtool.getQuery(hql);
+				this.filelist = ormtool.getQuery(hql);
 				break;
 		}
 		
