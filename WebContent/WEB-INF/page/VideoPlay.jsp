@@ -39,57 +39,36 @@
 		<!-- 加载背景动画 -->
 		</div>
 		<div class="container">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<div class="page-header">
-						<span><h1>
-							<small class="font_title">回忆</small>
-						</h1></span>
-						<div class="text-right">
-							<a id="usertag" name="<%= mSession.getAttribute("usernumber")%>" class="dropdown-toggle" href="#" data-toggle="dropdown">
-								<img src="${pageContext.request.contextPath}/img/login_gray.svg" class="margin">
-								用户
+			<!-- 页眉 -->
+			<div class="row clearfix page-header">
+				<div class="col-md-2 column">
+					<!-- 页面标题 -->
+					<div class="text-left">
+						<small class="font_title h1">回忆</small>
+					</div>
+				</div>
+				<div class="col-md-8 column">
+				<!-- 页面空白 -->
+				</div>
+				<div class="col-md-2 column">
+				<!-- 页面用户管理 -->
+					<div class="text-right">
+						<li style="list-style:none" class="dropdown pull-right">
+							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+								<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
+								<%= mSession.getAttribute("username")%>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">信息</a></li>
-								<li><a onclick="get_collection()">收藏</a></li>
-								<li><a onclick="a_share_click()">分享</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
+								<li><a onclick="get_collection()">信息中心</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
 								<li><a href="Quit.jsp">退出</a></li>
 							</ul>
-						</div>
+						</li>
 					</div>
 				</div>
 			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-				 	<div class="panel panel-default">
-						<div class="panel-heading text_area_transparency">
-							<h3 class="panel-title">
-								<%= f.getFilename() %>播放中
-							</h3>
-						</div>
-						<div class="panel-body">
-							<video  style="height:300px;width:100%"  id="video" controls="controls">
-            					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
-            				</video>
-						</div>
-						<div class="panel-footer text_area_transparency">
-							<form class="form-horizontal" role="form">
-								<div class="form-group">
-									<div class="col-sm-10">
-										<input type="email" class="form-control" id="inputEmail3" />
-									</div>
-									<div class="col-sm-2">
-										<button class="btn btn_success">发送</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr>
 			<div class="row clearfix">
 				<div class="col-md-8 column">
 					<div class="media">
@@ -109,6 +88,41 @@
     				
 				</div>
 			</div>
+			<div class="row cleearfix">
+				<div class="col-md-12 column">
+				填充
+				</div>
+			</div>
+			<hr>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+				 	<div class="panel panel-default">
+						<div class="panel-heading text_area_transparency">
+							<h3 class="panel-title">
+								<%= f.getFilename() %>播放中
+							</h3>
+						</div>
+						<div class="panel-body">
+							<video  style="height:100%;width:100%;object-fit:fill"  id="video" controls="controls">
+            					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
+            				</video>
+						</div>
+						<div class="panel-footer text_area_transparency">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<div class="col-sm-10">
+										<input type="email" class="form-control" id="inputEmail3" />
+									</div>
+									<div class="col-sm-2">
+										<button class="btn btn_success">发送</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<hr>
 			<div class="row clearfix">
 				<div class="col-md-8 column">
