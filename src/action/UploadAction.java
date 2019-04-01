@@ -1,5 +1,15 @@
 package action;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+
+import tool.AppTool;
+import tool.MyFileTool;
+import tool.ORMTool;
+
 public class UploadAction {
 	
 	private String filenumber;//File表file编号
@@ -11,6 +21,7 @@ public class UploadAction {
 	private String filetype;//文件类型（movie，cg，tv）
 	private String filetag;//文件标签（综艺，娱乐，戏剧，玄幻）
 	
+	private File file;
 	
 	/*
 	 * Getter与Setter
@@ -63,13 +74,49 @@ public class UploadAction {
 	public void setFiletag(String filetag) {
 		this.filetag = filetag;
 	}
+	public File getFile() {
+		return file;
+	}
+	public void setFile(File file) {
+		this.file = file;
+	}
 	
 	
-	public String execute()
+	
+	public String execute() throws IOException
 	{
+		
+		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo");
 		/*
 		 * 上传逻辑代码，上传完成转到用户中心
+		 * 同时记录进入数据库
 		 */
+		AppTool.ConsoleOut("上传路径" + webpath);
+		AppTool.ConsoleOut("即将上传" + file.getName());
+		AppTool.ConsoleOut("前台数据" + this.filedescription + this.filename
+				+ this.filepath + this.filesize);
+		/*
+		 * 插入数据库
+		 */
+		ORMTool ormtool = new ORMTool("file");
+		
+		bean.File  bf = new bean.File();
+		bf.setFilename(filename);
+		bf.setFilepath(filepath);
+		bf.setFilesize(filesize);
+		bf.setFiledescription(filedescription);
+		bf.setFilenumber(AppTool.getBase64FromStr(this.filepath));
+		bf.setFiletype("0");
+		bf.setGoodnumber(0);
+		
+		ormtool.insert(bf);
+		/*
+		 * 关于上传的文件名以及各式的问腿
+		 */
+		File destFile = new File(webpath + "/test.mp4");
+		AppTool.ConsoleOut("目标文件名为：" + destFile.getName());
+		//FileUtils.copyFile(file, destFile);
+		MyFileTool.copyFile(this.file, destFile);
 		return "usercenter";
 	}
 	

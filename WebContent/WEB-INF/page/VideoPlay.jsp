@@ -30,6 +30,8 @@
 		<script src="${pageContext.request.contextPath}/static/airplane/three.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/airplane/airplane.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/airplane/airplane.css">
+		<script src="${pageContext.request.contextPath}/static/community/jsmodern.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/jsmodern.min.css">
 		<title>播放视频</title>
 	</head>
 	<body class="bg-warning">
@@ -62,17 +64,17 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 				 	<div class="panel panel-default">
-						<div class="panel-heading">
+						<div class="panel-heading text_area_transparency">
 							<h3 class="panel-title">
 								<%= f.getFilename() %>播放中
 							</h3>
 						</div>
 						<div class="panel-body">
-							<video style="height:300px;width:100%"  id="video" controls="controls">
+							<video  style="height:300px;width:100%"  id="video" controls="controls">
             					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
             				</video>
 						</div>
-						<div class="panel-footer">
+						<div class="panel-footer text_area_transparency">
 							<form class="form-horizontal" role="form">
 								<div class="form-group">
 									<div class="col-sm-10">

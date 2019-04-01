@@ -7,6 +7,7 @@
 
 	<!-- 常量配置 -->
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.multipart.maxSize" value="52428800"/>
 	<!-- /static 为存放静态资源的路径，意为不拦截对此文件夹下文件的请求 -->
 	<constant name="struts.action.excludePattern" value="/static/.*?" />
 
@@ -52,8 +53,20 @@
             	-->
             	<param name="contentDisposition">attachment;filename=${downFileName}</param>
 				<!-- 数据的缓冲大小 -->  
-				<param name="bufferSize">1024</param> 
+				<param name="bufferSize">40960</param> 
     		</result>
+    	</action>
+    	<action name="UploadAction" class="action.UploadAction">
+    		 <!-- 显示成功的jsp页面 -->
+             <result name="usercenter">/WEB-INF/page/UserCenter.jsp</result>
+             <!-- 文件上传拦截器，限制运行上传的文件的类型，还有其他一个方法，这是其中一个 -->
+                <interceptor-ref name="defaultStack">
+                    <!-- 限制运行的文件的扩展名 fileUpload.allowedExtensions固定写法-->
+                    <param name="fileUpload.allowedExtensions">mp4</param>
+                </interceptor-ref> 
+            <!-- 错误提示，档文件上传出现错误的时候，struts内部会返回input视图，
+                	 错误视图，所以就需要我们在struts.xml中配置Input视图对应的错误页面 -->
+             <!-- <result name="input">/uploadfile/error.jsp</result> -->
     	</action>
     	
     </package>  

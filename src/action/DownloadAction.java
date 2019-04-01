@@ -13,7 +13,7 @@ import tool.AppTool;
 
 public class DownLoadAction {
 	
-	private String filenumber;//根据filenumber进行文件定位
+	private String filename;//根据filenumber进行文件定位
 	
 	private InputStream filestream;//使用流形式返回
 
@@ -21,11 +21,11 @@ public class DownLoadAction {
 	 * Getter and Setter
 	 * 只提供一个setter（因为此action是一个ajax）
 	 */
-	/*public String getFilenumber() {
-		return filenumber;
+	/*public String getFilename() {
+		return filename;
 	}*/
-	public void setFilenumber(String filenumber) {
-		this.filenumber = filenumber;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	
 	
@@ -37,10 +37,10 @@ public class DownLoadAction {
 	}
 
 	 public String getDownFileName() {
-		 String fileName = "moren";
+		 String fileName = "default";
 		 try{
              //import java.net.URLEncoder;
-             fileName = URLEncoder.encode("阿披实","UTF-8");
+             fileName = URLEncoder.encode(this.filename,"UTF-8");
          }catch(Exception e){
              throw new RuntimeException();
          }
@@ -52,15 +52,16 @@ public class DownLoadAction {
 	 */
 	public String execute() throws FileNotFoundException, UnsupportedEncodingException
 	{
-		String syspath = AppTool.getStrFromBase64(filenumber);
-		File f = new File(syspath.substring(0, syspath.length()-1));
+		//String syspath = AppTool.getStrFromBase64(filenumber);
+		//File f = new File(syspath.substring(0, syspath.length()-1));
 		 //得到视频目录路径
 		//this.filestream = ServletActionContext.getServletContext().getResourceAsStream("/static/video/ServerVideo/" + f.getName());
 		/*this.filestream = ServletActionContext.getServletContext().getResourceAsStream("/static/video/ServerVideo/" + f.getName());
 		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo/" + f.getName());*/
-		this.filestream = ServletActionContext.getServletContext().getResourceAsStream("/static/video/ServerVideo/傲世九重天.mp4");
-		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo/傲世九重天.mp4");
+		this.filestream = ServletActionContext.getServletContext().getResourceAsStream("/static/video/ServerVideo/" + filename);
+		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo/" + filename);
 		AppTool.ConsoleOut("即将下载文件：" + webpath);
+		AppTool.ConsoleOut(this.filestream.toString());
 		
 
 		return "DownloadSuccess";

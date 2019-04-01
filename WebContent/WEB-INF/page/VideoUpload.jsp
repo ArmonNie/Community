@@ -56,33 +56,33 @@
 			
 			</div>
 			<div class="col-md-8 column">
-				<form role="form">
+				<form id="fileform" method="post" action="/Community/action/UploadAction" role="form" enctype="multipart/form-data">
 					<div class="form-group">
 					 	<label for="inputfile">文件</label>
-					 	<input type="file" id="inputfile" onchange="return filemsg_console()"/>
+					 	<input type="file" name="file" id="file" onchange="return filemsg_console()"/>
 						<p class="help-block">
 							请选择需要上传的视频文件
 						</p>
 					</div>
 					<div class="form-group">
 						<label for="filename">文件名</label>
-					 	<input  class="form-control" id="filename" />
+					 	<input  class="form-control" name="filename" id="filename" />
 					</div>
 					<div class="form-group">
 						 <label for="filesize">文件大小</label>
-						 <input  class="form-control" id="filesize" />
+						 <input  class="form-control" name="filesize" id="filesize" />
 					</div>
 					<div class="form-group">
 						 <label for="filepath">文件路径</label>
-						 <input class="form-control" id="filepath" />
+						 <input class="form-control" name="filepath" id="filepath" />
 					</div>
 					<div class="form-group">
 						 <label for="filepath">文件类别</label>
-						 <input class="form-control" id="filetype" />
+						 <input class="form-control" name="filetype" id="filetype" />
 					</div>
 					<div class="form-group">
 						 <label for="filedescription">文件描述</label>
-						 <input class="form-control" id="filedescription" />
+						 <input class="form-control" name="filedescription" id="filedescription" />
 					</div>
 					<button onclick="return btn_upload()" class="btn btn-default">提交</button>
 				</form>

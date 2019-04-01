@@ -26,11 +26,14 @@ function video_preview(data){
 function video_download(data)
 {
 	console.log("下载");
-	$.get("/Community/action/DownLoadAction", 
+	//此处不可以用ajax吗？？？
+	/*$.get("/Community/action/DownLoadAction", 
 			{filenumber:data.name},
 			function (mstream, textStatus){
+				console.log(textStatus);
 				console.log("下载中..." + mstream);
-			});
+			});*/
+	window.open("/Community/action/DownLoadAction?filename=" + data.name);
 }
 
 /*收藏按钮点击事件*/
@@ -81,7 +84,7 @@ function video_search()
 					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
 					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 					'<td><div class="btn-group">' +
-					'<button name="' +obj.jsonresult[i].filenumber + 
+					'<button name="' +obj.jsonresult[i].filename + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
 					+ "下载" + '</button>' + 
 					'<button name="' +obj.jsonresult[i].filenumber + 
@@ -123,7 +126,7 @@ function all_video_click() {
 					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
 					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 					'<td><div class="btn-group">' +
-					'<button name="' +obj.jsonresult[i].filenumber + 
+					'<button name="' +obj.jsonresult[i].filename + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
 					+ "下载" + '</button>' + 
 					'<button name="' +obj.jsonresult[i].filenumber + 
@@ -149,7 +152,7 @@ function all_video_click() {
 						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
 						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 						'<td><div class="btn-group">' +
-						'<button name="' +obj.jsonresult[i].filenumber + 
+						'<button name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
@@ -175,7 +178,7 @@ function all_video_click() {
 						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
 						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 						'<td><div class="btn-group">' +
-						'<button name="' +obj.jsonresult[i].filenumber + 
+						'<button name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
 						+ "下载" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
@@ -218,28 +221,28 @@ function tv_video_click(param) {
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_tv].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
@@ -291,28 +294,28 @@ function movie_video_click(param) {
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_movie].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
@@ -368,28 +371,28 @@ function cg_video_click(param) {
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
-						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
+						'<p><a class="btn btn-primary" onclick="return video_download(this)" name="' + obj.jsonresult[counter_cg].filename + '">下载</a><a class="btn btn-primary" onclick="return video_detail(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">收藏</a></p>' +
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
