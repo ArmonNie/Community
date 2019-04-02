@@ -28,5 +28,6 @@
    		<mapping resource="map/Collection.hbm.xml"/>
    		<mapping resource="map/Comment.hbm.xml"/>
    		<mapping resource="map/History.hbm.xml"/>
+   		<mapping resource="map/UserUpload.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration> 

@@ -59,4 +59,8 @@ a:hover{
     height:200px;
 }
 
+/*设置div块内的文字水平居中*/
+.text-center{
+	text-align:center;
+}
 

@@ -18,7 +18,9 @@
     	<action name="LoginAction" class="action.LoginAction">
     		<!-- <result name="LoginSuccess">/WEB-INF/page/Content.jsp</result> -->
     		<result name="LoginSuccess">/WEB-INF/page/Main.jsp</result>
-    		<result name="LoginError">/WEB-INF/page/error/Error.jsp</result>
+    		<result name="LoginError">/WEB-INF/page/error/LoginError.jsp</result>
+    		<result name="LoginNoUser">/WEB-INF/page/error/LoginNoUser.jsp</result>
+    		<result name="Admin">/WEB-INF/page/AdminCenter.jsp</result>
     	</action>  
     	
     	

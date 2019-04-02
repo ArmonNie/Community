@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>系统错误</title>
+<title>登陆错误</title>
 </head>
 <body>
-	<img src="${pageContext.request.contextPath}/static/img/systemerror.svg" />
-	<h2>系统出错，请稍后再试</h2>
+	<img src="${pageContext.request.contextPath}/static/img/noregister.svg" />
+	<h2>未注册用户，请先注册再登陆</h2>
 </body>
 </html>

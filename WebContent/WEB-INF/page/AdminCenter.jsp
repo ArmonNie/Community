@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="org.apache.struts2.ServletActionContext"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<%
-		HttpSession mSession = ServletActionContext.getRequest().getSession();
-	%>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!-- 基本js（jquery）与css（bootstrap） -->
@@ -56,9 +53,10 @@
 				</div>
 			</div>
 			<div class="row clearfix">
-				<div class="col-md-2 column text-center">
-					<img height="128" width="128" alt="140x140" src="${pageContext.request.contextPath}/static/img/userdefault.png" />
-					<p><%= mSession.getAttribute("username")%></p>
+				<div class="col-md-2 column">
+					<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" 
+					class="img-circle" />
+					<p>用户名</p>
 					<div class="list-group">
 				 		<a onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
 				 		<a onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
@@ -84,5 +82,10 @@
 				</div>
 			</div>
 		</div>
+		<div style="width:600px;height:240px;overflow-y:auto;border:1px solid #333;" id="show">
+		</div>
+		<input type="text" size="80" id="msg" name="msg" placeholder="输入内容"/>
+		<input type="button" value="发送" id="sendBn" name="sendBn"/>
+
 </body>
 </html>

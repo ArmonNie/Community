@@ -125,4 +125,14 @@ public class RegisterAction {
 		}
 	}
 
+	/*
+	 * 注册防止重复（邮箱，用户名不允许重复）
+	 */
+	private boolean validate()
+	{
+		boolean ifvalidate = false;
+		
+		return ifvalidate;
+	}
+	
 }

@@ -100,3 +100,31 @@ function getMyCollection(data)
 				$("#usercenter_content").append(str);
 			});
 }
+//获取上传记录
+function getMyUpload()
+{
+	console.log("上传记录");
+	$.get("/Community/ajaxaction/GetUploadAction",
+			{usernumber:"20190315018971819070@163.com"},
+			function(data,status){
+				//测试
+				console.log(data);
+				//先清空内容
+				$("#usercenter_content").html("");
+				/* 处理json数据并执行 */
+				var obj = JSON.parse(data);
+				//拼接字符串
+				var str = "";
+				//遍历obj,例如obj.jsonresult[i].filetype
+				for(var i = 0;i<obj.jsonresult.length;i++)
+				{
+					str += '<div class="panel panel-default">' +
+						'<div class="panel-heading"><h3 class="panel-title">' +
+						obj.jsonresult[i].filename + '</h3></div>' + 
+						'<div class="panel-body">' + obj.jsonresult[i].filename + '</div>' + 
+						'<div class="panel-footer">' + obj.jsonresult[i].filename + '</div></div>'
+				}
+				$("#usercenter_content").append(str);
+			});
+}
+

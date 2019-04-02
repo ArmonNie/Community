@@ -74,7 +74,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		List resultList = ormtool.getQuery(hql,this.username);
 		if(resultList.size() == 0)
 		{
-			result = "LoginError";
+			result = "LoginNoUser";
 		}
 		else 
 		{
@@ -83,9 +83,30 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				User user = (User)o;
 				if(user.getUsername().equals(this.username)&&user.getUserpassword().equals(this.userpassword))
 				{
+					//存放进入session
 					mSession.put("username", user.getUsername());
 					mSession.put("usernumber", user.getUsernumber());
 					result = "LoginSuccess";
+					
+					//管理员登陆
+					if(user.getUsername().equals("聂璋"))
+					{
+						result = "Admin";
+					}
+				}
+				//提供邮箱登陆支持
+				else if(user.getUseremail().equals(this.username)&&user.getUserpassword().equals(this.userpassword))
+				{
+					//存放进入session
+					mSession.put("username", user.getUsername());
+					mSession.put("usernumber", user.getUsernumber());
+					result = "LoginSuccess";
+					
+					//管理员登陆
+					if(user.getUsername().equals("聂璋"))
+					{
+						result = "Admin";
+					}
 				}
 				else
 				{
@@ -93,14 +114,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				}
 			}
 		}
-
-		/*
-		 * 密码验证
-		 */
-		
-		
-		//测试
-		//result = "LoginSuccess";
 		
 		return result;
 	}
