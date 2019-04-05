@@ -28,7 +28,7 @@ public class LoadJsonAction{
 	public List<File> getFilejsonarray() {
 		return filelist;
 	}
-	@JSON(name="total")
+	@JSON(name="totalnumber")
 	public int getTotalnumber()
 	{
 		return this.totalNumber;
@@ -65,6 +65,7 @@ public class LoadJsonAction{
 		String hql = "select f from File as f";
 		
 		List<File> tempfilelist;
+		double totalPage;
 		
 		switch(tag)
 		{
@@ -72,28 +73,58 @@ public class LoadJsonAction{
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				totalPage = Math.ceil(totalNumber/12) + 1;
+				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
 				 * 根据页数返回相应数量的数据,注意边缘判断
 				 */
-				this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				AppTool.ConsoleOut("前台请求第" + this.page + "页数据！");
+				if(this.page == totalPage)
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+				}
+				else
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				}
 				break;
 			case "1":
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				totalPage = Math.ceil(totalNumber/12) + 1;
+				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
 				 * 根据页数返回相应数量的数据,注意边缘判断
 				 */
-				this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				AppTool.ConsoleOut("前台请求第" + this.page + "页数据！");
+				if(this.page == totalPage)
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+				}
+				else
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				}
 				break;
 			case "2":
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				totalPage = Math.ceil(totalNumber/12) + 1;
+				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
 				 * 根据页数返回相应数量的数据,注意边缘判断
 				 */
-				this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				AppTool.ConsoleOut("前台请求第" + this.page + "页数据！");
+				if(this.page == totalPage)
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+				}
+				else
+				{
+					this.filelist = tempfilelist.subList((page-1)*12, page*12);
+				}
 				break;
 			default:
 				hql = "select f from File as f";

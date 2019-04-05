@@ -109,7 +109,6 @@ public class AppTool {
 	}
 	
 	
-	
 	public static String getBasePath()
 	{
 		return basePath;

@@ -23,6 +23,9 @@
     		<result name="Admin">/WEB-INF/page/AdminCenter.jsp</result>
     	</action>  
     	
+    	<action name="LogoutAction" class="action.LogoutAction">
+    		<result name="Logout">/Forge.jsp</result>
+    	</action> 
     	
     	<action name="VideoPlayAction" class="action.VideoPlayAction">
     		<!-- <result name="LoginSuccess">/WEB-INF/page/Content.jsp</result> -->

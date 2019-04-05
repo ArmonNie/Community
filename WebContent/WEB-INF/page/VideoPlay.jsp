@@ -77,7 +77,7 @@
 				 		</a>
 						<div class="media-body">
 							<h4 class="media-heading">
-							<%= f.getFilename() %>
+							<%= f.getFilename().substring(0,f.getFilename().lastIndexOf(".")) %>
 							</h4> 
 							<%= f.getFiledescription() %>
 						</div>
@@ -105,6 +105,7 @@
 						<div class="panel-body">
 							<video  style="height:100%;width:100%;object-fit:fill"  id="video" controls="controls">
             					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
+            					<div></div>
             				</video>
 						</div>
 						<div class="panel-footer text_area_transparency">

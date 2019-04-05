@@ -4,7 +4,7 @@
  */
 //var code="" ; //在全局 定义验证码
 $(document).ready(function() {
-	$("#forge").load("Login.jsp");
+	$("#forge").load("/Community/Login.jsp");
 	//createCode();
 });
 
@@ -21,7 +21,7 @@ function img_login_out() {
 //img_login的click事件，load登陆分页
 function img_login_click() {
 	$(".img_login").attr("src","img/login_white.svg");
-	$("#forge").load("Login.jsp");
+	$("#forge").load("/Community/Login.jsp");
 }
 
 
@@ -36,7 +36,7 @@ function img_regist_out() {
 //img_regist的click事件，load注册分页
 function img_regist_click() {
 	$(".img_regist").attr("src","img/regist_white.svg");
-	$("#forge").load("Regist.jsp");
+	$("#forge").load("/Community/Regist.jsp");
 	document.title = "注册";
 }
 

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="org.apache.struts2.ServletActionContext"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -9,83 +9,116 @@
 		<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
 		<!-- 本页行为js -->
-		<script src="${pageContext.request.contextPath}/static/community/page_usercenter.js"></script>
+		<script src="${pageContext.request.contextPath}/static/community/page_main.js"></script>
 		<!-- 网站主题样式 -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/community.css">
 		<!-- 网站背景动画 -->
 		<script src="${pageContext.request.contextPath}/static/airplane/three.min.js"></script>
 		<script src="${pageContext.request.contextPath}/static/airplane/airplane.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/airplane/airplane.css">
-		<title>用户中心</title>
+		<title>管理员中心</title>
 	</head>
 	<body class="bg-warning">
 		<div id="world">
-			<!-- 加载背景动画 -->
+		<!-- 加载背景动画 -->
 		</div>
-		<!-- 模态框 -->
-		<div class="modal fade" id="modal-container-702946" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						<h4 class="modal-title" id="myModalLabel">
-							标题
-						</h4>
-					</div>
-					<div class="modal-body">
-						内容...
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
-					</div>
-				</div>	
-			</div>
+		<!-- 视频预览播放的模态框 -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+       			 <div class="modal-content">
+            		<div class="modal-header">       
+               			 <h4 class="modal-title" id="myModalLabel">…</h4>
+            		</div>
+            		<div class="modal-body text-center">
+            			<video class="video_size" id="video" controls="controls">
+            				<source src="" type="audio/mp4"></source>
+            			</video>      
+            		</div>
+            		<div class="modal-footer">
+                
+            		</div>
+        		</div>
+    		</div>
 		</div>
-		<!-- 内容容器 -->
 		<div class="container">
-			<div class="row clearfix">
-				<div class="col-md-12 column">
-					<div class="page-header">
-						<h1>
-							<small class="font_title">回忆</small>
-						</h1>
+			<!-- 页眉 -->
+			<div class="row clearfix page-header">
+				<div class="col-md-2 column">
+					<!-- 页面标题 -->
+					<div class="text-left">
+						<small class="font_title h1">回忆</small>
+					</div>
+				</div>
+				<div class="col-md-8 column">
+				<!-- 页面空白 -->
+				</div>
+				<div class="col-md-2 column">
+				<!-- 页面用户管理 -->
+					<div class="text-right">
+						<li style="list-style:none" class="dropdown pull-right">
+							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+								<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
+								<%
+								HttpSession mSession = ServletActionContext
+								.getRequest().getSession();
+								%>
+								<%= mSession.getAttribute("username")%>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
+								<li><a onclick="get_collection()">信息中心</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
+								<li class="divider"></li>
+								<li><a href="Quit.jsp">退出</a></li>
+							</ul>
+						</li>
 					</div>
 				</div>
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-2 column">
-					<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" 
-					class="img-circle" />
-					<p>用户名</p>
-					<div class="list-group">
-				 		<a onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
-				 		<a onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
-				 		<a href="#" class="list-group-item">上传记录</a>
-					</div>
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return all_video_click()">视频管理</a></li>
+					</ul>
 				</div>
-				<div id="usercenter_content" class="col-md-6 column">
-				panel列表
-				<!-- 列表以panel形式显示 -->
+				<div class="col-md-2 column">
+					<ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return movie_video_click()">用户管理</a></li>
+					</ul>
 				</div>
-				<div class="col-md-4 column">
-					<a id="modal-702946" href="#modal-container-702946" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
-					<div class="alert alert-success alert-dismissable">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-						<h4>
-							注意!
-						</h4> 
-						<strong>Warning!</strong>
-						 Best check yo self, you're not looking too good. 
-						 <a href="#" class="alert-link">alert link</a>
-					</div>
-					<!-- 其他消息（公告等等） -->
+				<div class="col-md-2 column">
+					<!-- <ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return tv_video_click()">电视</a></li>
+					</ul> -->
+				</div>
+				<div class="col-md-2 column">
+					<!-- <ul class="nav nav-pills nav-justified">	
+						<li><a onclick="return cg_video_click()">CG动漫</a></li>
+					</ul> -->
+				</div>
+				<div class="col-md-1 column">
+				
+				</div>
+				<div class="col-md-3 column margin_top">
+					<form class="bs-example bs-example-form" role="form">
+						<div class="input-group">
+							<input id="inputsearch" type="text" placeholder="请输入您想要的视频" class="form-control text_area_transparency">
+							<span class="input-group-btn">
+								<button onclick="return video_search()" class="btn btn-success" type="button">搜索</button>
+							</span>
+						</div>          
+					</form>
 				</div>
 			</div>
-		</div>
-		<div style="width:600px;height:240px;overflow-y:auto;border:1px solid #333;" id="show">
-		</div>
-		<input type="text" size="80" id="msg" name="msg" placeholder="输入内容"/>
-		<input type="button" value="发送" id="sendBn" name="sendBn"/>
-
-</body>
+			<div class="row clearfix">
+				<div class="col-md-1 column"></div>
+				<div class="col-md-10 column">
+					<div id="content" class="margin">
+					<!-- 内容区域 -->
+					</div>
+				</div>
+				<div class="col-md-1 column"></div>
+			</div>
+		</div>		
+	</body>
 </html>

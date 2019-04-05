@@ -50,7 +50,7 @@ function getMyHistory(data)
 {
 	console.log("历史记录");
 	$.get("/Community/ajaxaction/GetHistoryAction",
-			{usernumber:data.name},
+			{usernumber:"20190315018971819070@163.com"},
 			function(data,status){
 				//测试
 				console.log(data);
@@ -78,7 +78,7 @@ function getMyCollection(data)
 {
 	console.log("收藏记录");
 	$.get("/Community/ajaxaction/GetCollectionAction",
-			{usernumber:data.name},
+			{usernumber:"20190315018971819070@163.com"},
 			function(data,status){
 				//测试
 				console.log(data);
@@ -101,11 +101,11 @@ function getMyCollection(data)
 			});
 }
 //获取上传记录
-function getMyUpload(data)
+function getMyUpload()
 {
 	console.log("上传记录");
 	$.get("/Community/ajaxaction/GetUploadAction",
-			{usernumber:data.name},
+			{usernumber:"20190315018971819070@163.com"},
 			function(data,status){
 				//测试
 				console.log(data);

@@ -69,7 +69,7 @@
 								<li><a onclick="get_collection()">信息中心</a></li>
 								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
-								<li><a href="Quit.jsp">退出</a></li>
+								<li><a href="/Community/action/LogoutAction">退出</a></li>
 							</ul>
 						</li>
 					</div>
@@ -83,17 +83,17 @@
 				</div>
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return movie_video_click()">电影</a></li>
+						<li><a onclick="return movie_video_click(1)">电影</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return tv_video_click()">电视</a></li>
+						<li><a onclick="return tv_video_click(1)">电视</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return cg_video_click()">CG动漫</a></li>
+						<li><a onclick="return cg_video_click(1)">CG动漫</a></li>
 					</ul>
 				</div>
 				<div class="col-md-1 column">

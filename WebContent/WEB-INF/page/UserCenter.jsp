@@ -60,13 +60,13 @@
 					<img height="128" width="128" alt="140x140" src="${pageContext.request.contextPath}/static/img/userdefault.png" />
 					<p><%= mSession.getAttribute("username")%></p>
 					<div class="list-group">
-				 		<a onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
-				 		<a onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
-				 		<a href="#" class="list-group-item">上传记录</a>
+				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
+				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
+				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyUpload(this)" class="list-group-item">上传记录</a>
 					</div>
 				</div>
 				<div id="usercenter_content" class="col-md-6 column">
-				panel列表
+				
 				<!-- 列表以panel形式显示 -->
 				</div>
 				<div class="col-md-4 column">

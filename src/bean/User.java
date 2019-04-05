@@ -1,5 +1,9 @@
 package bean;
 
+import java.util.Date;
+/*
+ * 关于用户头像处理，暂时采用默认系统的头像显示
+ */
 public class User {
 	
 	private int userid;//User表主键
@@ -9,6 +13,9 @@ public class User {
 	private String userpassword;//User表用户密码
 	private int isvip;//User表用户是否为VIP
 	
+	/*private Date usercreatedatetime;//用户创建时间
+	private byte[] userphoto;//用户头像
+*/	
 	/*
 	 * Getter and Setter
 	 */
@@ -49,6 +56,19 @@ public class User {
 	public void setIsvip(int isvip) {
 		this.isvip = isvip;
 	}
+	/*public Date getUsercreatedatetime() {
+		return usercreatedatetime;
+	}
+	public void setUsercreatedatetime(Date usercreatedatetime) {
+		this.usercreatedatetime = usercreatedatetime;
+	}
+	public byte[] getUserphoto() {
+		return userphoto;
+	}
+	public void setUserphoto(byte[] userphoto) {
+		this.userphoto = userphoto;
+	}*/
+	
 	
 	/*
 	 * (non-Javadoc)
