@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" import="org.apache.struts2.ServletActionContext"%>
+<!-- 登陆进入后呈现给用户的主页面，动态进行视频信息显示 -->
+<!-- 最终优化：全部部分最好要往数据分析改为推荐形式的 -->
+<!-- 最终优化：分页功能中在于最后一页的优化 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -75,6 +78,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- 导航栏 -->
 			<div class="row clearfix">
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
@@ -110,6 +114,7 @@
 					</form>
 				</div>
 			</div>
+			<!-- 内容区域 -->
 			<div class="row clearfix">
 				<div class="col-md-1 column"></div>
 				<div class="col-md-10 column">

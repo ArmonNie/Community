@@ -9,6 +9,8 @@ import bean.User;
 import tool.AppTool;
 import tool.ORMTool;
 
+//注册逻辑
+//TODO 见本类中的validate()方法，以及注册进行头像的上传
 public class RegisterAction {
 	
 	/*
@@ -61,7 +63,7 @@ public class RegisterAction {
 		if(this.useremail.equals("")||this.username.equals("")||this.userpassword.equals(""))
 		{
 			result = false;
-			AppTool.ConsoleOut("注册时，用户实体类初始化失败！！");
+			//AppTool.ConsoleOut("注册时，用户实体类初始化失败！！");
 		}
 		else
 		{
@@ -75,8 +77,8 @@ public class RegisterAction {
 			user.setIsvip(0);
 			
 			result = true;
-			AppTool.ConsoleOut("注册时，用户实体类初始化成功！！");
-			AppTool.DebugOut(user, "User", "前台数据已经接受！");
+			//AppTool.ConsoleOut("注册时，用户实体类初始化成功！！");
+			//AppTool.DebugOut(user, "User", "前台数据已经接受！");
 		}
 		return result;
 	}
@@ -93,7 +95,7 @@ public class RegisterAction {
 
 	public String execute()
 	{
-		AppTool.ConsoleOut("前台数据：" + this.username + this.useremail + this.userpassword);
+		//AppTool.ConsoleOut("前台数据：" + this.username + this.useremail + this.userpassword);
 		//true即是User对象创建成功（参数不为空）
 		if(this.Init())
 		{

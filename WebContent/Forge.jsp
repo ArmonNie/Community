@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
- <!--用户管理页，在id为forge的div里面改变为登陆或者注册-->
+<!--用户管理页，在id为forge的div里面改变为登陆或者注册-->
+<!--  最终待优化：动画背景的更换学习 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>

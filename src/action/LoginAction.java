@@ -19,6 +19,8 @@ import bean.User;
 import tool.AppTool;
 import tool.ORMTool;
 
+//登陆控制逻辑
+//TODO 1.用户表改进（isvip与管理员总体就是用户身份） 2.提供用户头像，以及在线状态等记录
 public class LoginAction extends ActionSupport implements SessionAware{
 	
 	private String username;
@@ -63,8 +65,8 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	{
 		String result = "LoginError";
 		
-		AppTool.ConsoleOut("前台传入用户名：" + this.username 
-				+ "前台传入密码" + this.userpassword);
+		/*AppTool.ConsoleOut("前台传入用户名：" + this.username 
+				+ "前台传入密码" + this.userpassword);*/
 		
 		/*
 		 * 数据库查询,控制登陆
@@ -74,6 +76,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		List resultList = ormtool.getQuery(hql,this.username);
 		if(resultList.size() == 0)
 		{
+			//此结果代表无此用户
 			result = "LoginNoUser";
 		}
 		else 
@@ -86,9 +89,11 @@ public class LoginAction extends ActionSupport implements SessionAware{
 					//存放进入session
 					mSession.put("username", user.getUsername());
 					mSession.put("usernumber", user.getUsernumber());
+					
+					//登陆成功
 					result = "LoginSuccess";
 					
-					//管理员登陆
+					//管理员登陆（暂时以特定账号密码进行）
 					if(user.getUsername().equals("聂璋"))
 					{
 						result = "Admin";
@@ -110,6 +115,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 				}
 				else
 				{
+					//密码输入与数据库不匹配
 					result = "LoginError";
 				}
 			}

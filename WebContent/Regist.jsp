@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <!--  本页是一个分页，用于加载进入Forge.jsp的主div中 -->
+ <!-- 最终待优化：本页面进一步的第一步完善，输入校验应该对于每个输入时进入以及失去焦点时进行触发 -->
+ <!-- 最终待优化：本页面进一步的第二步完善，注册验证码如何通过邮箱，手机进行 -->
+ <!-- 最终待优化：本页面进一步的第三步完善，注册时数据库关于上传头像文件 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,10 +22,11 @@
 		var userpassword = $("#userpassword").val();//密码
 		var confirmpassword = $("#confirmpassword").val();//密码确认
 		
-		console.log("用户名：" + username 
+		//测试输出
+		/* console.log("用户名：" + username 
 				+ "邮箱：" + email 
 				+ "密码" + userpassword
-				+ "密码确认" + confirmpassword);
+				+ "密码确认" + confirmpassword); */
 		
 		if(!reg.test(email))
 		{
@@ -43,25 +48,31 @@
 		}
 		if(result == 1)
 		{
+			//输入验证成功才真正触发注册请求事件
 			register_click();
 		}
 		
 	}
 	
 	
-	/* 中的成员变量名称都和ajax中的data：｛...｝名称相一致 */
+	//注册请求事件
 	function register_click(){
 		$.get("/Community/ajaxaction/RegisterAction", 
 				{username:$("#username").val(),
 				 useremail:$("#useremail").val(),
 				 userpassword:$("#userpassword").val()},
 				function (data, textStatus){
-					console.log(data);
+					 //测试输出回调数据
+					//console.log(data);
+					 
+					 //注册完之后显示登陆界面
 					$(".img_login").attr("src","img/login_white.svg");
 					$("#forge").load("Login.jsp");
 			});
 	}
 	</script>
+	
+	<!-- 注册相应提交的信息表单 -->
 	<form class="form-horizontal" style="margin-top:50px">
       	<div class="form-group">
 			<label  class="col-sm-2 control-label">昵称：</label>
@@ -102,5 +113,7 @@
 			</div>
 		</div>
 	</form>
+	
+	
 </body>
 </html>
