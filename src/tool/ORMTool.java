@@ -20,6 +20,7 @@ import bean.Comment;
 import bean.File;
 import bean.History;
 import bean.User;
+import bean.UserUpload;
 
 
 /**
@@ -141,6 +142,14 @@ public class ORMTool {
 				comment = (Comment)object;
 				AppTool.DebugOut(comment, "comment", "null");
 				session.save(comment);
+				session.getTransaction().commit();
+				this.closeSession();//注意关闭
+				break;
+			case "userupload":
+				UserUpload usup = new UserUpload();
+				usup = (UserUpload)object;
+				AppTool.DebugOut(usup, "userupload", "null");
+				session.save(usup);
 				session.getTransaction().commit();
 				this.closeSession();//注意关闭
 				break;

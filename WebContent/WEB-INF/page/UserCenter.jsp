@@ -32,11 +32,11 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						<h4 class="modal-title" id="myModalLabel">
-							标题
+							<%= mSession.getAttribute("username")%>的消息中心
 						</h4>
 					</div>
 					<div class="modal-body">
-						内容...
+						您暂时没有最新的信息哟+_+!!!
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
@@ -60,16 +60,20 @@
 					<img height="128" width="128" alt="140x140" src="${pageContext.request.contextPath}/static/img/userdefault.png" />
 					<p><%= mSession.getAttribute("username")%></p>
 					<div class="list-group">
-				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
-				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
-				 		<a name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyUpload(this)" class="list-group-item">上传记录</a>
+				 		<a style="cursor:pointer" id="usercenter-list1" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
+				 		<a style="cursor:pointer" id="usercenter-list2" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
+				 		<a style="cursor:pointer" id="usercenter-list3" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyUpload(this)" class="list-group-item">上传记录</a>
+						<a id="modal-702946" href="#modal-container-702946" role="button" class="btn list-group-item" data-toggle="modal">信息中心</a>
 					</div>
 				</div>
-				<div id="usercenter_content" class="col-md-6 column">
+				<div id="usercenter_content" class="col-md-9 column">
 				
 				<!-- 列表以panel形式显示 -->
 				</div>
 				<div class="col-md-4 column">
+				<!-- 空白填充块 -->
+				</div>
+				<!-- <div class="col-md-4 column">
 					<a id="modal-702946" href="#modal-container-702946" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -80,8 +84,8 @@
 						 Best check yo self, you're not looking too good. 
 						 <a href="#" class="alert-link">alert link</a>
 					</div>
-					<!-- 其他消息（公告等等） -->
-				</div>
+					其他消息（公告等等）
+				</div> -->
 			</div>
 		</div>
 </body>

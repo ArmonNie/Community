@@ -110,6 +110,16 @@ public class UploadAction {
 		bf.setGoodnumber(0);
 		
 		ormtool.insert(bf);
+		
+		ORMTool ormtool2 = new ORMTool("userupload");
+		bean.UserUpload usup = new bean.UserUpload();
+		String usernumber = ServletActionContext
+				.getRequest().getSession()
+				.getAttribute("usernumber").toString();
+		usup.setFilenumber(AppTool.getBase64FromStr(this.filepath));
+		usup.setUploadnumber(AppTool.getBase64FromStr(AppTool.getDateStr() + this.filepath));
+		usup.setUsernumber(usernumber);
+		ormtool2.insert(usup);
 		/*
 		 * 关于上传的文件名以及各式的问腿
 		 */
