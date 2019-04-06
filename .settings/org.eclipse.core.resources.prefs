@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/page/AdminCenter.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/UserCenter.jsp=UTF-8
+encoding//WebContent/WEB-INF/page/VIPUser.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/VideoPlay.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/error/Error.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/error/LoginError.jsp=UTF-8

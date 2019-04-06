@@ -73,6 +73,7 @@ public class LoadJsonAction{
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				AppTool.ConsoleOut("总数量：" + this.totalNumber);
 				totalPage = Math.ceil(totalNumber/12) + 1;
 				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
@@ -82,6 +83,8 @@ public class LoadJsonAction{
 				if(this.page == totalPage)
 				{
 					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+					//sublist不会把第二个参数对应的元素包裹进去
+					this.filelist.add(tempfilelist.get(tempfilelist.size()-1));
 				}
 				else
 				{
@@ -92,6 +95,7 @@ public class LoadJsonAction{
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				AppTool.ConsoleOut("总数量：" + this.totalNumber);
 				totalPage = Math.ceil(totalNumber/12) + 1;
 				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
@@ -101,6 +105,8 @@ public class LoadJsonAction{
 				if(this.page == totalPage)
 				{
 					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+					//sublist不会把第二个参数对应的元素包裹进去
+					this.filelist.add(tempfilelist.get(tempfilelist.size()-1));
 				}
 				else
 				{
@@ -111,6 +117,7 @@ public class LoadJsonAction{
 				hql = "select f from File as f where f.filetype = ?";
 				tempfilelist = ormtool.getQuery(hql, tag);
 				this.totalNumber = tempfilelist.size();
+				AppTool.ConsoleOut("总数量：" + this.totalNumber);
 				totalPage = Math.ceil(totalNumber/12) + 1;
 				AppTool.ConsoleOut("总页数：" + totalPage);
 				/*
@@ -120,6 +127,8 @@ public class LoadJsonAction{
 				if(this.page == totalPage)
 				{
 					this.filelist = tempfilelist.subList((page-1)*12, tempfilelist.size()-1);
+					//sublist不会把第二个参数对应的元素包裹进去
+					this.filelist.add(tempfilelist.get(tempfilelist.size()-1));
 				}
 				else
 				{

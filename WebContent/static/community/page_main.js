@@ -227,6 +227,8 @@ function tv_video_click(param) {
 				{
 					for(var j = 0;j < 3;j++)
 					{
+						if(counter_tv < obj.jsonresult.length)
+						{
 						/*
 						 * 问题记录：往thumnnail中放入按钮就乱是因为换行吗？？
 						 */
@@ -238,6 +240,9 @@ function tv_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
+						}
+						if(counter_tv < obj.jsonresult.length)
+						{
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
@@ -245,6 +250,9 @@ function tv_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
+						}
+						if(counter_tv < obj.jsonresult.length)
+						{
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
@@ -252,6 +260,9 @@ function tv_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
+						}
+						if(counter_tv < obj.jsonresult.length)
+						{
 						str_tv += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_tv].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_tv].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_tv].filenumber + '">' + obj.jsonresult[counter_tv].filename + '</a></p>' + 
@@ -259,6 +270,7 @@ function tv_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_tv++;
+						}
 						str_tv += '</div>';
 					}
 				}
@@ -297,14 +309,18 @@ function movie_video_click(param) {
 				//var pageNumber = obj.totalnumber[0];
 				console.log("总数量：" + totalNumber);
 				console.log("总页数" + Math.ceil(totalNumber/12) );
+				console.log("此页传过来数据的长度：" + obj.jsonresult.length)
+				console.log("列数" + obj.jsonresult.length/4);
 				var totalPage = Math.ceil(totalNumber/12);
 				//电影块
 				var str_movie ='<h2>电影</h2><hr>';
-				var counter_movie = 0;
+				var counter_movie = 0;//计数器，是否以及达到后台列表上限
 				for(var i = 0;i < 1;i++)
 				{
 					for(var j = 0;j < 3;j++)
 					{
+						if(counter_movie < obj.jsonresult.length)
+						{
 						/*
 						 * 问题记录：往thumnnail中放入按钮就乱是因为换行吗？？
 						 */
@@ -316,6 +332,9 @@ function movie_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
+						}
+						if(counter_movie < obj.jsonresult.length)
+						{
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
@@ -323,6 +342,9 @@ function movie_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
+						}
+						if(counter_movie < obj.jsonresult.length)
+						{
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
@@ -330,6 +352,9 @@ function movie_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
+						}
+						if(counter_movie < obj.jsonresult.length)
+						{
 						str_movie += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_movie].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_movie].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_movie].filenumber + '">' + obj.jsonresult[counter_movie].filename + '</a></p>' + 
@@ -337,6 +362,7 @@ function movie_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_movie++;
+						}
 						str_movie += '</div>';
 					}
 				}
@@ -386,6 +412,8 @@ function cg_video_click(param) {
 				{
 					for(var j = 0;j < 3;j++)
 					{
+						if(counter_cg < obj.jsonresult.length)
+						{
 						/*
 						 * 问题记录：往thumnnail中放入按钮就乱是因为换行吗？？
 						 */
@@ -397,6 +425,9 @@ function cg_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
+						}
+						if(counter_cg < obj.jsonresult.length)
+						{
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
@@ -404,6 +435,9 @@ function cg_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
+						}
+						if(counter_cg < obj.jsonresult.length)
+						{
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
@@ -411,6 +445,9 @@ function cg_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
+						}
+						if(counter_cg < obj.jsonresult.length)
+						{
 						str_cg += '<div class="col-md-3"><div class="thumbnail">' + 
 						'<img  style="cursor:pointer" alt="300x200" onerror="errorImg(this)" onclick="return video_preview(this)" data-toggle="modal" data-target="#myModal" name="' + obj.jsonresult[counter_cg].filename + '"' + 'src="/Community/static/video/VideoImage/' + obj.jsonresult[counter_cg].filename + '.jpg"/>' + 
 						'<div class="caption"><p><a onclick="return video_play(this)" name="' + obj.jsonresult[counter_cg].filenumber + '">' + obj.jsonresult[counter_cg].filename + '</a></p>' + 
@@ -418,6 +455,7 @@ function cg_video_click(param) {
 						'</div>'+ 
 						'</div></div>';
 						counter_cg++;
+						}
 						str_cg += '</div>';
 					}
 					

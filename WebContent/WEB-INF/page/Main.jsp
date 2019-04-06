@@ -69,7 +69,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
-								<li><a onclick="get_collection()">信息中心</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "uservip" %>">会员特权</a></li>
 								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
 								<li><a href="/Community/action/LogoutAction">退出</a></li>

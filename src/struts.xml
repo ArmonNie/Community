@@ -37,7 +37,7 @@
     	
     		<result name="usercenter">/WEB-INF/page/UserCenter.jsp</result>
     		<result name="uploadvideo">/WEB-INF/page/VideoUpload.jsp</result>
-    		
+    		<result name="uservip">/WEB-INF/page/VIPUser.jsp</result>
     		<result name="null_page">/WEB-INF/page/nullpage.jsp</result>
     		
     	</action>
