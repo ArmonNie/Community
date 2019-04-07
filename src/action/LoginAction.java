@@ -92,12 +92,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 					
 					//登陆成功
 					result = "LoginSuccess";
-					
-					//管理员登陆（暂时以特定账号密码进行）
-					if(user.getUsername().equals("聂璋"))
-					{
-						result = "Admin";
-					}
 				}
 				//提供邮箱登陆支持
 				else if(user.getUseremail().equals(this.username)&&user.getUserpassword().equals(this.userpassword))
@@ -119,6 +113,15 @@ public class LoginAction extends ActionSupport implements SessionAware{
 					result = "LoginError";
 				}
 			}
+		}
+		
+		
+		//管理员登陆（暂时以特定账号密码进行）
+		if(this.username.equals("聂璋"))
+		{
+			result = "Admin";
+			mSession.put("adminusername", this.username);
+			//mSession.put("adminusernumber", user.getUsernumber());
 		}
 		
 		return result;

@@ -1,130 +1,195 @@
 /**
- * 用户中心界面（收藏列表，历史记录）
+ * 管理员界面（收藏列表，历史记录）
  */
-/*window.onload = sendMessage;
+window.onload = getAllVideo;
 
-//关于通信
-function sendMessage()
+function getAllVideo()
 {
-	console.log("发送信息");
-	//CazyIt要改成你自己当前的项目名
-	var url = "ws://"+document.location.host+"/Community/websocket/chat"; 
-	//创建WebSocket对象
-	var webSocket = new WebSocket(url);
-	var sendMsg = function(){
-	    console.log("11111111111111");
-	    var inputElement = document.getElementById('msg');
-	    //发送消息
-	    webSocket.send(inputElement.value);
-	    //清空单行文本框
-	    inputElement.value="";
-	}
-	var send = function(event){
-	    if(event.keyCode==13){
-	        sendMsg();
-	    }
-	};
-	webSocket.onopen=function(){
-	    console.log("22222222222222");
-	    //为onmessage事件绑定监听器，接收消息
-	    webSocket.onmessage = function(event){
-	        console.log("33333333333333");
-	        var show = document.getElementById('show');
-	        //接收并显示消息
-	        show.innerHTML +=event.data+"<br/>";
-	        show.scrollTop = show.scrollHeight;
-	    }
-	    document.getElementById('msg').onkeydown = send;
-	    document.getElementById('sendBn').onclick = sendMsg;
-	};
-	webSocket.onclose = function(){
-	    console.log("4444444444444444444");
-	    document.getElementById('msg').onkeydown = null;
-	    document.getElementById('sendBn').onclick = null;
-	    console.log('WebSocket已经被关闭。');
-	};
-}*/
-
-//根据usernumber获取播放记录
-function getMyHistory(data)
-{
-	console.log("历史记录");
-	$.get("/Community/ajaxaction/GetHistoryAction",
-			{usernumber:"20190315018971819070@163.com"},
-			function(data,status){
-				//测试
-				console.log(data);
-				//先清空内容
-				$("#usercenter_content").html("");
+	$.get("/Community/ajaxaction/LoadJsonAction", 
+			{tag:"all"},
+			function (data, textStatus){
+				//调试代码
+				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+				//避免重复加载，每次加载数据前先清空
+				$("#content").html("");
 				/* 处理json数据并执行 */
 				var obj = JSON.parse(data);
-				//拼接字符串
-				var str = "";
-				//遍历obj,例如obj.jsonresult[i].filetype
+				//append注意：https://blog.csdn.net/qq_22771739/article/details/80554675
+				//全部-电影块
+				var str1 = '<div class="container-fluid">\n<div class="row-fluid">\n<div class="span12">\n';
+				str1 += '<h2>电影</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+				'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
-					str += '<div class="panel panel-default">' +
-						'<div class="panel-heading"><h3 class="panel-title">' +
-						obj.jsonresult[i].filename + '</h3></div>' + 
-						'<div class="panel-body">' + obj.jsonresult[i].filename + '</div>' + 
-						'<div class="panel-footer">' + obj.jsonresult[i].filename + '</div></div>'
+					if(obj.jsonresult[i].filetype == "0")
+					{
+					str1 += '<tr>\n' + 
+					'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+					+ obj.jsonresult[i].filename + '</a></td>' +
+					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+					'<td><div class="btn-group">' +
+					'<button name="' +obj.jsonresult[i].filename + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+					+ "下载" + '</button>' + 
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
+					"收藏" + '</button>' +
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+					}
 				}
-				$("#usercenter_content").append(str);
+				str1 += '</tbody></table></div></div></div>';
+				//全部-电视块
+				str1 += '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+						'<h2>电视</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+						'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
+				for(var i = 0;i<obj.jsonresult.length;i++)
+				{
+					if(obj.jsonresult[i].filetype == "2")
+					{
+						str1 += '<tr>\n' + 
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filename + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
+						"收藏" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
+					}
+				}
+				str1 += '</tbody></table></div></div></div>';
+				//全部-CG块
+				str1 += '<div class="container-fluid"><div class="row-fluid"><div class="span12">' +
+						'<h2>CG动漫</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+						'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
+				for(var i = 0;i<obj.jsonresult.length;i++)
+				{
+					if(obj.jsonresult[i].filetype == "1")
+					{
+						str1 += '<tr>\n' + 
+						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+						+ obj.jsonresult[i].filename + '</a></td>' +
+						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td><div class="btn-group">' +
+						'<button name="' +obj.jsonresult[i].filename + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+						+ "下载" + '</button>' + 
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
+						"收藏" + '</button>' +
+						'<button name="' +obj.jsonresult[i].filenumber + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+						"播放" + '</button>' +  '</div></td>\n</tr>\n';
+					}
+				}
+				str1 += '</tbody></table></div></div></div>';
+				$("#content").append(str1);
+		});
+}
+
+function getAllUser()
+{
+	$.get("/Community/ajaxaction/GetAllUserAction", 
+			{},
+			function (data, textStatus){
+				//调试代码
+				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+				//避免重复加载，每次加载数据前先清空
+				$("#content").html("");
+				/* 处理json数据并执行 */
+				var obj = JSON.parse(data);
+				//append注意：https://blog.csdn.net/qq_22771739/article/details/80554675
+				//全部-电影块
+				var str1 = '<div class="container-fluid">\n<div class="row-fluid">\n<div class="span12">\n';
+				str1 += '<h2>用户列表</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+				'<thead>\n<tr class="">\n<th>用户名</th><th>用户编号</th><th>用户密码</th><th>操作</th></tr>\n</thead><tbody>\n';
+				for(var i = 0;i<obj.userlist.length;i++)
+				{
+					str1 += '<tr>\n' + 
+					'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+					+ obj.userlist[i].username + '</a></td>' +
+					'<td>'+ obj.userlist[i].usernumber + "MB"+ '</td>' +
+					'<td>'+ obj.userlist[i].userpassword + '</td>' +
+					'<td><div class="btn-group">' +
+					'<button name="' +obj.userlist[i].usernumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+					+ "下载" + '</button>' + 
+					'<button name="' +obj.userlist[i].usernumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
+					"收藏" + '</button>' +
+					'<button name="' + obj.userlist[i].usernumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+				}
+				str1 += '</tbody></table></div></div></div>';
+				$("#content").append(str1);
+		});
+}
+
+//搜索按钮事件
+function video_search()
+{
+	var inputsearch = $("#inputsearch").val();
+	console.log("用户输入了" + inputsearch);
+	$.get("/Community/ajaxaction/SearchAction",
+			{filename:inputsearch},
+			function(data,status)
+			{
+				console.log(status);
+				console.log(data);
+				//调试代码
+				//console.log(obj.jsonresult[0].filename + obj.jsonresult[0].filesize);
+				//避免重复加载，每次加载数据前先清空
+				$("#content").html("");
+				/* 处理json数据并执行 */
+				var obj = JSON.parse(data);
+				//append注意：https://blog.csdn.net/qq_22771739/article/details/80554675
+				//全部-电影块
+				var str1 = '<div class="container-fluid">\n<div class="row-fluid">\n<div class="span12">\n';
+				str1 += '<h2>搜索结果</h2><hr>' + '<table class="table table-hover table-bordered">\n' +
+				'<thead>\n<tr class="">\n<th>文件名</th><th>文件大小</th><th>热度</th><th>操作</th></tr>\n</thead><tbody>\n';
+				for(var i = 0;i<obj.jsonresult.length;i++)
+				{
+					str1 += '<tr>\n' + 
+					'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
+					+ obj.jsonresult[i].filename + '</a></td>' +
+					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
+					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+					'<td><div class="btn-group">' +
+					'<button name="' +obj.jsonresult[i].filename + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
+					+ "下载" + '</button>' + 
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
+					"收藏" + '</button>' +
+					'<button name="' +obj.jsonresult[i].filenumber + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
+					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+				}
+				str1 += '</tbody></table></div></div></div>';
+				$("#content").append(str1);
 			});
 }
 
-//获取我的收藏记录
-function getMyCollection(data)
-{
-	console.log("收藏记录");
-	$.get("/Community/ajaxaction/GetCollectionAction",
-			{usernumber:"20190315018971819070@163.com"},
-			function(data,status){
-				//测试
-				console.log(data);
-				//先清空内容
-				$("#usercenter_content").html("");
-				/* 处理json数据并执行 */
-				var obj = JSON.parse(data);
-				//拼接字符串
-				var str = "";
-				//遍历obj,例如obj.jsonresult[i].filetype
-				for(var i = 0;i<obj.jsonresult.length;i++)
-				{
-					str += '<div class="panel panel-default">' +
-						'<div class="panel-heading"><h3 class="panel-title">' +
-						obj.jsonresult[i].filename + '</h3></div>' + 
-						'<div class="panel-body">' + obj.jsonresult[i].filename + '</div>' + 
-						'<div class="panel-footer">' + obj.jsonresult[i].filename + '</div></div>'
-				}
-				$("#usercenter_content").append(str);
-			});
-}
-//获取上传记录
-function getMyUpload()
-{
-	console.log("上传记录");
-	$.get("/Community/ajaxaction/GetUploadAction",
-			{usernumber:"20190315018971819070@163.com"},
-			function(data,status){
-				//测试
-				console.log(data);
-				//先清空内容
-				$("#usercenter_content").html("");
-				/* 处理json数据并执行 */
-				var obj = JSON.parse(data);
-				//拼接字符串
-				var str = "";
-				//遍历obj,例如obj.jsonresult[i].filetype
-				for(var i = 0;i<obj.jsonresult.length;i++)
-				{
-					str += '<div class="panel panel-default">' +
-						'<div class="panel-heading"><h3 class="panel-title">' +
-						obj.jsonresult[i].filename + '</h3></div>' + 
-						'<div class="panel-body">' + obj.jsonresult[i].filename + '</div>' + 
-						'<div class="panel-footer">' + obj.jsonresult[i].filename + '</div></div>'
-				}
-				$("#usercenter_content").append(str);
-			});
+/*点击列表里的视频名称，进行预览播放*/
+function video_preview(data){
+	//console.log("play" + data.innerHTML);
+	var v = document.getElementById("video");
+	$("#myModalLabel").html(data.name + "播放中...");
+	//v.src="" + '${pageContext.request.contextPath}' +"/static/video/ServerVideo/"+data.name;
+	//v.src="/static/video/ServerVideo/"+data.name;
+	v.src="/Community/static/video/ServerVideo/傲世九重天.mp4";
+	v.load();
+	v.play();
 }
 

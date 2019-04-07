@@ -9,7 +9,7 @@
 		<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
 		<!-- 本页行为js -->
-		<script src="${pageContext.request.contextPath}/static/community/page_main.js"></script>
+		<script src="${pageContext.request.contextPath}/static/community/page_admienter.js"></script>
 		<!-- 网站主题样式 -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/community.css">
 		<!-- 网站背景动画 -->
@@ -62,15 +62,15 @@
 								HttpSession mSession = ServletActionContext
 								.getRequest().getSession();
 								%>
-								<%= mSession.getAttribute("username")%>
+								<%= mSession.getAttribute("adminusername")%>
 							</a>
-							<ul class="dropdown-menu">
+							<%-- <ul class="dropdown-menu">
 								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
 								<li><a onclick="get_collection()">信息中心</a></li>
 								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
 								<li><a href="Quit.jsp">退出</a></li>
-							</ul>
+							</ul> --%>
 						</li>
 					</div>
 				</div>
@@ -78,12 +78,12 @@
 			<div class="row clearfix">
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return all_video_click()">视频管理</a></li>
+						<li><a onclick="return getAllVideo()">视频管理</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return movie_video_click()">用户管理</a></li>
+						<li><a onclick="return getAllUser()">用户管理</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 column">
