@@ -60,7 +60,7 @@
 					<img height="128" width="128" alt="140x140" src="${pageContext.request.contextPath}/static/img/userdefault.png" />
 					<p><%= mSession.getAttribute("username")%></p>
 					<div class="list-group">
-				 		<a style="cursor:pointer" id="usercenter-list1" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyHistory(this)" class="list-group-item">播放历史</a>
+				 		<a style="cursor:pointer" id="usercenter-list1" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyHistory(this)" class="text-warning list-group-item">播放历史</a>
 				 		<a style="cursor:pointer" id="usercenter-list2" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyCollection(this)" class="list-group-item">收藏记录</a>
 				 		<a style="cursor:pointer" id="usercenter-list3" name="<%= mSession.getAttribute("usernumber")%>" onclick="return getMyUpload(this)" class="list-group-item">上传记录</a>
 						<a id="modal-702946" href="#modal-container-702946" role="button" class="btn list-group-item" data-toggle="modal">信息中心</a>

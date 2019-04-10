@@ -72,11 +72,11 @@ function getMyHistory(data)
 				//遍历obj,例如obj.jsonresult[i].filetype
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
-					str += '<div class="panel panel-default">' +
-						'<div class="panel-heading"><p class="panel-title">于'+ obj.jsonresult[i].historydate +'观看<a>'+
+					str += '<div class="panel panel-success text_area_transparency bg-warning">' +
+						'<div class="panel-heading"><p class="font_title">于'+ obj.jsonresult[i].historydate +'观看<a class="font_title">'+
 						obj.jsonresult[i].filename + '</a></p></div>' + 
 						'<div class="panel-body">视频简介:' + obj.jsonresult[i].filedescription + '</div>' + 
-						'<div class="panel-footer"><button class="btn_primary">再次观影</button></div></div>'
+						'<div class="panel-footer"><button class="btn-success btn-xs">再次观影</button></div></div>'
 				}
 				$("#usercenter_content").append(str);
 			});
