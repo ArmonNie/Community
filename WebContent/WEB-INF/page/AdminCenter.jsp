@@ -64,13 +64,14 @@
 								%>
 								<%= mSession.getAttribute("adminusername")%>
 							</a>
-							<%-- <ul class="dropdown-menu">
+							<ul class="dropdown-menu">
 								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
-								<li><a onclick="get_collection()">信息中心</a></li>
+								<li><a href="/Community/action/LinkAction?index=<%= "adduser" %>">添加用户</a></li>
+								<li><a onclick="return loadAdduser()">添加用户</a></li> 
 								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
-								<li><a href="Quit.jsp">退出</a></li>
-							</ul> --%>
+								<li><a href="/Community/action/LogoutAction">退出</a></li>
+							</ul>
 						</li>
 					</div>
 				</div>

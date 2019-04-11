@@ -199,24 +199,26 @@ public class ORMTool {
 	/*
 	 * 单个删除
 	 */
-	/*public void delete()
+	public void delete(Object object)
 	{
 		switch(this.TableName)
 		{
 			case "user":
 				User user = new User();
-				user = (User)this.object;
+				user = (User)object;
 				session.delete(user);
 				session.getTransaction().commit();
+				this.closeSession();
 				break;
 			case "file":
 				File file = new File();
-				file = (File)this.object;
+				file = (File)object;
 				session.delete(file);
 				session.getTransaction().commit();
+				this.closeSession();
 				break;
 		}
-	}*/
+	}
 	
 	/*
 	 * 批量删除

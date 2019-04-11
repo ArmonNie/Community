@@ -3,8 +3,34 @@
  */
 window.onload = getAllVideo;
 
+function video_delete(data)
+{
+	console.log("删除视频");
+}
+
+function user_delete(data)
+{
+	console.log("删除用户");
+}
+
+function video_detail(data)
+{
+	console.log("视频详情");
+}
+
+function user_detail(data)
+{
+	console.log("用户详情");
+}
+
+function user_changepassword(data)
+{
+	console.log("修改密码");
+}
+
 function getAllVideo()
 {
+	console.log("获取所有视频信息");
 	$.get("/Community/ajaxaction/LoadJsonAction", 
 			{tag:"all"},
 			function (data, textStatus){
@@ -30,14 +56,14 @@ function getAllVideo()
 					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 					'<td><div class="btn-group">' +
 					'<button name="' +obj.jsonresult[i].filename + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
-					+ "下载" + '</button>' + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
+					+ "播放" + '</button>' + 
 					'<button name="' +obj.jsonresult[i].filenumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
-					"收藏" + '</button>' +
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+					"详情" + '</button>' +
 					'<button name="' +obj.jsonresult[i].filenumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
-					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
+					"删除" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -56,14 +82,14 @@ function getAllVideo()
 						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 						'<td><div class="btn-group">' +
 						'<button name="' +obj.jsonresult[i].filename + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
-						+ "下载" + '</button>' + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
+						+ "播放" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
-						"收藏" + '</button>' +
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
-						"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
+						"删除" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -82,14 +108,14 @@ function getAllVideo()
 						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
 						'<td><div class="btn-group">' +
 						'<button name="' +obj.jsonresult[i].filename + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
-						+ "下载" + '</button>' + 
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
+						+ "播放" + '</button>' + 
 						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
-						"收藏" + '</button>' +
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
+						"详情" + '</button>' +
 						'<button name="' +obj.jsonresult[i].filenumber + 
-						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
-						"播放" + '</button>' +  '</div></td>\n</tr>\n';
+						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
+						"删除" + '</button>' +  '</div></td>\n</tr>\n';
 					}
 				}
 				str1 += '</tbody></table></div></div></div>';
@@ -99,6 +125,7 @@ function getAllVideo()
 
 function getAllUser()
 {
+	console.log("获取所有用户中");
 	$.get("/Community/ajaxaction/GetAllUserAction", 
 			{},
 			function (data, textStatus){
@@ -122,14 +149,14 @@ function getAllUser()
 					'<td>'+ obj.userlist[i].userpassword + '</td>' +
 					'<td><div class="btn-group">' +
 					'<button name="' +obj.userlist[i].usernumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
-					+ "下载" + '</button>' + 
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_changepassword(this)">' 
+					+ "修改密码" + '</button>' + 
 					'<button name="' +obj.userlist[i].usernumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_collect(this)">' +
-					"收藏" + '</button>' +
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_detail(this)">' +
+					"详情" + '</button>' +
 					'<button name="' + obj.userlist[i].usernumber + 
-					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_play(this)">' + 
-					"播放" + '</button>' +  '</div></td>\n</tr>\n';
+					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_delete(this)">' + 
+					"删除" + '</button>' +  '</div></td>\n</tr>\n';
 				}
 				str1 += '</tbody></table></div></div></div>';
 				$("#content").append(str1);
@@ -193,3 +220,25 @@ function video_preview(data){
 	v.play();
 }
 
+function loadAdduser()
+{
+	$("#content").load("/Community/WEB-INF/page/AddUser.jsp");
+}
+
+
+function btn_adduser()
+{
+	console.log("添加用户");
+	$.get("/Community/ajaxaction/AddUserAction", 
+			{username:$("#username").val(),
+			 useremail:$("#useremail").val(),
+			 userpassword:$("#userpassword").val()},
+			function (data, textStatus){
+				 //测试输出回调数据
+				//console.log(data);
+				 alert(data);
+				 //注册完之后显示登陆界面
+				//$(".img_login").attr("src","img/login_white.svg");
+				//$("#forge").load("Login.jsp");
+		});
+}
