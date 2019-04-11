@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">
 		<!-- 本页行为js -->
 		<script src="${pageContext.request.contextPath}/static/community/page_videoplay.js"></script>
+		<script src="${pageContext.request.contextPath}/static/community/page_main.js"></script>
 		<!-- 网站主题样式 -->
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/community/community.css">
 		<!-- 网站背景动画 -->
@@ -55,7 +56,7 @@
 					<div class="text-right">
 						<li style="list-style:none" class="dropdown pull-right">
 							<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-								<img src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
+								<img id="img_user" name="<%= mSession.getAttribute("usernumber")%>" src="${pageContext.request.contextPath}/static/img/login_gray.svg" class="margin">
 								<%= mSession.getAttribute("username")%>
 							</a>
 							<ul class="dropdown-menu">
@@ -69,6 +70,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- 视频简介 -->
 			<div class="row clearfix">
 				<div class="col-md-8 column">
 					<div class="media">
@@ -88,12 +90,21 @@
     				
 				</div>
 			</div>
+			<!-- 操作 -->
 			<div class="row cleearfix">
-				<div class="col-md-12 column">
-				填充
+				<div class="col-md-12 column" style="margin-bottom:10">
+					<div class="btn-group text-right">
+						 <a class="btn" type="button" name="<%= f.getFilename()%>" onclick="return video_download(this)">
+						 	<img height="30" width="30" src="${pageContext.request.contextPath}/static/img/download.svg"/>
+						 </a> 
+						 <a class="btn" type="button" name="<%= f.getFilenumber()%>" onclick="return video_collect(this)">
+						 	<img height="30" width="30" src="${pageContext.request.contextPath}/static/img/collect.svg"/>
+						 </a> 
+					</div>
 				</div>
 			</div>
-			<hr>
+			<!-- <hr> -->
+			<!-- 视频播放区 -->
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 				 	<div class="panel panel-default">
@@ -123,14 +134,14 @@
 					</div>
 				</div>
 			</div>
-
 			<hr>
+			<!-- 评论区 -->
 			<div class="row clearfix">
 				<div class="col-md-8 column">
 					<div class="row clearfix">
 						<div class="col-md-3 column">
-							<img src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/64/64/default.jpg" 
-							class="media-object" alt='' />
+							<img height="128" width="128" alt="140x140" src="/Community/static/img/userdefault.png"
+							class="media-object" alt=''/>
 						</div>
 						<div class="col-md-9 column">
 						<!-- form表单提交会被struts2当作action执行. -->
@@ -140,8 +151,8 @@
     								<textarea id="usercomment" name="usercomment" class="form-control" rows="3"></textarea>
   								</div>
   								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-						 				<button name="<%= f.getFilenumber()%>" onclick="return btn_comment(this)" class="btn btn-default">评论</button>
+									<div class="col-sm-10">
+						 				<button id="btn-comment" name="<%= f.getFilenumber()%>" onclick="return btn_comment(this)" class="btn btn-success">评论</button>
 									</div>
 								</div>
 							</form>
@@ -153,9 +164,12 @@
     				
 				</div>
 			</div>
+			<!-- 加载评论列表 -->
+			
+			<hr>
 			<div id="videoconment" class="row clearfix">
 				<div class="col-md-12 column">
-					<div class="media">
+					<%-- <div class="media">
 				 		<a href="#" class="pull-left">
 				 			<img height="128" width="128" alt="140x140" src="/Community/static/img/userdefault.png" class="media-object" alt='' />
 				 		</a>
@@ -165,7 +179,7 @@
 							</h4> 
 							<%= f.getFiledescription() %>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</div>		

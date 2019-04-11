@@ -15,7 +15,7 @@ import tool.ORMTool;
 
 public class GetCommentAction {
 
-	private String usernumber;
+	private String filenumber;
 	private List<Comment> commentList;//评论列表
 	private List<User> userList;//用户列表
 	
@@ -34,11 +34,11 @@ public class GetCommentAction {
 	 * 注意：若依然存在getter，会被Struts以json形式一起传给前台
 	 * 造成解析困难
 	 */
-	/*public String getUsernumber() {
-		return usernumber;
+	/*public String getFilenumber() {
+		return filenumber;
 	}*/
-	public void setUsernumber(String usernumber) {
-		this.usernumber = usernumber;
+	public void setFilenumber(String filenumber) {
+		this.filenumber = filenumber;
 	}
 
 	/*
@@ -46,14 +46,14 @@ public class GetCommentAction {
 	 */
 	public String execute()
 	{
-		AppTool.ConsoleOut("前台传入的标签：" + this.usernumber);
+		AppTool.ConsoleOut("前台传入的标签：" + this.filenumber);
 		
 		/*
 		 * 首先获取comment列表
 		 */
 		ORMTool ormtool = new ORMTool("comment");
-		String hql = "select c from Comment as c where c.usernumber = ?";
-		this.commentList = ormtool.getQuery(hql, usernumber);
+		String hql = "select c from Comment as c where c.filenumber = ?";
+		this.commentList = ormtool.getQuery(hql, filenumber);
 
 		for(Comment c : this.commentList)
 		{
