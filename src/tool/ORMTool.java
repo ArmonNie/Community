@@ -199,13 +199,14 @@ public class ORMTool {
 	/*
 	 * 单个删除
 	 */
-	public void delete(Object object)
+	public void delete(Object object,int id)
 	{
 		switch(this.TableName)
 		{
 			case "user":
 				User user = new User();
 				user = (User)object;
+				user.setUserid(id);
 				session.delete(user);
 				session.getTransaction().commit();
 				this.closeSession();
@@ -213,6 +214,7 @@ public class ORMTool {
 			case "file":
 				File file = new File();
 				file = (File)object;
+				file.setFileid(id);
 				session.delete(file);
 				session.getTransaction().commit();
 				this.closeSession();

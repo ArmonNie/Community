@@ -26,15 +26,31 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     		<div class="modal-dialog">
        			 <div class="modal-content">
-            		<div class="modal-header">       
+            		<div id="ModalHeader" class="modal-header">       
                			 <h4 class="modal-title" id="myModalLabel">…</h4>
             		</div>
-            		<div class="modal-body text-center">
+            		<div id="ModalBody" class="modal-body text-center">
             			<video class="video_size" id="video" controls="controls">
             				<source src="" type="audio/mp4"></source>
             			</video>      
             		</div>
-            		<div class="modal-footer">
+            		<div id="ModalFooter" class="modal-footer">
+                
+            		</div>
+        		</div>
+    		</div>
+		</div>
+		<!-- 其他功能模态框 -->
+		<div class="modal fade" id="ModalOther" tabindex="-1" role="dialog" aria-labelledby="ModalOtherLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+       			 <div class="modal-content">
+            		<div id="ModalOtherHeader" class="modal-header">       
+               			 <h4 class="modal-title" id="ModalOtherLabel">其他功能模态框</h4>
+            		</div>
+            		<div id="ModalOtherBody" class="modal-body text-center">
+            			<!-- 视具体功能显示不同的内容  -->     
+            		</div>
+            		<div id="ModalOtherFooter" class="modal-footer">
                 
             		</div>
         		</div>
@@ -67,7 +83,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="/Community/action/LinkAction?index=<%= "usercenter" %>">个人中心</a></li>
 								<li><a href="/Community/action/LinkAction?index=<%= "adduser" %>">添加用户</a></li>
-								<li><a onclick="return loadAdduser()">添加用户</a></li> 
+								<!-- <li><a onclick="return loadAdduser()">添加用户</a></li>  -->
 								<li><a href="/Community/action/LinkAction?index=<%= "uploadvideo" %>">上传视频</a></li>
 								<li class="divider"></li>
 								<li><a href="/Community/action/LogoutAction">退出</a></li>
