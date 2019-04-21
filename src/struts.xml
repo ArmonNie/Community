@@ -199,6 +199,14 @@
     		</result>
     	</action>
     	
+    	<action name="ChangePasswordAction" class="ajaxaction.ChangePasswordAction">
+    		<result name="ChangePasswordSuccess" type="json">
+    			<param name="contentType">text/html</param>
+    			<!-- 自动返回所有gettet对应数据 -->
+				<param name="noCache">true</param>
+    		</result>
+    	</action>
+    	
     </package> 
       
 </struts> 

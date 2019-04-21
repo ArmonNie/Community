@@ -234,36 +234,18 @@ public class ORMTool {
 	/*
 	 * 更新,待改进
 	 */
-	public void update()
+	public void update(Object object,int updateid)
 	{
 		switch(this.TableName)
 		{
-			/*case "student":
-				Student student = new Student();
-				student = (Student)this.object;
-				Student ole_student=(Student)session.get(Student.class, student.getStudentid());		            
-		        System.out.println("1412666026    "+ole_student.getStudenttag());
-		        System.out.println("1412666026    "+student.getStudenttag());
-				ole_student.setStudenttag(student.getStudenttag());
-	            
-				session.update(ole_student);
+			case "user":
+				User user = new User();
+				user = (User)object;
+				user.setUserid(updateid);
+				session.update(user);
 				session.getTransaction().commit();
 				//this.closeSession();
 				break;
-			case "teacher":
-				Teacher teacher = new Teacher();
-				teacher = (Teacher)this.object;
-				session.update(teacher);
-				session.getTransaction().commit();
-				//this.closeSession();
-				break;
-			case "exam":
-				Exam exam = new Exam();
-				exam = (Exam)this.object;
-				session.update(exam);
-				session.getTransaction().commit();
-				//this.closeSession();
-				break;*/
 		}
 	}
 	

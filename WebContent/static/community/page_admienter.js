@@ -11,7 +11,7 @@ function video_delete(data)
 			function (data, textStatus){
 				 //测试输出回调数据
 				//console.log(data);
-				 alert(data);
+				show_alert(data);
 				 getAllVideo();
 				 //注册完之后显示登陆界面
 				//$(".img_login").attr("src","img/login_white.svg");
@@ -27,7 +27,7 @@ function user_delete(data)
 			function (data, textStatus){
 				 //测试输出回调数据
 				//console.log(data);
-				 alert(data);
+				show_alert(data);
 				 getAllUser();
 				 //注册完之后显示登陆界面
 				//$(".img_login").attr("src","img/login_white.svg");
@@ -60,6 +60,34 @@ function user_changepassword(data)
 	//先清空body与footer
 	$("#ModalOtherBody").html("");
 	$("#ModalOtherFooter").html("");
+	//修改密码表单
+	var bodystr = "";
+	bodystr += '<form role="form">';
+	bodystr += '<div class="form-group"><label for="newpassword">新密码：</label>'
+		+ '<input class="form-control" id="modalnewpassword" /></div>';
+	bodystr += '</form>';
+	$("#ModalOtherBody").html(bodystr);
+	var footstr = "";
+	footstr += ' <button name=' + data.name +' onclick="return user_confirmchangepassword(this)" class="btn btn-default">确认修改</button>';
+	$("#ModalOtherFooter").html(footstr);
+}
+
+function user_confirmchangepassword(data)
+{
+	console.log("确认修改");
+	$.get("/Community/ajaxaction/ChangePasswordAction", 
+			{updateid:data.name,
+			 userpassword:$("#modalnewpassword").val()},
+			function (data, textStatus){
+				 //测试输出回调数据
+				//console.log(data);
+				 show_alert(data);
+				 $("#ModalOther").modal('hide');
+				 getAllUser();
+				 //注册完之后显示登陆界面
+				//$(".img_login").attr("src","img/login_white.svg");
+				//$("#forge").load("Login.jsp");
+		});
 }
 
 function getAllVideo()
@@ -184,7 +212,7 @@ function getAllUser()
 					'<td>'+ obj.userlist[i].usernumber + "MB"+ '</td>' +
 					'<td>'+ obj.userlist[i].userpassword + '</td>' +
 					'<td><div class="btn-group">' +
-					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].usernumber + 
+					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].userid + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_changepassword(this)">' 
 					+ "修改密码" + '</button>' + 
 					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].usernumber + 
@@ -272,9 +300,24 @@ function btn_adduser()
 			function (data, textStatus){
 				 //测试输出回调数据
 				//console.log(data);
-				 alert(data);
+				 show_alert(data);
 				 //注册完之后显示登陆界面
 				//$(".img_login").attr("src","img/login_white.svg");
 				//$("#forge").load("Login.jsp");
 		});
+}
+
+function show_alert(data)
+{
+	console.log(data);
+	var obj = JSON.parse(data);
+	//console.log(obj.result.msg);
+	if(obj.result.result == "1")
+	{
+		alert("操作成功");
+	}
+	else
+	{
+		alert("操作失败");
+	}
 }

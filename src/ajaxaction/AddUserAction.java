@@ -84,7 +84,7 @@ public class AddUserAction {
 	/*
 	 * ajax注册以json形式返回注册结果
 	 */
-	@JSON(name="addresult")
+	@JSON(name="result")
 	public Map<String,String> getResult()
 	{
 		return this.result;
