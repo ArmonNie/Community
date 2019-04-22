@@ -40,8 +40,8 @@
 				<div class="col-md-2 column">
 				<!-- 页面用户管理 -->
 					<div class="text-right">
-						<a><img class="img_login" alt="登录" title="登录" src="img/login_gray.svg" onmouseover="return img_login_over()" onmouseout="return img_login_out()" onclick="return img_login_click()"></a>
-						<a><img class="img_regist" alt="注册" title="注册" src="img/regist_gray.svg"onmouseover="return img_regist_over()" onmouseout="return img_regist_out()" onclick="return img_regist_click()"></a>
+						<a><img class="img_login" alt="登录" title="登录" src="/Community/static/img/login_gray.svg" onmouseover="return img_login_over()" onmouseout="return img_login_out()" onclick="return img_login_click()"></a>
+						<a><img class="img_regist" alt="注册" title="注册" src="/Community/static/img/regist_gray.svg"onmouseover="return img_regist_over()" onmouseout="return img_regist_out()" onclick="return img_regist_click()"></a>
 					</div>
 				</div>
 			</div>

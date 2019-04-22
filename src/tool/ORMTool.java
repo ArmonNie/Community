@@ -246,6 +246,14 @@ public class ORMTool {
 				session.getTransaction().commit();
 				//this.closeSession();
 				break;
+			case "file":
+				File file = new File();
+				file = (File)object;
+				file.setFileid(updateid);
+				session.update(file);
+				session.getTransaction().commit();
+				//this.closeSession();
+				break;
 		}
 	}
 	

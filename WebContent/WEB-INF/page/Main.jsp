@@ -82,7 +82,7 @@
 			<div class="row clearfix">
 				<div class="col-md-2 column">
 					<ul class="nav nav-pills nav-justified">	
-						<li><a onclick="return all_video_click()">全部</a></li>
+						<li><a onclick="return all_video_click()">推荐</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2 column">

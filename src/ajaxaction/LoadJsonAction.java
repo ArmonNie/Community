@@ -136,7 +136,7 @@ public class LoadJsonAction{
 				}
 				break;
 			default:
-				hql = "select f from File as f";
+				hql = "select f from File as f order by goodnumber desc";
 				this.filelist = ormtool.getQuery(hql);
 				break;
 		}

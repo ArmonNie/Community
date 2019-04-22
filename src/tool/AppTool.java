@@ -73,7 +73,7 @@ public class AppTool {
 	 */
 	public static String getDateStr()
 	{
-		 Date d = new Date(); 
+		 Date d = new Date();
 	     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
 	     String dateNowStr = sdf.format(d); 
 	     AppTool.ConsoleOut("格式化后的日期：" + dateNowStr);

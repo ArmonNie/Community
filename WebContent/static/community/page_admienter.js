@@ -121,9 +121,9 @@ function getAllVideo()
 					'<button data-toggle="modal" data-target="#myModal" name="' +obj.jsonresult[i].filename + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
 					+ "播放" + '</button>' + 
-					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
+					/*'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-					"详情" + '</button>' +
+					"详情" + '</button>' +*/
 					'<button name="' +obj.jsonresult[i].fileid + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
 					"删除" + '</button>' +  '</div></td>\n</tr>\n';
@@ -147,9 +147,9 @@ function getAllVideo()
 						'<button data-toggle="modal" data-target="#myModal" name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
 						+ "播放" + '</button>' + 
-						'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
+						/*'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"详情" + '</button>' +*/
 						'<button name="' +obj.jsonresult[i].fileid + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
 						"删除" + '</button>' +  '</div></td>\n</tr>\n';
@@ -173,9 +173,9 @@ function getAllVideo()
 						'<button data-toggle="modal" data-target="#myModal" name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_preview(this)">' 
 						+ "播放" + '</button>' + 
-						'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
+						/*'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.jsonresult[i].filenumber + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_detail(this)">' +
-						"详情" + '</button>' +
+						"详情" + '</button>' +*/
 						'<button name="' +obj.jsonresult[i].fileid + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_delete(this)">' + 
 						"删除" + '</button>' +  '</div></td>\n</tr>\n';
@@ -215,9 +215,9 @@ function getAllUser()
 					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].userid + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_changepassword(this)">' 
 					+ "修改密码" + '</button>' + 
-					'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].usernumber + 
+					/*'<button data-toggle="modal" data-target="#ModalOther" name="' +obj.userlist[i].usernumber + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_detail(this)">' +
-					"详情" + '</button>' +
+					"详情" + '</button>' +*/
 					'<button name="' + obj.userlist[i].userid + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return user_delete(this)">' + 
 					"删除" + '</button>' +  '</div></td>\n</tr>\n';

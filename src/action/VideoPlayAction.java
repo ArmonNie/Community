@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.util.ValueStack;
 
 import bean.File;
 import bean.History;
+import bean.User;
 import tool.AppTool;
 import tool.ORMTool;
 
@@ -44,6 +45,21 @@ public class VideoPlayAction {
 		history.setHistoryfilenumber(this.filenumber);
 		history.setHistoryusernumber(usernumber);
 		ormtool.insert(history);
+		/*
+		 * 更改视频热度信息
+		 */
+		ORMTool ormtool1 = new ORMTool("file");
+		
+		String hql = "select f from File as f where filenumber = ?";
+		List resultList = ormtool1.getQuery(hql,this.filenumber + "");
+		AppTool.ConsoleOut("列表大小：" + resultList.size());
+		
+		ORMTool ormtool2 = new ORMTool("file");
+		File file = new File();
+		file = (File) resultList.get(0);
+		file.setGoodnumber(file.getGoodnumber() + 1);
+		ormtool2.update(file,file.getFileid());
+		
 		
 		return "videoplay";
 	}

@@ -12,30 +12,30 @@ $(document).ready(function() {
 
 //img_login的mouseover事件
 function img_login_over() {
-	$(".img_login").attr("src","img/login_black.svg");
+	$(".img_login").attr("src","/Community/static/img/login_black.svg");
 }
 //img_login的mouseout事件
 function img_login_out() {
-	$(".img_login").attr("src","img/login_gray.svg");
+	$(".img_login").attr("src","/Community/static/img/login_gray.svg");
 }
 //img_login的click事件，load登陆分页
 function img_login_click() {
-	$(".img_login").attr("src","img/login_white.svg");
+	$(".img_login").attr("src","/Community/static/img/login_white.svg");
 	$("#forge").load("/Community/Login.jsp");
 }
 
 
 //img_regist的mouseover事件
 function img_regist_over() {
-	$(".img_regist").attr("src","img/regist_black.svg");
+	$(".img_regist").attr("src","/Community/static/img/regist_black.svg");
 }
 //img_regist的mouseout事件
 function img_regist_out() {
-	$(".img_regist").attr("src","img/regist_gray.svg");
+	$(".img_regist").attr("src","/Community/static/img/regist_gray.svg");
 }
 //img_regist的click事件，load注册分页
 function img_regist_click() {
-	$(".img_regist").attr("src","img/regist_white.svg");
+	$(".img_regist").attr("src","/Community/static/img/regist_white.svg");
 	$("#forge").load("/Community/Regist.jsp");
 	document.title = "注册";
 }
