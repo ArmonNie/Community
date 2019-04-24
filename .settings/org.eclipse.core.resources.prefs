@@ -6,3 +6,7 @@ encoding//WebContent/WEB-INF/page/VideoPlay.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/error/Error.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/error/LoginError.jsp=UTF-8
 encoding//WebContent/WEB-INF/page/error/LoginNoUser.jsp=UTF-8
+encoding//src/webservice/CommunityService.java=UTF-8
+encoding//src/webservice/CommunityServiceService.java=UTF-8
+encoding//src/webservice/CommunityServiceServiceLocator.java=UTF-8
+encoding//src/webservice/CommunityServiceSoapBindingStub.java=UTF-8

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="org.apache.struts2.ServletActionContext"%>
+    pageEncoding="utf-8" import="org.apache.struts2.ServletActionContext,webservice.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<%
@@ -36,7 +36,12 @@
 						</h4>
 					</div>
 					<div class="modal-body">
-						您暂时没有最新的信息哟+_+!!!
+						<%
+						CommunityServiceProxy proxy = new CommunityServiceProxy();
+						CommunityService communityservice = proxy.getCommunityService();
+						System.out.println(communityservice.say());
+						%>
+						公告信息：<%=  communityservice.say()%>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary">保存</button>
