@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-VIP相关
+成为本站VIP，尽请享受各种福利！
 </body>
 </html>

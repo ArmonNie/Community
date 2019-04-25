@@ -3,6 +3,11 @@
  */
 window.onload = load_comment;
 
+$(document).ready(function() {
+	load_comment();
+	//createCode();
+});
+
 //提交评论
 function btn_comment(data)
 {

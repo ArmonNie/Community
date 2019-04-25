@@ -8,6 +8,6 @@
 </head>
 <body>
 	<img src="${pageContext.request.contextPath}/static/img/systemerror.svg" />
-	<h2>系统出错，请稍后再试</h2>
+	<h2>系统出错，请稍后再试(或者看看其他的资源吧！)</h2>
 </body>
 </html>

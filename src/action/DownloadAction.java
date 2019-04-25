@@ -52,6 +52,7 @@ public class DownLoadAction {
 	 */
 	public String execute() throws FileNotFoundException, UnsupportedEncodingException
 	{
+		try {
 		//String syspath = AppTool.getStrFromBase64(filenumber);
 		//File f = new File(syspath.substring(0, syspath.length()-1));
 		 //得到视频目录路径
@@ -62,9 +63,13 @@ public class DownLoadAction {
 		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo/" + filename);
 		AppTool.ConsoleOut("即将下载文件：" + webpath);
 		AppTool.ConsoleOut(this.filestream.toString());
-		
-
 		return "DownloadSuccess";
+		}
+		catch(Exception e)
+		{
+			return "DownloadError";
+		}
+		
 	}
 	
 }

@@ -61,6 +61,8 @@
 				<!-- 数据的缓冲大小 -->  
 				<param name="bufferSize">40960</param> 
     		</result>
+    		 <!-- 显示成功的jsp页面 -->
+             <result name="DownloadError">/WEB-INF/page/error/Error.jsp</result>
     	</action>
     	<action name="UploadAction" class="action.UploadAction">
     		 <!-- 显示成功的jsp页面 -->
