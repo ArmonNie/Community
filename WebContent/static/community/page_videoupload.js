@@ -12,9 +12,9 @@ function filemsg_console()
 	console.log("文件类型：" + f[0].type);
 	console.log("文件路径：" + f[0].webkitRelativePath);
 	$("#filename").attr('value', f[0].name);
-	$("#filesize").attr('value', f[0].size);
+	$("#filesize").attr('value', Math.ceil(f[0].size/(1024*1024)));
 	$("#filetype").attr('value', f[0].type);
-	$("#filepath").attr('value', 'C:/Server/test.mp4');
+	$("#filepath").attr('value', 'C:/Server/' + f[0].name);
 	//console.log($("#inputfile").val());
 	//console.log($("#inputfile").file.name);
 	//console.log($("#inputfile").file.size);

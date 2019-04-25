@@ -14,7 +14,7 @@ import tool.ORMTool;
 public class GetCollectionAction {
 
 	private String usernumber;
-	private List<Collection> collectionList;//收藏列表
+	private List<String> collectionList;//收藏列表
 	
 	private List<File> filelist = new ArrayList<File>();//待返回的文件列表
 	
@@ -49,10 +49,10 @@ public class GetCollectionAction {
 		 * 首先获取collection列表
 		 */
 		ORMTool ormtool = new ORMTool("Collection");
-		String hql = "select c from Collection as c where c.usernumber = ?";
+		String hql = "select distinct c.filenumber from Collection as c where c.usernumber = ?";
 		this.collectionList = ormtool.getQuery(hql, usernumber);
 
-		for(Collection c : this.collectionList)
+		for(String filenumber : this.collectionList)
 		{
 			ORMTool ormtool1 = new ORMTool("file");
 			hql = "select f from File as f where f.filenumber = ?";
@@ -60,7 +60,7 @@ public class GetCollectionAction {
 			 * 此处出现过nullpointer错误原因：filelist未实例化时调用addAll等实例
 			 * 方法就会出想Nullpointer错误
 			 */
-			this.filelist.addAll(ormtool1.getQuery(hql, c.getFilenumber()));
+			this.filelist.addAll(ormtool1.getQuery(hql, filenumber));
 		}
 		
 		AppTool.ConsoleOut("传给前台的列表长度：" + this.filelist.size());

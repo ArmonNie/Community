@@ -123,7 +123,7 @@ public class UploadAction {
 		/*
 		 * 关于上传的文件名以及各式的问腿
 		 */
-		File destFile = new File(webpath + "/test.mp4");
+		File destFile = new File(webpath + "/" + filename);
 		AppTool.ConsoleOut("目标文件名为：" + destFile.getName());
 		//FileUtils.copyFile(file, destFile);
 		MyFileTool.copyFile(this.file, destFile);

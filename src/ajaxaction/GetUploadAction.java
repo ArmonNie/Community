@@ -46,7 +46,7 @@ public class GetUploadAction {
 		AppTool.ConsoleOut("前台传入的标签：" + this.usernumber);
 		
 		/*
-		 * 首先获取history列表
+		 * 首先获取upload列表
 		 */
 		ORMTool ormtool = new ORMTool("history");
 		String hql = "select usup from UserUpload as usup where usup.usernumber = ?";

@@ -45,6 +45,15 @@ function sendMessage()
 	};
 }*/
 
+/*播放按钮点击事件*/
+function video_play(data)
+{
+	console.log("播放");
+	//$.post("/Community/action/LinkAction",
+		//	{index:"videodetail"});
+	window.open("/Community/action/VideoPlayAction?filenumber=" + data.name);
+}
+
 //根据usernumber获取播放记录
 //用户中心的首页展示历史纪录
 $(document).ready(function() {
@@ -76,7 +85,7 @@ function getMyHistory(data)
 						'<div class="panel-heading"><p class="font_title">于'+ obj.jsonresult[i].historydate +'观看<a class="font_title">'+
 						obj.jsonresult[i].filename + '</a></p></div>' + 
 						'<div class="panel-body">视频简介:' + obj.jsonresult[i].filedescription + '</div>' + 
-						'<div class="panel-footer"><button class="btn-success btn-xs">再次观影</button></div></div>'
+						'<div class="panel-footer"><button name="' + obj.jsonresult[i].filenumber + '"'+ 'class="btn-success btn-xs" onclick="return video_play(this)">再次观影</button></div></div>'
 				}
 				$("#usercenter_content").append(str);
 			});
@@ -103,7 +112,7 @@ function getMyCollection(data)
 				//遍历obj,例如obj.jsonresult[i].filetype
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
-					str += '<li><a>' + obj.jsonresult[i].filename + '</a></li>';
+					str += '<li><a name="' + obj.jsonresult[i].filenumber + '"'+ 'onclick="return video_play(this)">' + obj.jsonresult[i].filename + '</a></li>';
 				}
 				str += '</ol></div></div>';
 				$("#usercenter_content").append(str);
@@ -130,7 +139,7 @@ function getMyUpload(data)
 				//遍历obj,例如obj.jsonresult[i].filetype
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
-					str += '<li><a>' + obj.jsonresult[i].filename + '</a></li>';
+					str += '<li><a name="' + obj.jsonresult[i].filenumber + '"'+ 'onclick="return video_play(this)">' + obj.jsonresult[i].filename + '</a></li>';
 				}
 				str += '</ol></div></div>';
 				$("#usercenter_content").append(str);
