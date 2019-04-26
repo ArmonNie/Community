@@ -125,6 +125,7 @@ public class UploadAction {
 		 */
 		File destFile = new File(webpath + "/" + filename);
 		AppTool.ConsoleOut("目标文件名为：" + destFile.getName());
+		AppTool.ConsoleOut("目标文件路径为：" + destFile.getAbsolutePath());
 		//FileUtils.copyFile(file, destFile);
 		MyFileTool.copyFile(this.file, destFile);
 		return "usercenter";

@@ -17,19 +17,19 @@ public class FunctionDebug {
 		/*
 		 * 慎重
 		 */
-		/*try {
+		try {
 			ORMTool.initFileTable();
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		/*
 		 * Service测试
 		 */
-		CommunityServiceProxy proxy = new CommunityServiceProxy();
+		/*CommunityServiceProxy proxy = new CommunityServiceProxy();
 		CommunityService communityservice = proxy.getCommunityService();
-		System.out.println(communityservice.say());
+		System.out.println(communityservice.say());*/
 	}
 
 }

@@ -114,6 +114,7 @@
 							</h3>
 						</div>
 						<div class="panel-body">
+						<!-- 此处链接应该修改 -->
 							<video  style="height:100%;width:100%;object-fit:fill"  id="video" controls="controls">
             					<source src="${pageContext.request.contextPath}/static/video/ServerVideo/<%= f.getFilename() %>" type="audio/mp4"></source>
             					<div></div>

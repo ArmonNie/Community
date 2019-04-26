@@ -30,6 +30,7 @@
     	<action name="VideoPlayAction" class="action.VideoPlayAction">
     		<!-- <result name="LoginSuccess">/WEB-INF/page/Content.jsp</result> -->
     		<result name="videoplay">/WEB-INF/page/VideoPlay.jsp</result>
+    		<result name="playerror">/WEB-INF/page/error/Error.jsp</result>
     	</action>  
     	
     	<!-- 此action转为超链接设置/window.onload也可以-->

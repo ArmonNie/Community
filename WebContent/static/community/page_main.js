@@ -136,7 +136,7 @@ function all_video_click() {
 					'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
 					+ obj.jsonresult[i].filename + '</a></td>' +
 					'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-					'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+					'<td>播放'+ obj.jsonresult[i].goodnumber + '次</td>' +
 					'<td><div class="btn-group">' +
 					'<button name="' +obj.jsonresult[i].filename + 
 					'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
@@ -167,7 +167,7 @@ function all_video_click() {
 						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
 						+ obj.jsonresult[i].filename + '</a></td>' +
 						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td>播放'+ obj.jsonresult[i].goodnumber + '次</td>' +
 						'<td><div class="btn-group">' +
 						'<button name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 
@@ -198,7 +198,7 @@ function all_video_click() {
 						'<td><a data-toggle="modal" data-target="#myModal" onclick="video_preview(this)">'
 						+ obj.jsonresult[i].filename + '</a></td>' +
 						'<td>'+ obj.jsonresult[i].filesize + "MB"+ '</td>' +
-						'<td>'+ obj.jsonresult[i].goodnumber + '</td>' +
+						'<td>播放'+ obj.jsonresult[i].goodnumber + '次</td>' +
 						'<td><div class="btn-group">' +
 						'<button name="' +obj.jsonresult[i].filename + 
 						'"' + ' class="btn btn-primary btn_manager" type="button" onclick="return video_download(this)">' 

@@ -3,10 +3,12 @@ package ajaxaction;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.json.annotations.JSON;
 
 import bean.File;
 import bean.User;
+import tool.AppTool;
 import tool.ORMTool;
 /*
  * 改进：删除实际文件
@@ -47,9 +49,18 @@ public class DeleteFileAction {
 		ormtool.delete(file,this.deleteid);
 		//AppTool.ConsoleOut("插入数据库后");
 		/*
-		 * 注意插入是否成功
+		 * 
 		*/
-			
+		String webpath = ServletActionContext.getServletContext().getRealPath("/static/video/ServerVideo");
+		java.io.File f = new java.io.File(webpath + "/" + file.getFilename());
+		if(f.exists())
+		{
+			AppTool.ConsoleOut("删除：" + f.delete());
+		}
+		else
+		{
+			AppTool.ConsoleOut("删除失败");
+		}
 		/*
 		 * 给前台返回的json数据
 		*/

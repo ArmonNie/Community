@@ -32,6 +32,7 @@ public class VideoPlayAction {
 	
 	public String execute()
 	{
+		try {
 		/*
 		 * 插入history表
 		 */
@@ -62,6 +63,11 @@ public class VideoPlayAction {
 		
 		
 		return "videoplay";
+		}
+		catch(Exception e)
+		{
+			return "playerror";
+		}
 	}
 
 }

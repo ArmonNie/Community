@@ -14,7 +14,7 @@ import tool.ORMTool;
 public class GetUploadAction {
 
 	private String usernumber;
-	private List<UserUpload> uploadList;//上传列表
+	private List<String> uploadList;//上传列表
 	
 	private List<File> filelist = new ArrayList<File>();//待返回的文件列表
 	
@@ -49,10 +49,10 @@ public class GetUploadAction {
 		 * 首先获取upload列表
 		 */
 		ORMTool ormtool = new ORMTool("history");
-		String hql = "select usup from UserUpload as usup where usup.usernumber = ?";
+		String hql = "select distinct usup.filenumber from UserUpload as usup where usup.usernumber = ?";
 		this.uploadList = ormtool.getQuery(hql, usernumber);
 
-		for(UserUpload usup : this.uploadList)
+		for(String usup : this.uploadList)
 		{
 			ORMTool ormtool1 = new ORMTool("file");
 			hql = "select f from File as f where f.filenumber = ?";
@@ -60,7 +60,7 @@ public class GetUploadAction {
 			 * 此处出现过nullpointer错误原因：filelist未实例化时调用addAll等实例
 			 * 方法就会出想Nullpointer错误
 			 */
-			this.filelist.addAll(ormtool1.getQuery(hql, usup.getFilenumber()));
+			this.filelist.addAll(ormtool1.getQuery(hql, usup));
 		}
 		
 		AppTool.ConsoleOut("传给前台的列表长度：" + this.filelist.size());

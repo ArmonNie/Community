@@ -79,13 +79,25 @@ function getMyHistory(data)
 				//拼接字符串
 				var str = "";
 				//遍历obj,例如obj.jsonresult[i].filetype
+				var counter = 0;
+				if(obj.jsonresult.length == 0)
+				{
+					str += '<div class="panel panel-success text_area_transparency bg-warning">' +
+					'<div class="panel-heading"></div>' + 
+					'<div class="panel-body"><h3>您还未观看过视频哟~~</h3></div>' + 
+					'<div class="panel-footer"></div></div>';
+				}
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
+					if(counter < 3)
+					{
 					str += '<div class="panel panel-success text_area_transparency bg-warning">' +
 						'<div class="panel-heading"><p class="font_title">于'+ obj.jsonresult[i].historydate +'观看<a class="font_title">'+
 						obj.jsonresult[i].filename + '</a></p></div>' + 
 						'<div class="panel-body">视频简介:' + obj.jsonresult[i].filedescription + '</div>' + 
-						'<div class="panel-footer"><button name="' + obj.jsonresult[i].filenumber + '"'+ 'class="btn-success btn-xs" onclick="return video_play(this)">再次观影</button></div></div>'
+						'<div class="panel-footer"><button name="' + obj.jsonresult[i].filenumber + '"'+ 'class="btn-success btn-xs" onclick="return video_play(this)">再次观影</button></div></div>';
+					}
+					counter++;
 				}
 				$("#usercenter_content").append(str);
 			});
@@ -110,6 +122,10 @@ function getMyCollection(data)
 				'<div class="panel-heading"><h3 class="panel-title">' +
 				'我的小宝藏' + '</h3></div>' + '<div class="panel-body"><ol>';
 				//遍历obj,例如obj.jsonresult[i].filetype
+				if(obj.jsonresult.length == 0)
+				{
+					str += '<h3>空空的宝库<h3>';
+				}
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
 					str += '<li><a name="' + obj.jsonresult[i].filenumber + '"'+ 'onclick="return video_play(this)">' + obj.jsonresult[i].filename + '</a></li>';
@@ -137,6 +153,10 @@ function getMyUpload(data)
 				'<div class="panel-heading"><h3 class="panel-title">' +
 				'我的贡献' + '</h3></div>' + '<div class="panel-body"><ol>';
 				//遍历obj,例如obj.jsonresult[i].filetype
+				if(obj.jsonresult.length == 0)
+				{
+					str += '<h3>您还没有上传过任何视频哟！<h3>';
+				}
 				for(var i = 0;i<obj.jsonresult.length;i++)
 				{
 					str += '<li><a name="' + obj.jsonresult[i].filenumber + '"'+ 'onclick="return video_play(this)">' + obj.jsonresult[i].filename + '</a></li>';
